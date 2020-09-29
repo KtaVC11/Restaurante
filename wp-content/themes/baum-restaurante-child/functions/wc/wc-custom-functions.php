@@ -55,6 +55,7 @@ function baumchild_close_product_wrapper_tag() {
 }
 add_action('woocommerce_after_shop_loop_item', 'baumchild_close_product_wrapper_tag', 12);
 
+
 /**
 ** CRC Currency
 **/
@@ -137,6 +138,131 @@ add_filter( 'ocean_display_header', 'disable_site_header' );
 add_filter( 'ocean_display_header', 'disable_site_header' );*/
 
 //remove_action( 'woocommerce_before_content-product_loop', 'storefront_woocommerce_pagination', 30 );
+
+/**
+** Product listing short description
+**/
+function baumchild_wc_shop_loop_item_title() {
+	global $product;
+	$descripcion = $product->get_short_description();
+
+	if(!empty($descripcion)) :
+		?>
+		<div class="product-short-description">
+			<?= apply_filters('the_content', $descripcion); ?>
+		</div>
+		<?php
+	endif;
+}
+add_action('woocommerce_shop_loop_item_title', 'baumchild_wc_shop_loop_item_title', 15);
+
+?>
+
+
+<style>
+
+
+section#primary {
+	padding: 0;
+}
+
+.product-image-container {
+	float: left;
+	padding-right: 20px;
+}
+
+.product-title-container {
+	float: left;
+}
+
+.product-wrapper {
+	padding: 0px!important;
+}
+
+.woocommerce .product .product-image-container {
+	background-color: #fff!important;
+}
+
+.woocommerce .product .product-title-container {
+    padding: 0px!important;
+}
+
+.woocommerce .product .woocommerce-loop-product__title {
+	margin-bottom: 0!important;
+}
+
+.woocommerce .product .price {
+    text-align: left!important;
+}
+
+.product-wrapper {
+	padding:0;
+}
+
+.woocommerce-loop-product__title {
+	text-align: left;
+}
+
+.woocommerce li.product {
+    width: 100%!important;
+}
+
+.product-wrapper {
+    background-color: #fff!important;
+    margin-bottom: 0px!important;
+}
+
+.product-image-container{
+    float: left;
+}
+
+
+.content-product-item-details {
+    float: left;
+}
+
+.content-product-item-details h3{
+    text-align: center!important;
+}
+
+/*Remove the background color from the image*/
+.woocommerce .product .product-image-container {
+
+    background: none;
+}
+
+
+/*Remove the header
+#site-header {
+    display: none !important;
+}*/
+.toggle-text .svg-icon{
+    display: none !important;
+}
+
+.header-navigation-wrapper{
+    display: none !important;
+}
+
+.header-inner {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 2.8rem 0;
+}
+
+#site-footer{
+    display: none !important;
+}
+
+/*Remove the pagination*/
+.woocommerce-pagination{
+    display: none !important;
+}
+
+</style>
+
+
 
 
 
