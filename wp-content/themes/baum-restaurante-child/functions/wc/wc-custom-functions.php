@@ -136,3 +136,7 @@ add_filter( 'ocean_display_header', 'disable_site_header' );
 }
 add_filter( 'ocean_display_header', 'disable_site_header' );*/
 
+//remove_action( 'woocommerce_before_content-product_loop', 'storefront_woocommerce_pagination', 30 );
+
+
+

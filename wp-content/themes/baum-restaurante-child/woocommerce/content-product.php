@@ -47,6 +47,15 @@
     justify-content: center;
     padding: 2.8rem 0;
 }
+
+#site-footer{
+    display: none !important;
+}
+
+/*Reomve the pagination*/
+.woocommerce-pagination{
+    display: none !important;
+}
 </style>
 
 <li <?php post_class( $classes ); ?>>
