@@ -1,0 +1,238 @@
+/**
+** Twenty nineteen integration instead of woocommerce.css used in previous theme version
+**/
+
+.woocommerce {
+  &-cart {
+    .cart-collaterals {
+      .cart_totals table {
+        th {
+          width: 35%;
+        }
+
+        select {
+          width: 100%;
+        }
+      }
+
+      .shipping-calculator-form {
+        margin-top: 1em;
+      }
+    }
+  }
+
+  ul.products {
+    padding-left: 0;
+    margin-left: 0;
+    list-style: none;
+
+    .product {
+      a {
+        text-decoration: none;
+      }
+
+      .woocommerce-loop-product__title {
+        font-size: 1em;
+      }
+    }
+  }
+
+  .product table.variations {
+    border: none;
+
+    .reset_variations {
+      display: inline-block;
+      font-size: 0.85em;
+      margin-left: 0;
+      padding-top: 5px;
+    }
+  }
+
+  ul {
+    &.order_details li strong {
+      display: block;
+      line-height: 1.5;
+      text-transform: none;
+    }
+
+    &.cart_list,
+    &.product_list_widget {
+      list-style: none outside;
+      padding: 0;
+      margin: 0;
+
+      a {
+        display: block;
+      }
+
+      img {
+        float: right;
+        margin-left: 4px;
+        width: 50px;
+        height: auto;
+        box-shadow: none;
+      }
+    }
+  }
+
+  table {
+    &.cart {
+      td.actions {
+        .coupon .input-text {
+          float: left;
+          outline: 0;
+        }
+      }
+    }
+
+    &.my_account_orders {
+      font-size: 0.85em;
+
+      th,
+      td {
+        padding: 4px 8px;
+        vertical-align: middle;
+      }
+    }
+
+    &.shop_table {
+      border-collapse: separate;
+      border: none;
+
+      td {
+        line-height: 1.5em;
+        vertical-align: middle;
+      }
+
+      tfoot {
+        th,
+        td {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  .wc-proceed-to-checkout a.checkout-button {
+    text-align: center;
+    margin-bottom: 1em;
+  }
+
+  #respond input#submit,
+  a.button,
+  button.button,
+  input.button {
+    background-color: #ebe9eb;
+    background-image: none;
+    border-radius: 3px;
+    border: 0;
+    box-shadow: none;
+    color: #515151;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    left: auto;
+    line-height: 1;
+    margin: 0;
+    overflow: visible;
+    padding: 0.618em 1em;
+    position: relative;
+    text-decoration: none;
+    text-shadow: none;
+
+    &.disabled,
+    &:disabled,
+    &:disabled[disabled] {
+      color: inherit;
+      cursor: not-allowed;
+      opacity: 0.5;
+      padding: 0.618em 1em;
+    }
+  }
+
+  #payment div.payment_box {
+    border-radius: 2px;
+    box-sizing: border-box;
+    font-size: 0.92em;
+    line-height: 1.5;
+    margin: 1em 0;
+    position: relative;
+    width: 100%;
+
+    &:before {
+      border: 1em solid #dfdcde;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-top-color: transparent;
+      content: "";
+      display: block;
+      left: 0;
+      margin: -1em 0 0 2em;
+      position: absolute;
+      top: -0.75em;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  nav.woocommerce-pagination {
+    margin-bottom: 25px;
+    text-align: center;
+
+    ul {
+      border-right: 0;
+      border: 0;
+      clear: both;
+      display: inline-block;
+      margin: 1px;
+      padding: 0;
+      white-space: nowrap;
+
+      &:before {
+        content: " ";
+        display: table;
+      }
+
+      li {
+        border-right: 0;
+        display: inline;
+        //float: left;
+        margin: 0;
+        overflow: hidden;
+        padding: 0;
+        margin: 0 10px 0 0;
+        @media (max-width: 767px) {
+          margin: 0 15px 0 0;
+        }
+        &:last-child {
+          margin: 0;
+        }
+        a,
+        span {
+          -webkit-transition: background-color 0.2s ease;
+          -moz-transition: background-color 0.2s ease;
+          -o-transition: background-color 0.2s ease;
+          transition: background-color 0.2s ease;
+          display: block;
+          font-size: 1em;
+          font-weight: 400;
+          padding: 0;
+          text-decoration: none;
+          background-color: $white;
+          color: $color-main;
+          width: 40px;
+          height: 40px;
+          line-height: 40px;
+          border-radius: 100%;
+          &:hover,
+          &.current {
+            background: $color-main;
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+}

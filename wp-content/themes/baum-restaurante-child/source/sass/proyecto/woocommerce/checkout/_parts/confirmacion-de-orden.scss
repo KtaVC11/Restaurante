@@ -1,0 +1,18 @@
+.woocommerce {
+  .woocommerce-order {
+    // texto orden recibida
+    .woocommerce-notice {
+      display: none;
+      // position: relative;
+      // text-align: center;
+      // margin-bottom: 30px;
+    }
+
+    // order overview
+    ul.woocommerce-order-overview {
+      @include padding(0);
+      @include margin(0 auto 20px);
+    }
+  }
+
+}

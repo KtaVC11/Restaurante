@@ -1,0 +1,64 @@
+// ESTILO DE LOS SELECTS  => select2.js
+.select2-container {
+  @media screen and (max-width: 520px) {
+    @include margin(0);
+    max-width: none;
+    width: 100% !important;
+  }
+
+  // SELECT 2
+  // oculta el segundo select
+  &.vn_option {
+    display: none;
+  }
+}
+// SELECT 2 STYLE
+@include select2($color-base);
+// DROP DOWN DEL MENU => ROOT body .select2-container--default
+@at-root {
+  .select2-container--default {
+    // container
+    .select2-dropdown {
+      @include border-radius(0);
+      border-color: $color-gris-25;
+      .select2-search__field{
+        @include border-radius(0);
+      }
+    }
+
+    // esconde el buscador
+    .select2-search--dropdown {
+      // display: none;
+      padding: 1px;
+    }
+
+    // Resultados
+    .select2-results ul {
+      @include em(14px);
+    }
+    li[class] {
+      @include transition(100ms);
+      @include padding(0 15px);
+      line-height: 34px;
+      &:hover,
+      &:active,
+      &:focus {
+      }
+    }
+
+    %highlight-color {
+      background: $color-base;
+      color: $white;
+    }
+
+    .select2-results__option--highlighted[aria-selected] {
+      @extend %highlight-color;
+    }
+    .select2-results__option[aria-selected="true"] {
+      @extend %highlight-color;
+    }
+    .select2-results__option[data-selected="true"] {
+      @extend %highlight-color;
+    }
+  }
+}

@@ -1,0 +1,100 @@
+$color-links-hover: $color-main;
+$orange: $cyan;
+$purple: purple;
+$bg: greenyellow;
+
+%max-account {
+    @include margin(0 auto);
+    max-width: 600px;
+    width: 100%;
+}
+
+// Mi Cuenta
+.woocommerce-page form .form-row-first {
+    clear: left;
+}
+//body
+body.woocommerce-account {
+    background-color: $light;
+
+    .page-header {
+        h1 {
+            @include font-family(2);
+            font-weight: $font-regular;
+            color: $color-primary;
+            text-align: center;
+            @include _bottom-line
+        }
+    }
+
+    // Mi Cuenta - iniciar sesión
+    &.woocommerce-login-register {
+        h1 {
+            display: none;
+        }
+        article .entry-content {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+        }
+    }
+    //orders //payment-methods
+    &.woocommerce-orders,
+    &.woocommerce-payment-methods {
+        article .entry-content {
+            @media (max-width: $mobile-wc-table) {
+                background-color: transparent;
+                padding: 0;
+                border-radius: 0;
+            }
+        }
+    }
+    .woocommerce-MyAccount-content {
+        @include border-radius(15px);
+        @include block;
+        color: $color-text;
+        background-color: $white;
+        width: 100%;
+        padding: 20px;
+        max-width: 760px;
+        margin: {
+            left: auto;
+            right: auto;
+        }
+        overflow: hidden;
+        
+        h3 {
+            color: $color-primary;
+            text-align: center;
+            @include _bottom-line;
+        }
+        // Mis pedidos
+        @import "_parts/mis-pedidos.scss";
+    }
+}
+
+/*
+=== Login ===
+*/
+@import "_parts/login.scss";
+/*
+=== pagina de bienvenida ===
+*/
+@import "_parts/bienvenida.scss";
+/*
+=== Detalles de la cuenta ===
+*/
+@import "_parts/detalles-de-la-cuenta.scss";
+/*
+=== Direcciones ===
+*/
+@import "_parts/direcciones.scss";
+/*
+=== Detalle de un pedido ===
+*/
+@import "_parts/detalle-de-pedido.scss";
+
+/*
+=== Metodos de pago ===
+*/
+@import "_parts/metodos-de-pago.scss";

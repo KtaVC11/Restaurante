@@ -1,0 +1,35 @@
+/*
+**
+**
+** <Z-INDEX>
+**
+**
+*/
+
+$z-index: (
+    initial:                            initial,
+    woocommerce_form:                   50,
+    woocommerce_form_overlay:           49,
+    xoo-qv-panel:                       22,
+    xoo-qv-opac:                        21,
+    menu-edit-account:                  21,
+    site-header-menu-mobile-bg-overlay: 21,
+    site-header:                        20,
+    mmenu_panel:                        15,
+    mmenu_overlay:                      14,
+    button_wpcf7:                       4,
+    vc_tta-panel-heading:               3,
+    favoritos-wrapper:                  2,
+    vc_tta-panel-title:                 2,
+    h1_entry_header:                    1,
+    nuestros-productos:                 2,
+    nuestros-productos-overlay:         1,
+    logo-img:                           1,
+    vc_tta-panel-body:                  1,
+);
+@function z-index($key) {
+    @return map-get($z-index, $key);
+}
+@mixin z-index($key, $str: null) {
+    z-index: z-index($key) $str;
+}

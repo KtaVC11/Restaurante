@@ -1,0 +1,45 @@
+@mixin Rotate360($speed: 3s) {
+    // Set the animation
+    /*
+    -webkit-animation-duration: 1s; 
+    animation-duration: 1s; 
+    -webkit-animation-fill-mode: both; 
+    animation-fill-mode: both;
+    */
+
+    -webkit-animation:spin $speed linear infinite;
+    -moz-animation:spin $speed linear infinite;
+    animation:spin $speed linear infinite;
+
+    // Set keyframes
+    @-webkit-keyframes Rotate360 { 
+        0% { 
+            -webkit-transform-origin: center center; 
+            -webkit-transform: rotate(-360deg); 
+            opacity: 1; 
+        } 
+        100% { 
+            -webkit-transform-origin: center center; 
+            -webkit-transform: rotate(0); 
+            opacity: 1; 
+        } 
+    } 
+    @keyframes Rotate360 { 
+        0% { 
+            transform-origin: center center; 
+            transform: rotate(-360deg); 
+            opacity: 1; 
+        } 
+        100% { 
+            transform-origin: center center; 
+            transform: rotate(0); 
+            opacity: 1; 
+        } 
+    } 
+}
+
+// Apply the effect
+@mixin applyRotate360 { 
+    -webkit-animation-name: Rotate360; 
+    animation-name: Rotate360; 
+}

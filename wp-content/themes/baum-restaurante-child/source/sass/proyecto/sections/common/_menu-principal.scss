@@ -1,0 +1,536 @@
+.body-overflow .site-content {
+    @include blur(2px);
+}
+
+// Menu principal
+.site-header-nav {
+    // global a href
+    .site-header-menu a {
+        @include padding(15px);
+        @include margin(0);
+        @include em(13px);
+        background: none;
+        color: $white;
+        text-transform: uppercase;
+        line-height: 1;
+        font-weight: $font-semibold;
+
+        &:hover, &:active, &:focus {
+            background: none;
+            color: $white;
+            text-decoration: none;
+        }
+    }
+
+    // menu dentro del main-navigation
+    .main-navigation {
+        @include media-breakpoint($mobile-bp) {
+            margin-left: 5px;
+        }
+        @include media-breakpoint(860px) {
+            margin-left: 15px;
+        }
+        @include media-breakpoint(890px) {
+            margin-left: 30px;
+        }
+        ul.navbar-nav {
+            @include margin(0);
+            position: relative;
+            // > mobile breakpoint
+            @include media-breakpoint($mobile-bp) {
+                @include flex-direction(row);
+                @include padding(0);
+                text-align: center;
+            }
+
+            > li {
+                @include flexbox;
+                @include padding(0);
+                @include margin(0);
+
+                // decoration after > 768 px
+                @include media-breakpoint($mobile-bp) {
+                    a {
+                        position: relative;
+                        &:after {
+                            @include transition(300ms);
+                            background-color: transparent;
+                            content: "";
+                            width: 100%;
+                            position: absolute;
+                            bottom: -20px; // al border menos alto del elemento
+                            height: 3px;
+                            left: 0;
+                        }
+                    }
+
+                    // on hover
+                    &:hover,
+                        &:active,
+                        &:focus {
+                        a {
+                            &:after {
+                                background-color: $color-primary;
+                            }
+                        }
+                    }
+
+                    // ## PLUGIN SCROLL2ID ## cuando hace scroll => Scroll 2 ID
+                    a.id {
+                        &-highlight {
+                            &:after {
+                                background-color: $color-primary;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        a {
+            @include media-breakpoint($mobile-bp) {
+                @include media-breakpoint(890px - 1px, max-width) {
+                    @include em(11px);
+                    padding: {
+                        left: 8px;
+                        right: 8px;
+                    }
+                }
+            }
+            &.close-nav {
+                @include media-breakpoint($mobile-bp) {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    // ### Menu mobile responsive
+    $mobile_nav_transition: 300ms;
+    @include media-breakpoint($mobile-bp - 1px, max-width) {
+        .site-header-menu {
+            a.close-nav {
+                @include transition(600ms);
+                @include border-radius(100%) @include block-size(32px);
+                line-height: 32px;
+                border: solid 2px $color-main;
+                color: $color-main;
+                position: absolute;
+                text-align: center;
+                display: block;
+                right: 12px;
+                padding: 0;
+                top: 12px;
+                &:focus {
+                    background-color: $color-main;
+                    color: $white;
+                }
+                &.open {
+                    i {
+                    }
+                }
+                i {
+                    @include display-flex width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+        .site-header-menu {
+            @include z-index(site-header-menu-mobile-bg-overlay) 
+            @include transition($mobile_nav_transition, all, ease-in-out)
+            @include align-items(flex-start) 
+            @include justify-content(flex-start);
+            background: rgba($white, 0.65);
+            height: 100vh;
+            left: 0;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            width: 100%;
+
+            // hide 
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+
+            &.menu-is-open {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+
+                // el menu principal se muestra
+                .main-navigation {
+                    // no hace nada
+                    // el left se da por js
+                }
+            }
+
+            // main navigation
+            .main-navigation {
+                @include transition(none);
+                @include box-shadow(0 0 25px 0 rgba($black, 0.1)) padding: 50px
+                    0;
+                background-color: $white;
+                position: fixed;
+                width: 86%;
+                max-width: 440px;
+                left: -440px;
+                height: 100vh;
+                top: 0;
+                li {
+                    @include padding(8px 0);
+                    border-bottom: solid 1px $color-main;
+                    @include last-child {
+                        border-bottom: none;
+                    }
+                }
+                a {
+                    &:not(.close-nav) {
+                        @include em(14px) width: 100%;
+                        color: $color-main;
+                    }
+                }
+            }
+        }
+    }
+
+
+    // Menu de la derecha
+    $font-size-icons: 22px;
+    // .site-header-bar .cuenta-wrapper a.account-link,
+    .site-header-bar .cuenta-wrapper > a,
+    .site-header-bar .cart-wrapper a.the-cart,
+    .site-secondary-menu a {
+        @include padding(0);
+        @include margin(0);
+        @include border-radius(100%);
+        @include block-size(35px);
+        @include em($font-size-icons);
+        @include display-flex;
+        color: $color-main;
+        background-color: $white;
+        @include media-breakpoint(mobile-bp) {
+            @include block-size(45px);
+        }
+    }
+
+    // item del carrito
+    .cart-wrapper {
+        position: relative;
+        margin: 0 10px;
+        @include media-breakpoint($media-xsmall) {
+            @include margin(0 18px); // margin para dar espacio entre iconos
+        }
+        @include media-breakpoint($media-small) {
+            @include margin(0 10px); // margin para dar espacio entre iconos
+        }
+        @include media-breakpoint($mobile-bp) {
+            @include margin(0 18px); // margin para dar espacio entre iconos
+        }
+        a {
+            @include reset-content;
+            // hover a <a>
+            &:hover,
+                &:active,
+                &:focus {
+            }
+
+            &.wcmenucart-contents {
+            }
+
+            // wrap del icono y cantidad
+            .text-shopping-cart {
+            }
+
+            // icono
+            .cart-icon {
+            }
+
+            // cantidad
+            .cart-value {
+                @include border-radius(100%) 
+                @include padding(2px) 
+                @include block-size(20px) 
+                @include display-flex 
+                @include helvetica font-size: 10px;
+                font-weight: $font-bold;
+                line-height: 1;
+                background-color: $color-secondary;
+                color: $white;
+                font-weight: $font-regular;
+                right: -8px;
+                position: absolute;
+                top: -8px;
+            }
+        }
+
+        // shoping dropdown
+        .widget_shopping_cart {
+            color: $color-text;
+            font-size: 13px;
+            margin-top: -10px;
+            position: absolute;
+            text-align: center;
+            width: 240px;
+            right: -240px;
+            // transform: translate (-90px);
+            @include padding(10px 0 0);
+            @include transform-translate-x(-150px);
+            @include transition(500ms);
+            @include media-breakpoint(1100px) {
+                right: -180px;
+            }
+            /* hide */
+            opacity: 0;
+            pointer-events: none;
+            visibility: hidden;
+            z-index: 10; // ---------------- Z INDEX
+
+            @include media-breakpoint(xs, max-width) {
+                display: none;
+            }
+
+            .widgettitle {
+                display: none;
+            }
+
+            .widget_shopping_cart_content {
+                @include padding(15px);
+                @include border-radius(3px);
+                @include box-shadow(0 0 10px 0 rgba($black, 0.3));
+                @include block;
+                background: $white;
+                position: relative;
+
+                &:before {
+                    @include arrow(bottom, 8px, $white);
+                    position: absolute;
+                    top: -16px;
+                    right: 45px;
+                }
+
+                p {
+                    line-height: normal;
+                    margin: 0;
+                }
+
+                ul li[class*="item"] .quantity {
+                    clear: none;
+                    float: right;
+                    text-align: right;
+                    width: auto;
+                }
+
+                // subtotal
+                .woocommerce-mini-cart__total.total {
+                    border: none;
+                    font-weight: $font-regular;
+                    text-align: center;
+                    padding: 6px;
+                    background-color: $color-light;
+                    margin-bottom: 10px;
+                }
+                strong {
+                    font-weight: $font-regular;
+                }
+
+                // buttons
+                .woocommerce-mini-cart__buttons.buttons {
+                    @include reset-content;
+
+                    a.button {
+                        @extend %button-main-alt;
+                        @include em(12px);
+                        width: 100%;
+                        line-height: 1.4;
+
+                        &:first-of-type {
+                            margin-bottom: 10px;
+                        }
+                    }
+                }
+
+                dl {
+                    display: none;
+                }
+
+                @include lista-productos-in-cart;
+            }
+        }
+
+        // hover al cart wrapper
+        &:hover,
+            &:active,
+            &:focus {
+            .widget_shopping_cart {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+                margin-top: 0;
+            }
+        }
+    }
+
+    // Item de usuario
+    .cuenta-wrapper {
+        &,
+        > a {
+            position: relative;
+        }
+    }
+    .site-header-login {
+        // a href del user
+        a {
+            position: relative;
+            // fas fa-angle-down
+            .indicator {
+                @include transform-3d(visible) @include
+                transform-origin(center center) @include
+                transition(200ms) color: $color-primary;
+                font-size: 12px;
+                position: absolute;
+                right: 3px;
+            }
+            &.toggle-account {
+                &.open {
+                    .indicator {
+                        @include transform-rotate(180deg, x);
+                    }
+                }
+            }
+        }
+
+        // menu desplegable
+        $color_sub_menu: $light; // color usado como color de fondo del sub menu y la flecha
+        .menu-edit-account {
+            @include z-index(menu-edit-account);
+            display: none;
+            margin-top: 10px;
+            position: absolute;
+            right: 0;
+            width: 200px;
+            &:before {
+                @include font-awesome("\f0d8");
+                @include transform-translate(-50%, 0);
+                @include em(20px);
+                color: $color_sub_menu;
+                right: 10px;
+                top: -13px;
+                position: absolute;
+                line-height: 1;
+            }
+            // elementos
+            nav,
+            ul,
+            li {
+                width: 100%;
+            }
+
+            // el nav tiene el color de fondo
+            nav {
+                @include border-radius(12px) @include
+                box-shadow(0 0 20px 0 rgba($black, 0.2));
+                background-color: $color_sub_menu;
+                overflow: hidden;
+            }
+
+            // ul principal - sub menu
+            ul {
+                @include list-unstyled(0, 0);
+            }
+
+            // item de sub memu
+            li {
+                @include flexbox @include align-items(center);
+                min-height: 35px;
+                padding: 0;
+                padding-top: 4px;
+                padding-bottom: 4px;
+                border-bottom: solid 1px $color-border;
+                @include last-child {
+                    border-bottom: none;
+                }
+            }
+            // add transition
+            li {
+                &,
+                a {
+                    @include transition(200ms);
+                }
+            }
+            // href de cada item del sub menu
+            a {
+                // @include border-radius(0);
+                @include padding(5px 15px);
+                @include em(14px);
+                // background: none;
+                font-weight: $font-regular;
+                text-transform: none;
+                // position: relative;
+                // border: none;
+                display: block;
+                width: 100%;
+                line-height: 1.1;
+                color: $color-text;
+                // height: auto;
+            }
+            // hover a cada li
+            li {
+                &:hover,
+                    &:active,
+                    &:focus {
+                    background-color: $color-main;
+                    a {
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+
+    // item de contacto
+    .item-contacto {
+        content: 'item contacto';
+        a {
+            background-color: $color-primary;
+            color: transparent;
+            overflow: hidden;
+            font-size: 0;
+            &:before {
+                @include font-awesome("\f3fe");
+                font-size: $font-size-icons;
+                color: $white;
+                text-indent: -5px;
+                position: absolute;
+                pointer-events: none;
+            }
+        }
+    }
+}
+
+.nav-overlay {
+    @include transition(750ms, all, ease);
+    @include overlaybg(rgba($color-base, 0.8));
+    z-index: 30;
+    opacity: 0;
+    pointer-events: none;
+    top: 0;
+
+    &.active {
+        pointer-events: auto;
+        cursor: pointer;
+        opacity: 1;
+    }
+}
+
+//menu principal se ocualta en el flujo de checkout
+body.woocommerce-cart,
+body.woocommerce-checkout {
+    div {
+        &:not(.site-footer-bottom) {
+            .menu-menu-principal-container, .site-header-toggle {
+                display: none;
+            }
+        } 
+    }
+}

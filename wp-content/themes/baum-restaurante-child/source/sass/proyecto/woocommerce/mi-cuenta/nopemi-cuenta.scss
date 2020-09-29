@@ -1,0 +1,68 @@
+%max-account {
+  @include margin(0 auto);
+  max-width: 600px;
+  width: 100%;
+}
+
+// Mi Cuenta
+.woocommerce-page form .form-row-first {
+  clear: left;
+}
+//body
+body.woocommerce-account {
+  // Mi Cuenta - iniciar sesión
+  &.woocommerce-login-register {
+    h1 {
+      display: none;
+    }
+    article .entry-content {
+      background-color: transparent;
+      padding: 0;
+      border-radius: 0;
+    }
+  }
+  //orders //payment-methods
+  &.woocommerce-orders,
+  &.woocommerce-payment-methods {
+    article .entry-content {
+      @media (max-width: $mobile-wc-table) {
+        background-color: transparent;
+        padding: 0;
+        border-radius: 0;
+      }
+    }
+  }
+  .woocommerce-MyAccount-content {
+    @include block;
+    color: $dark;
+
+    // Mis pedidos
+    @import "_parts/mis-pedidos.scss";
+  }
+}
+
+/*
+=== Login ===
+*/
+@import "_parts/login.scss";
+/*
+=== pagina de bienvenida ===
+*/
+@import "_parts/bienvenida.scss";
+/*
+=== Detalles de la cuenta ===
+*/
+@import "_parts/detalles-de-la-cuenta.scss";
+/*
+=== Direcciones ===
+*/
+@import "_parts/direcciones.scss";
+/*
+=== Detalle de un pedido ===
+*/
+@import "_parts/detalle-de-pedido.scss";
+
+/*
+=== Metodos de pago ===
+*/
+@import "_parts/metodos-de-pago.scss";

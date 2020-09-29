@@ -1,0 +1,56 @@
+@mixin AnimationBounce($pixeles: -8px) {
+    @-moz-keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            -moz-transform: translateY(0);
+            transform: translateY(0);
+        }
+        40% {
+            -moz-transform: translateY($pixeles);
+            transform: translateY($pixeles);
+        }
+        60% {
+            -moz-transform: translateY($pixeles);
+            transform: translateY($pixeles);
+        }
+    }
+    @-webkit-keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
+        40% {
+            -webkit-transform: translateY($pixeles);
+            transform: translateY($pixeles);
+        }
+        60% {
+            -webkit-transform: translateY($pixeles);
+            transform: translateY($pixeles);
+        }
+    }
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            -moz-transform: translateY(0);
+            -ms-transform: translateY(0);
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
+        40% {
+            -moz-transform: translateY($pixeles);
+            -ms-transform: translateY($pixeles);
+            -webkit-transform: translateY($pixeles);
+            transform: translateY($pixeles);
+        }
+        60% {
+            -moz-transform: translateY($pixeles);
+            -ms-transform: translateY($pixeles);
+            -webkit-transform: translateY($pixeles);
+            transform: translateY($pixeles);
+        }
+    }   
+}
+
+@mixin DoBounce() {
+    -moz-animation: bounce 2s infinite;
+    -webkit-animation: bounce 2s infinite;
+    animation: bounce 2s infinite;
+}  

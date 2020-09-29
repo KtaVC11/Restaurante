@@ -1,0 +1,32 @@
+@mixin toggleButtonFX {
+    span {
+        height: 2px;
+        background-color: $danger;
+        position: relative;
+        width: 42px;
+        @include transition;
+    }
+    span._a {
+        visibility: hidden;
+        display: none;
+        @include transition;
+    }
+    span._b { 
+        -moz-transform: rotate(-45deg) translateX(-1px) translateY(1px);
+        -webkit-transform:  rotate(-45deg) translateX(-1px) translateY(1px);
+        -o-transform:  rotate(-45deg) translateX(-1px) translateY(1px);
+        -ms-transform:  rotate(-45deg) translateX(-1px) translateY(1px);
+        transform:  rotate(-45deg) translateX(-1px) translateY(1px);
+        @include transition;
+    }
+    span._c {
+        -moz-transform: rotate(45deg) translateX(-1px) translateY(-1px);
+        -webkit-transform:  rotate(45deg) translateX(-1px) translateY(-1px);
+        -o-transform:  rotate(45deg) translateX(-1px) translateY(-1px);
+        -ms-transform:  rotate(45deg) translateX(-1px) translateY(-1px);
+        transform:  rotate(45deg) translateX(-1px) translateY(-1px);
+        @include transition;
+    } 
+}
+
+

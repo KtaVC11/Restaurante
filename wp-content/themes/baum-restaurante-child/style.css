@@ -1,0 +1,101 @@
+/*
+Theme Name: Baum Child Restaurante
+Theme URI: https://wordpress.org/themes/twentytwenty/
+Template: twentytwenty
+Author: the WordPress team
+Author URI: https://wordpress.org/
+Description: Our default theme for 2020 is designed to take full advantage of the flexibility of the block editor. Organizations and businesses have the ability to create dynamic landing pages with endless layouts using the group and column blocks. The centered content column and fine-tuned typography also makes it perfect for traditional blogs. Complete editor styles give you a good idea of what your content will look like, even before you publish. You can give your site a personal touch by changing the background colors and the accent color in the Customizer. The colors of all elements on your site are automatically calculated based on the colors you pick, ensuring a high, accessible color contrast for your visitors.
+Tags: blog,one-column,custom-background,custom-colors,custom-logo,custom-menu,editor-style,featured-images,footer-widgets,full-width-template,rtl-language-support,sticky-post,theme-options,threaded-comments,translation-ready,block-styles,wide-blocks,accessibility-ready
+Version: 1.5.1600795059
+Updated: 2020-09-22 17:17:39
+
+*/
+
+/* Product List */
+.products {
+  list-style: none;
+  padding: 0;
+}
+.products li {
+  float: none !important;
+}
+.products li.product a {
+  display: flex;
+}
+.products li.product img {
+  width: 100px !important;
+  height: 100px !important;
+  border-radius: 50%;
+}
+.content-product-item-details {
+  margin-left: 20px;
+}
+.content-product-item-details h3,
+p {
+  padding: 0 !important;
+  margin: 0;
+}
+/* Custom List Page */
+.custom-category-tabs {
+  display: block;
+  background-size: cover;
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: #fff !important;
+  padding: 20px;
+  text-align: center;
+}
+.list-categories ul {
+  display: grid;
+  grid-gap: 10px;
+  list-style: none;
+  padding: 0 20px;
+  margin: 0;
+  grid-template: "a a a a" "b b c c" "d d d d" "e e e e" "f g h i";
+  grid-auto-flow: dense;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
+}
+.list-categories ul a {
+  display: flex;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  height: 90px;
+}
+.list-categories ul li {
+  margin: 0;
+}
+.list-categories ul li:nth-child(1) {
+  grid-area: a;
+}
+.list-categories ul li:nth-child(2) {
+  grid-area: b;
+}
+.list-categories ul li:nth-child(3) {
+  grid-area: c;
+}
+.list-categories ul li:nth-child(4) {
+  grid-area: d;
+}
+.list-categories ul li:nth-child(5) {
+  grid-area: e;
+}
+.list-categories ul li:nth-child(6) {
+  grid-area: f;
+}
+.list-categories ul li:nth-child(7) {
+  grid-area: g;
+}
+.list-categories ul li:nth-child(8) {
+  grid-area: h;
+}
+.list-categories ul li:nth-child(9) {
+  grid-area: i;
+}
+.list-categories ul li {
+  position: relative;
+  background-size: cover;
+}

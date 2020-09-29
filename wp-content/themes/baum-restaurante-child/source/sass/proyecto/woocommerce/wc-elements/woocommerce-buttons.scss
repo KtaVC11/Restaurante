@@ -1,0 +1,47 @@
+#{$woocommerce-page} {
+    button,
+    a {
+        outline: none;
+        &.button {
+            @include main-button-style;
+            @include btn-default;
+            &:disabled {
+                cursor: default;
+                pointer-events: none;
+                opacity: 0.65;
+            }
+        }
+        &.button.alt {
+            @include button-main-alt;
+            @include border-radius(25px);
+        }
+    }
+    a.button.checkout-button.alt {
+        @include display-flex;
+        @include border-radius(25px);
+        @include padding(13px 15px);
+        @include em(14px);
+        font-weight: $font-bold;
+        line-height: 1.1;
+        width: 100%;
+        max-width: none;
+        outline: none;
+        &:after {
+            content: '';
+            @include transition;
+            @include block-size(19px)
+            @include borde($white, 2px);
+            @include transform-origin(center center)
+            @include transform-rotate(45deg);
+            display: inline-block;
+            border-left: none;
+            border-bottom: none;
+            margin-left: 10px;
+        }
+        &:hover, &:active, &:focus {
+            &:after {
+                margin-left: 15px;
+            }
+        }
+    }
+}

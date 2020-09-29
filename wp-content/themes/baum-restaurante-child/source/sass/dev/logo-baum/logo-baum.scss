@@ -1,0 +1,27 @@
+
+
+/*
+* === Logo Baum ===
+* @param1 = #hex color, default: negro
+* @param2 = #hex color, defualt: linea de color verde "baum"
+*/
+$color-baum: #00B499;
+@mixin logo-baum($theme: null, $line: $color-baum) {
+    #baum_ID{
+        @if $theme == null {
+            #baum_letter_path {
+                fill: #231f20;
+            }
+            #baum_line_color {
+                fill: $line;
+            }
+        }@else {
+            #baum_letter_path {
+                fill: $theme;
+            }
+            #baum_line_color {
+                fill: $line;
+            }
+        }
+    }
+}

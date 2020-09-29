@@ -1,0 +1,131 @@
+//ordenes o pedidos
+
+// tabla
+table.woocommerce-MyAccount-orders {
+  font-size: 1em;
+  thead {
+    tr {
+      th[class] {
+        &.woocommerce-orders-table__header-order-actions {
+          width: 40%;
+        }
+      }
+    }
+  }
+  tbody {
+    tr {
+      &.woocommerce-orders-table__row {
+        @media (max-width: $mobile-wc-table) {
+          background-color: $white;
+          padding: 10px;
+          margin-bottom: 10px;
+          border: 1px solid $gray;
+          display: inline-block;
+          border-radius: 5px;
+          width: 100%;
+        }
+      }
+      td[class] {
+        &.woocommerce-orders-table__cell-order-number {
+          text-align: center;
+          a {
+            color: $color-links;
+            &:hover,
+            &:active,
+            &:focus {
+              color: $color-links-hover;
+            }
+          }
+        }
+        &.woocommerce-orders-table__cell-order-actions {
+          .woocommerce-button {
+            border-radius: 25px;
+            @include padding(15px 10px);
+            @include em(13px);
+            @include calc(width, 50%, 8px);
+            @include margin(4px);
+            text-transform: uppercase;
+            clear: none;
+            display: inline-block;
+            font-weight: $font-medium;
+            position: relative;
+            text-align: center;
+
+            &:hover,
+            &:active,
+            &:focus {
+              border-color: darken($color-main, 3%);
+            }
+            &:before {
+              margin-right: 4px;
+            }
+
+            &.view {
+              @include set-new-button-style($orange, $white, $orange);
+              @include set-new-button-hover(
+                darken($orange, 10%),
+                $white,
+                darken($orange, 10%)
+              );
+              &:before {
+                @include font-awesome("\f06e");
+              }
+            }
+            &.cancel {
+              @include set-new-button-style($gray, $white, $gray);
+              @include set-new-button-hover(
+                darken($gray, 10%),
+                $white,
+                darken($gray, 10%)
+              );
+            }
+
+            &.pay {
+              @include set-new-button-style($purple, $white, $purple);
+              @include set-new-button-hover(
+                darken($purple, 10%),
+                $white,
+                darken($purple, 10%)
+              );
+            }
+
+            &.print {
+              @include set-new-button-style($gray, $white, $gray);
+              @include set-new-button-hover(
+                $color-default,
+                $white,
+                $color-default
+              );
+              &:before {
+                @include font-awesome("\f02f");
+              }
+            }
+
+            &:nth-child(2n + 1) {
+              float: left;
+            }
+          }
+        }
+
+        @include media-breakpoint($mobile-wc-table, max-width) {
+        }
+        &:last-child {
+          margin-bottom: 20px;
+        }
+
+        &[class] {
+          text-align: center;
+          width: 50%;
+        }
+        &[class].woocommerce-orders-table__cell-order-actions {
+          clear: left;
+          text-align: center;
+          width: 100%;
+          padding-left: 0;
+          padding-right: 0;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@mixin custom-buttons {
+  // custom Buttons
+  $style-name: 'button[class*="vc_btn"]';
+
+  $buttons: (
+    vc_btn3-style-classic: (
+      $color-main,
+      white,
+      $color-main
+    ),
+    vc_btn3-style-modern: (
+      $color-main,
+      white,
+      $color-main
+    )
+  );
+
+  /* main buttons: bootstrap*/
+  body[class] {
+    #{$style-name} {
+      @include main-button-style;
+      @each $name, $style in $buttons {
+        $bgcolor: nth($style, 1);
+        $fontcolor: nth($style, 2);
+        $borde: nth($style, 3);
+        &.#{$name} {
+          background-color: $bgcolor;
+          color: $fontcolor;
+          border-color: $borde;
+          &:hover,
+          &:active,
+          &:focus {
+            background-color: darken($bgcolor, 10%);
+            color: $fontcolor;
+          }
+        }
+      }
+    }
+    .vc_btn3{
+      @include main-button-style;
+      @include set-new-button-style($color-main, $white, $color-main);
+      @include set-new-button-hover(darken($color-main, 8%), $white, darken($color-main, 8%));
+      border-color: $color-main;
+      text-transform: uppercase;
+      @include em(13px);
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: darken($color-main, 10%);
+      }
+    }
+  }
+}

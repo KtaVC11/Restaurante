@@ -1,0 +1,314 @@
+
+/*
+*  SCSS snippets
+*  _utils.scss
+*  Autor: Francisco Chanto
+*  v1.0.0
+*  Mayo, 2018
+*/
+
+
+/*
+* === opacity ===
+* @param 1 = value, default 0.5
+*/
+@mixin opacity($valor:0.5) {
+    visibility: visible;
+    -moz-opacity: $valor;
+    -khtml-opacity: $valor;
+    opacity: $valor;
+}
+
+/* 
+* === border radius ===
+* @param1 = radius, default 4px
+*/
+@mixin border-radius($radio: 4px, $str: null) { 
+    -webkit-border-radius: $radio $str; 
+    -moz-border-radius: $radio $str;    
+    border-radius: $radio $str;
+}
+
+/* 
+ * === Box Shadow ===
+ * @Param 1 = properties, default: 0px 0px 10px 0 rgba($black, 0.6)
+ * @param 2 = string, (inset, impmortant), default: null
+ */
+@mixin box-shadow ($properties: 0px 0px 10px 0 rgba(#000000, 0.6), $str: null) {
+    @if $str == null {
+        -webkit-box-shadow: $properties;
+        -moz-box-shadow:  $properties;
+        box-shadow: $properties;
+    }@else {
+        -webkit-box-shadow: $properties $str;
+        -moz-box-shadow:  $properties $str;
+        box-shadow: $properties $str;
+    }
+}
+
+/* 
+ * === Box Shadow ===
+ * @Param 1 = properties, default: 0px 0px 10px 0 rgba($black, 0.6)
+ * @param 2 = string, (inset, impmortant), default: null
+ */
+@mixin box-shadow-multiple ($properties...) {
+    -webkit-box-shadow: $properties;
+    -moz-box-shadow:  $properties;
+    box-shadow: $properties;
+}
+
+/* 
+* === transform origin ===
+* @param 1 = valor 1, default: 50%
+* @param 2 = valor 2, default: 50%
+*/
+@mixin transform-origin($v1: 50%, $v2: 50%) {
+    -ms-transform-origin: $v1 $v2;
+    -webkit-transform-origin: $v1 $v2;
+    transform-origin: $v1 $v2;
+}
+
+/* 
+* === transition ===
+* @param 1 = time, default 130ms
+* @param 2 = transition property, default: all
+* @param 3 = ease type, default: ease
+* @param 4 = !important, default: null
+*/
+@mixin transition($time: 130ms, $prop: all, $ease: ease, $important: null) {
+    @if $time != remove {
+        @if $important == null {
+            -webkit-transition: $prop $time $ease;
+            -moz-transition: $prop $time $ease;
+            -o-transition: $prop $time $ease;
+            -ms-transition: $prop $time $ease;
+            transition: $prop $time $ease;
+        }
+        @else {
+            -webkit-transition: $prop $time $ease !important;
+            -moz-transition: $prop $time $ease !important;
+            -o-transition: $prop $time $ease !important;
+            -ms-transition: $prop $time $ease !important;
+            transition: $prop $time $ease !important;
+        }
+    }
+    @else {
+        -webkit-transition: none;
+        -moz-transition: none;
+        -o-transition: none;
+        -ms-transition: none;
+        transition: none;
+    }
+}
+
+/* 
+* === transition delay ===
+* @param 1 = delay value, default: 100ms
+*/
+@mixin transition-delay($delay:100ms) {
+    -webkit-transition-delay: $delay; 
+    transition-delay: $delay; 
+}
+
+/*
+* === transform rotate ===
+* @param1 = value, default: 45deg
+* @param2 = rotate X only, default: null
+* Use: param1 = deg
+* Use: param2 = x or y
+*/
+@mixin transform-rotate($deg: 4deg, $x: null) {
+    @if $x != null {
+        @if $x == x or $x == X {
+            -webkit-transform: rotateX($deg);
+            -moz-transform: rotateX($deg);
+            -o-transform: rotateX($deg);
+            transform: rotateX($deg);
+        }
+        @else {
+            -webkit-transform: rotateY($deg);
+            -moz-transform: rotateY($deg);
+            -o-transform: rotateY($deg);
+            transform: rotateY($deg);
+        }
+    }
+    @else {
+        -webkit-transform: rotate($deg);
+        -moz-transform: rotate($deg);
+        -o-transform: rotate($deg);
+        transform: rotate($deg);
+    }
+}
+
+/*
+* === transform translate ===
+* @param1 = value X, default: 0
+* @param2 = value Y, default: 0
+*/
+@mixin transform-translate($x:0, $y:0){
+    -moz-transform: translateX($x) translateY($y);
+    -webkit-transform: translateX($x) translateY($y);
+    -o-transform: translateX($x) translateY($y);
+    -ms-transform: translateX($x) translateY($y);
+    transform: translateX($x) translateY($y);
+}
+
+/*
+* === transform translate X===
+* @param1 = value X, default: 0
+*/
+@mixin transform-translate-x($x:0){
+    -moz-transform: translateX($x);
+    -webkit-transform: translateX($x);
+    -o-transform: translateX($x);
+    -ms-transform: translateX($x);
+    transform: translateX($x);
+}
+
+/*
+* === transform translate Y ===
+* @param1 = value Y, default: 0
+*/
+@mixin transform-translate-y($y:0){
+    -moz-transform: translateY($y);
+    -webkit-transform: translateY($y);
+    -o-transform: translateY($y);
+    -ms-transform: translateY($y);
+    transform: translateY($y);
+}
+
+/* 
+* === transform scale ===
+* @param 1 = value, default: 1
+*/
+@mixin transform-scale($valores: 1)  {
+    -moz-transform: scale($valores);
+    -webkit-transform: scale($valores);
+    -o-transform: scale($valores);
+    -ms-transform: scale($valores);
+    transform: scale($valores);    
+}
+
+/* 
+* === transform scale & rotate ===
+* @param 1 = scale value, default: 1
+* @param 2 = rotate value, default: -180deg
+*/
+@mixin transform-scale-rotate ($scale: 1, $rotate:-180deg) {
+    -moz-transform:    scale($scale) rotate($rotate);
+    -webkit-transform: scale($scale) rotate($rotate);
+    -o-transform:      scale($scale) rotate($rotate);
+    -ms-transform:     scale($scale) rotate($rotate);
+    transform:         scale($scale) rotate($rotate);
+}
+
+/* 
+* === transform rotate translate ===
+* @param 1 = rotate value, default: 0deg
+* @param 2 = translateX value, default 0
+* @param 3 = translateY value, default 0
+*/
+@mixin transform-rotate-translate ($rotate: 0deg, $translateX: 0, $translateY:0) {
+    -moz-transform:    rotate($rotate) translateX($translateX) translateY($translateY);
+    -webkit-transform: rotate($rotate) translateX($translateX) translateY($translateY);
+    -o-transform:      rotate($rotate) translateX($translateX) translateY($translateY);
+    -ms-transform:     rotate($rotate) translateX($translateX) translateY($translateY);
+    transform:         rotate($rotate) translateX($translateX) translateY($translateY);
+}
+
+/* 
+* === transform scale & translate ===
+* @param 1 = scale value, default: 1
+* @param 2 = translateX value, default 0
+* @param 3 = translateY value, default 0
+*/
+@mixin transform-scale-translate ($scale: 1, $translateX: 0, $translateY:0) {
+    -moz-transform:    scale($scale) translateX($translateX) translateY($translateY);
+    -webkit-transform: scale($scale) translateX($translateX) translateY($translateY);
+    -o-transform:      scale($scale) translateX($translateX) translateY($translateY);
+    -ms-transform:     scale($scale) translateX($translateX) translateY($translateY);
+    transform:         scale($scale) translateX($translateX) translateY($translateY);
+}
+
+/* 
+* === css 3 transform ===
+@param 1 = csss transform properties
+options: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg)
+*/
+@mixin transform ($values) {
+    -moz-transform:    $values;
+    -webkit-transform: $values;
+    -o-transform:      $values;
+    -ms-transform:     $values;
+    transform:         $values;
+}
+
+/*
+* === transform remove ===
+* @param: none
+*/
+@mixin transform-remove{ 
+    -moz-transform:  none;
+    -webkit-transform: none;
+    -o-transform: none;
+    -ms-transform: none;
+    transform: none;
+}
+
+@mixin transform-3d {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+}
+/*
+* === Text-shadow ===
+* @param 1 = text shadow values, default: 0 1px 1px rgba($black, .5)
+*/
+@mixin text-shadow ($shadow: 0 1px 1px rgba($black, .5)) {
+    text-shadow: $shadow;
+}
+
+/*
+* === pure css check mark ===
+* @param1 = pixel size. Default: 10px
+* @param2 = color, default: #333
+* @param3 = border width. Default: 2px
+*/
+@mixin css-check-mark($val: 10px, $color: #333, $border: 2px) {
+    display:inline-block;
+    &:after{
+        content: '';
+        display: block;
+
+        // se crea la forma, el alto es la multiplicacion del ancho x 2
+        width: $val;
+        height: $val * 2;
+
+        // tipo de border
+        border: solid $color;
+        border-width: 0 $border $border 0;
+
+        /* se aplica css una rotacion de 45 grados para darle la forma final */
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+}
+
+/*
+* === stripe gradient ===
+* @param1 = color value. Default: #222222
+* @param2 = color value. Default: #333333
+* @param3 = degree value. Default: 45deg
+* @param4 = width, pixel value. Default: 10px
+*/
+@mixin gradient-stripes( $color1:#222, $color2: #333, $deg: 45deg, $size: 10px, $doublesize: ($size * 2))  {
+    -webkit-background: repeating-linear-gradient( $deg, $color1, $color1 $size, $color2 $size, $color2 $doublesize);
+    background: repeating-linear-gradient( $deg, $color1, $color1 $size, $color2 $size, $color2 $doublesize);
+}
+
+/*
+* === to do ===
+*/

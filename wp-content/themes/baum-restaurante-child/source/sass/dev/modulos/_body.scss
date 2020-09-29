@@ -1,0 +1,68 @@
+
+/*
+*  SCSS snippets
+*  _body.scss
+*  Autor: Francisco Chanto
+*  v1.0.0
+*  Mayo, 2018
+*/
+
+
+/*
+* === body default ===
+* @param1 = body base font size. Default: 16px ($font-size)
+* @param2 = font family. Default: $font-primary (font, helvetica.. etc)
+* @param3 = body color, Default: $color-base
+* @param4 = body background (color / string), Default: null
+*/
+@mixin body($base-size: $font-size, $font: null, $color: $color-base, $background: null) {
+    @if $font == null {
+        font-family: $font-primary, $font-base;   
+    }@else {
+        font-family: $font, $font-base;   
+    }
+    background: $background;
+    font-size: $base-size;
+    line-height: $line-height;
+    color: $color;
+    height: auto;   
+}
+/*
+* === Footer ===
+* @param1 = sticky: true, false, default: true
+*/
+@mixin footer($sticky: true) {  
+    display: block;
+    width:100%;
+    height: auto;
+    @if $sticky {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 0;
+    }
+}
+
+@mixin html() {
+    min-height: 100%;
+    position: relative;
+    font-size: 100%;
+}
+
+
+@mixin media-breakpoint($breakpoint, $query: 'min-width') {
+    $media-queries: (
+        'xsmall'   : $media-xsmall,
+        'small'    : $media-small,
+        'xs'       : $media-xs ,
+        'sm'       : $media-sm,
+        'md'       : $media-md,
+        'lg'       : $media-lg,
+        );
+
+    @if map-has-key($media-queries, $breakpoint) {
+        @media screen and (#{$query}: map-get($media-queries, $breakpoint)) { @content; }
+    } @else {
+        @media screen and ($query: $breakpoint) { @content;  }
+    }
+}

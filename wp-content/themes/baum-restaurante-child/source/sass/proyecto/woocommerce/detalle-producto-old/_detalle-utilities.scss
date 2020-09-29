@@ -1,0 +1,101 @@
+// SKu del producto
+@mixin sku($t: 14px) {
+    .sku_wrapper,
+    .provedor_wrapper {
+        @include em($t);
+        color: $color-gris;
+        text-transform: uppercase;
+        display: inline-block;
+        line-height: 30px;
+    }
+}
+
+// Titulo del producto
+@mixin producto-titulo {
+    .product_title {
+        @include em(30px);
+        margin-bottom: 10px;
+        //font-weight: $font-bold;
+        font-family: $font-secondary;
+        // < 420px
+        @media screen and (max-width: ($media-xsmall + 1px)) {
+            @include em(24px);
+            text-align: center;
+        }
+    }
+}
+
+// Subtitulo del producto
+@mixin producto-subtitulo {
+    .product-subtitle {
+        margin-bottom: 20px;
+        * {
+            @include em($font-size);
+            font-weight: $font-medium;
+            margin-bottom: 10px;
+            line-height: normal;
+            text-transform: none;
+        }
+    }
+}
+
+// Precio del producto
+@mixin producto-precio {
+    // .single_variation.woocommerce-variation {
+    //   display: none !important;
+    // }
+
+    .price {
+        @extend %precio-default;
+        @extend %precio-variantes;
+        @include em(30px);
+
+        padding-bottom: 15px;
+
+        del {
+            .amount {
+                font-weight: $font-medium;
+                @include em(20px);
+            }
+        }
+
+        ins {
+            color: $black;
+        }
+
+        + .stock {
+            display: none;
+        }
+    }
+}
+
+// Boton Agregar al carrito
+@mixin producto-add2cart {
+    [class*="add_to_cart_button"].alt {
+        @include button-main-alt
+        @include border-radius(1000px)
+        @include em(16px)
+        @include padding(12px 10px)
+        @include display-flex
+        line-height: normal;
+        width: 100%;
+        clear: both;
+        margin-bottom: 10px;
+        position: relative;
+        outline: 0;
+        @include media-breakpoint($media-xsmall, max-width){
+            @include em(16px);
+        }
+        &:after {
+            @include font-awesome("\f290");
+            display: inline-block;
+            margin-left: 10px;
+            font-size: 75%;
+        }
+
+        &.disabled {
+            pointer-events: none;
+            opacity: 0.35;
+        }
+    }
+}

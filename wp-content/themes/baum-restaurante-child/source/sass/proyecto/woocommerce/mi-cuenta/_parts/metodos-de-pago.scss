@@ -1,0 +1,200 @@
+//metodos de pago
+
+#{$woocommerce} {
+    //new payment
+    form#add_payment_method {
+        @extend %max-account;
+
+        .woocommerce-Payment {
+            border: none; /* solid 2px $color-main; */
+            @include border-radius(4px);
+            padding: 10px;
+
+            .woocommerce-PaymentMethods {
+                .woocommerce-PaymentBox {
+                    border: none;   
+                    > p {
+                        &:first-of-type {
+                            margin-bottom: 25px;
+                        }
+                    }
+
+                    .woocommerce-SavedPaymentMethods {
+                        overflow: hidden;
+                        padding: 0;
+                        li {
+                            @include border-radius(100px);
+                            background-color: $light;
+                            padding: 8px;
+                            border: none;
+                            border: solid 1px $color-border;
+                            margin-bottom: 15px;
+                        }
+                    }
+                }
+            }
+            ul {
+                margin-bottom: 15px;
+                li.woocommerce-SavedPaymentMethods-new {
+                    display: none;
+                }
+            }
+
+            fieldset {
+                .form-row-first,
+                .form-row-last {
+                    width: 48%;
+                }
+            }
+            #collapse-cc-form {
+                padding: 0 20px 10px;
+                p.form-row {
+                    margin: 0;
+                    padding: 10px 0;
+                }
+                label[class*="checkbox"] {
+                    margin: 5px 5px 15px;
+                }
+            }
+        }
+        #place_order {
+            background-color: transparent;
+            color: $color-links;
+            border: 0;
+            font-weight: 500;
+            &:before {
+                margin-right: 5px;
+                @include font-awesome("\f067");
+            }
+            &:hover,
+                &:active,
+                &:focus {
+                color: $color-links-hover;
+            }
+        }
+    }
+
+    // tabla de metodos de pago registrados
+    .woocommerce-MyAccount-content {
+
+        table {
+            &.woocommerce-MyAccount-paymentMethods {
+                tbody {
+
+                    td[class] {
+
+                        // nombre del titulor
+                        &.woocommerce-PaymentMethod--card_holder {
+                            font-weight: $font-bold;
+                            color: $color-default;
+                            text-align: left;
+                        }
+
+                        &.woocommerce-PaymentMethod--actions {
+                            strong {
+                                color: $gris;
+                            }
+                        }
+
+                        &.woocommerce-PaymentMethod--actions {
+                            a, strong {
+                                padding: 0;
+                                margin: 0;
+                                width: auto;
+                                color: $color-text;
+                            }
+                            strong {
+                                float: left;
+                            }
+                            a {
+                                float: right;
+                                @include block-size(18px);
+                                line-height: 1;
+                                margin-left: 15px;
+                                color: transparent !important;
+                                top: 3px;
+                                &:before {
+                                    @include transition(100ms);
+                                    @include block-size(100%, 100%);
+                                    @include display-flex;
+                                    @include transform-translate(-50%, -50%);
+                                    position: absolute;
+                                    left: 50%;
+                                    top: 50%;
+                                    color: $color-main !important;
+                                    opacity: .6;
+                                }
+                                &:hover, &:active, &:focus {
+                                    &:before {
+                                        opacity: 1 !important;
+                                        @include transform(scale(1.1) translate(-50%, -50%));
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // <- 768
+                    @media screen and (min-width: 0) and (max-width: 767px) {
+
+                        tr[class] {
+                            border: none;
+                        }
+                        td[class] {
+                            padding: 50px 10px 20px;
+                            position: relative;
+                            @media screen and (max-width: 600px) {
+                                min-height: 118px;
+                            }
+                            @media screen and (max-width: 420px) {
+                                min-height: 145px;
+                            }
+                            &:before {
+                                padding: 0 10px;
+                                color: $color-primary;
+                                background-color: $white;
+                                font-weight: $font-bold;
+                                font-size: $font-size;
+                                border: none;
+                            }
+                            &:after {
+                                content: '';
+                                width: 100%;
+                                height: 1px;
+                                background-color: $gris;
+                                position: absolute;
+                                bottom: 0px;
+                                left: 0;
+                                display: block;
+
+                            }
+                            &.woocommerce-PaymentMethod--card_holder {
+                                text-align: center;
+                                padding-top: 50px;
+                                &:before {
+                                    background-color: $color-primary;
+                                    color: $white;
+                                }
+                                &:after {
+                                    content: none;
+                                }
+                            }
+
+                            &.woocommerce-PaymentMethod--actions {
+                                @include display-flex;
+                                a, strong {
+                                    margin: 0 6px;
+                                }
+                                padding-top: 10px;
+                                &:before, &:after {
+                                    content: none;
+                                }
+                            }
+                        }   
+                    }
+                }
+            }
+        }
+
+    }
+}

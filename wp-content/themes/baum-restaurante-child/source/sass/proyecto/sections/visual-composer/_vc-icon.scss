@@ -1,0 +1,29 @@
+.vc_icon_element {
+	&.baum_icon {
+		@include display-flex;
+	}
+
+	&.vc_icon_element-align {
+		&-left {
+			.custom-icon_text {
+				padding-left: 20px
+			}
+		}
+		&-right {
+			.custom-icon_text {
+				padding-right: 20px
+			}
+		}
+	}
+
+	.custom-icon_text {
+		line-height: 1;
+		width: calc(100% - 60px);
+
+		h4 {
+			letter-spacing: 0;
+			margin-bottom: 10px;
+			@include size(16px);
+		}
+	}
+}

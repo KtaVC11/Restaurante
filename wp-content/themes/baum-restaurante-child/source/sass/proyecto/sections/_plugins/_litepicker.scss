@@ -1,0 +1,314 @@
+/*
+**
+**
+** LITEPICKER
+**
+**
+*/
+
+
+
+
+$litepickerBgColor: #FFFFFF;
+$litepickerMonthHeaderTextColor: $color-primary;
+$litepickerMonthButton: $color-primary;
+$litepickerMonthButtonHover: $color-main;
+$litepickerMonthWeekdayColor: $color-primary;
+$litepickerDayColor: $color-text;
+$litepickerDayColorHover: $color-main;
+$litepickerDayIsTodayColor: $color-main;
+$litepickerDayIsInRange: null;
+$litepickerDayIsLockedColor: #aaa;
+$litepickerDayIsBookedColor: $litepickerDayIsLockedColor;
+$litepickerDayIsStartColor: #ffffff;
+$litepickerDayIsStartBg: #149CB3;
+$litepickerDayIsEndColor: #ffffff;
+$litepickerDayIsEndBg: #149CB3;
+$litepickerDayWidth: 38px;
+$litepickerButtonCancelColor: #ffffff;
+$litepickerButtonCancelBg: #1A49A5;
+$litepickerButtonApplyColor: #ffffff;
+$litepickerButtonApplyBg: #149CB3;
+
+#{$global} {
+
+    .litepicker .container__months .month-item-header strong.month-item-name { color: $litepickerMonthHeaderTextColor; text-transform: capitalize; } 
+    .litepicker .container__months .month-item-header strong.month-item-year { color: red; } 
+    .litepicker .container__days .day-item:not(.is-locked) { cursor: pointer; }
+
+}
+
+
+#{$global}
+.litepicker {
+    @include helvetica;
+
+    a {
+        &:hover, &:active, &:focus {
+            cursor: pointer;
+        }
+    }
+    .container {
+        &__months {
+            @include box-shadow(0 2px 15px 0 rgba($black, .2));
+            background-color: $litepickerBgColor;
+            box-sizing: content-box;
+
+            &.columns-2 {
+            }
+
+            &.columns-3 {
+            }
+
+            &.columns-4 {
+            }
+
+            &.split-view {
+                .month-item {
+                    &-header {
+                        .button-previous-month,
+                        .button-next-month {
+
+                        }
+                    }
+                }
+            }
+
+            .month-item {
+                &-header {
+                    color: $litepickerMonthHeaderTextColor;
+
+                    div {
+                        > .month-item-name {
+                        }
+
+                        > .month-item-year {
+                        }
+                    }
+
+                    .button-previous-month,
+                    .button-next-month {
+                        color: $litepickerMonthButton;
+                        padding: 3px 5px;
+                        -webkit-transition: color 0.3s, border 0.3s;;
+                        -moz-transition: color 0.3s, border 0.3s;;
+                        -o-transition: color 0.3s, border 0.3s;;
+                        -ms-transition: color 0.3s, border 0.3s;;
+                        transition: color 0.3s, border 0.3s;;
+
+                        > svg,
+                        > img {
+                            fill: $litepickerMonthButton;
+                            pointer-events: none;
+                        }
+
+                        &:hover {
+                            color: $litepickerMonthButtonHover;
+
+                            > svg {
+                                fill: $litepickerMonthButtonHover;
+                            }
+                        }
+                    }
+                }
+
+                &-weekdays-row {
+                    color: $litepickerMonthWeekdayColor;
+
+                    > div {
+                        padding: 5px 0;
+                        font-size: 85%;
+                        flex: 1;
+                        width: $litepickerDayWidth;
+                        text-align: center;
+                    }
+                }
+
+                &:first-child {
+                    .button-previous-month {
+                        visibility: visible;
+                    }
+                }
+
+                &:last-child {
+                    .button-next-month {
+                        visibility: visible;
+                    }
+                }
+
+                &.no-previous-month {
+                    .button-previous-month {
+                        @include grayscale(1);
+                        pointer-events: none;
+                        visibility: visible;
+                        opacity: .3;
+                    }
+                }
+
+                &.no-next-month {
+                    .button-next-month {
+                        @include grayscale(1);
+                        pointer-events: none;
+                        visibility: visible;
+                        opacity: .3;
+
+                    }
+                }
+            }
+        }
+
+        &__days {
+            @include flexbox
+            @include flex-wrap
+            -moz-box-sizing: content-box;
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+
+            > div,
+            > a {
+                padding: 5px 0;
+                width: $litepickerDayWidth;
+            }
+
+            .day-item {
+                color: $litepickerDayColor;
+                text-align: center;
+                text-decoration: none;
+                border-radius: 3px;
+                transition: color 0.3s, border 0.3s;
+                cursor: default;
+
+                &:not(.is-locked) {
+                    background: $white;
+                    color: $litepickerDayColorHover;
+                }
+
+                &[class]:hover {
+                    // Valid to all days hover
+                    background: $white;
+                    color: $litepickerDayColorHover;
+                    @include box-shadow(none);
+                    box-shadow: inset 0 0 0 1px $litepickerDayColorHover;
+                }
+
+                &.is-today {
+                    color: $litepickerDayIsTodayColor;
+                }
+
+                &.is-locked {
+                    color: $litepickerDayIsLockedColor;
+                    pointer-events: none;
+
+                    &:hover {
+                        color: $litepickerDayIsLockedColor;
+                        box-shadow: none;
+                        cursor: default;
+                    }
+                }
+
+                &.is-booked {
+                    color: $litepickerDayIsBookedColor;
+                    pointer-events: none;
+
+                    &:hover {
+                        color: $litepickerDayIsBookedColor;
+                        box-shadow: none;
+                        cursor: default;
+                    }
+                }
+
+                &.is-in-range {
+                    background-color: $litepickerDayIsInRange;
+                    border-radius: 0;
+                }
+
+                &.is-start-date {
+                    color: $litepickerDayIsStartColor;
+                    background-color: $litepickerDayIsStartBg;
+                    border-top-left-radius: 5px;
+                    border-bottom-left-radius: 5px;
+                    border-top-right-radius: 0;
+                    border-bottom-right-radius: 0;
+
+                    &.is-flipped {
+                        border-top-left-radius: 0;
+                        border-bottom-left-radius: 0;
+                        border-top-right-radius: 5px;
+                        border-bottom-right-radius: 5px;
+                    }
+                }
+
+                &.is-end-date {
+                    color: $litepickerDayIsEndColor;
+                    background-color: $litepickerDayColorHover; // $litepickerDayIsEndBg;
+                    @include border-radius(0);
+
+                    &.is-flipped {
+                        @include border-radius(0);
+                    }
+                }
+
+                &.is-start-date.is-end-date {}
+            }
+
+            .week-number {
+                @include display-flex;
+                color: #9e9e9e;
+                font-size: 85%;
+            }
+        }
+
+        &__footer {
+            text-align: right;
+            padding: 10px 5px;
+            margin: 0 5px;
+            background-color: #fafafa;
+            box-shadow: inset 0px 3px 3px 0px #ddd;
+
+            .preview-date-range {
+
+            }
+
+            .button-cancel {
+                background-color: $litepickerButtonCancelBg;
+                color: $litepickerButtonCancelColor;
+
+                > svg,
+                > img {
+                    pointer-events: none;
+                }
+            }
+
+            .button-apply {
+                background-color: $litepickerButtonApplyBg;
+                color: $litepickerButtonApplyColor;
+
+                &:disabled {
+                }
+
+                > svg,
+                > img {
+                }
+            }
+        }
+
+        &__tooltip {
+            display: none;
+            &:before {
+
+            }
+
+            &:after {
+
+            }
+        }
+    }
+
+    &-open {
+
+    }
+
+    &-backdrop {
+
+    }
+}

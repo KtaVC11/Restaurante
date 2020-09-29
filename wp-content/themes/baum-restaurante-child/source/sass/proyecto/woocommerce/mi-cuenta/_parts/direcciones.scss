@@ -1,0 +1,62 @@
+body.woocommerce-edit-address {
+  form {
+    max-width: 778px;
+    margin: 0 auto;
+    h3 {
+      margin-top: 15px;
+    }
+    div.woocommerce-address-fields {
+      // @extend %max-account;
+      .form-row {
+        @include form-row;
+        .woocommerce-input-wrapper {
+          width: 100%;
+        }
+        .subscribe-field {
+          float: left;
+          @include em(12px);
+          label[class] {
+            line-height: 22px;
+            display: inline-block;
+            &:hover,
+            &:active,
+            &:focus {
+              cursor: pointer;
+            }
+          }
+        }
+        textarea {
+          max-width: none;
+          width: 100%;
+        }
+      }
+      .form-row {
+        &-first,
+        &-last {
+          @include float(left);
+          width: 50%;
+        }
+        &-first {
+          padding-right: 5px;
+          clear: left;
+        }
+        &-last {
+          padding-left: 5px;
+        }
+        @media screen and (max-width: 480px) {
+          &-first,
+          &-last {
+            @include block(0 0 20px);
+            @include padding(0);
+          }
+        }
+        textarea {
+          min-height: 120px;
+        }
+      }
+    }
+    p button[type="submit"] {
+      max-width: 320px;
+    }
+  }
+}

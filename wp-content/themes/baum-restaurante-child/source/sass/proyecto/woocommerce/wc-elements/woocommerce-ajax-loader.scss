@@ -1,0 +1,185 @@
+$loaderWidth: 40px;
+
+// WC Ajax Preloader
+.woocommerce .blockUI.blockOverlay {
+    background: rgba($white, .85) !important;
+    opacity: 1 !important;
+}
+.woocommerce .blockUI.blockOverlay:before,
+.woocommerce .loader:before {
+    @include transform-translate(-50%, -50%);
+    width: $loaderWidth;
+    height: $loaderWidth;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0;
+    display: block;
+    content: "";
+    -webkit-animation: none;
+    -moz-animation: none;
+    animation: none;
+    background-attachment: scroll;
+    background-position: center center;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: $loaderWidth $loaderWidth;
+}
+
+// loader en otras secciones
+%loader_before {
+    width: $loaderWidth;
+    height: $loaderWidth;
+    margin: 0 auto;
+    display: block;
+    content: "";
+    animation: none;
+    -moz-animation: none;
+    -webkit-animation: none;
+    -o-animation: none;
+    -ms-animation: none;
+    background-attachment: scroll;
+    background-position: center center;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: $loaderWidth $loaderWidth;
+}
+
+// Loader filtro
+div.woof_info_popup {
+    text-indent: -999px;
+    opacity: 1 !important;
+    background: rgba(255, 255, 255, 0.75);
+    height: 100vh;
+    left: 0;
+    line-height: 90vh;
+    overflow: hidden;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10001;
+
+    &:before {
+        @include transform-translate(-50%, -50%);
+        @extend %loader_before;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        line-height: 1;
+        text-align: center;
+        font-size: 2em;
+    }
+}
+
+.bm-loader {
+    &:after {
+        background: rgba(255, 255, 255, 0.75);
+        content: "";
+        height: 100%;
+        left: 0;
+        position: fixed;
+        top: 0;
+        visibility: visible;
+        width: 100%;
+        z-index: 99;
+    }
+
+    &:before {
+        @extend %loader_before;
+        position: fixed;
+        margin: auto;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 998;
+    }
+
+    .tinv-modal.tinv-modal-open {
+        .tinv-modal-inner {
+            @include box-shadow(0 0 10px rgba($black, .3));
+        }
+
+        .tinv-overlay {
+            opacity: 0;
+        }
+    }
+}
+
+div.pp_overlay {
+    background: rgba($white, .75) !important;
+    opacity: 1 !important;
+}
+
+.pp_loaderIcon {
+    background: none !important;
+    opacity: 1 !important;
+    height: 100vh !important;
+    left: 0 !important;
+    line-height: 0 !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: fixed !important;
+    top: 0 !important;
+    width: 100% !important;;
+    z-index: 10001;
+
+    &:before {
+        content: none !important;
+    }
+
+    &:after {
+        @extend %loader_before;
+        @include transform-translate(-50%, -50%);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        line-height: 1;
+        text-align: center;
+        font-size: 2em;
+    }
+}
+
+// Preloader quick view
+.xoo-qv-speeding-wheel {
+    border: none;
+}
+
+.xoo-qv-panel .xoo-qv-preloader .xoo-qv-speeding-wheel {
+    animation: none;
+    -moz-animation: none;
+    -webkit-animation: none;
+    -o-animation: none;
+    -ms-animation: none;
+
+    &:before {
+        @extend %loader_before;
+        @include transform-translate(-50%, -50%);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        line-height: 1;
+        text-align: center;
+        font-size: 2em;
+    }
+}
+
+.lmp_products_loading {
+    .fa {
+        animation: none;
+        -moz-animation: none;
+        -webkit-animation: none;
+        -o-animation: none;
+        -ms-animation: none;
+        
+        &:before {
+            @extend .fa;
+            @extend %loader_before;
+            position: absolute;
+            line-height: 1;
+            text-align: center;
+            font-size: 2em;
+        }
+    }
+}

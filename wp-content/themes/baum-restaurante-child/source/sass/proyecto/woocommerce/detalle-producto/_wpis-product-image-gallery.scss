@@ -1,0 +1,119 @@
+div.images {
+    $buttons: ".slick-prev, .slick-next";
+    &.slick-loaded {
+        opacity: 1;
+    }
+
+    .slick-slider {
+
+        &.slider {
+            border: none;
+            margin-bottom: 0; 
+
+            // Los thumbnails
+            @include last-child {
+                width: 100%;
+                max-width: 550px;
+                margin: 0 auto;
+                .slick-list {
+                    /*
+                    padding: {
+                        top: 12px;
+                        bottom: 12px;
+                    }
+                    
+                    border: {
+                        top: solid 1px $light;
+                        bottom: solid 1px $light;
+                    }
+                    */
+
+                    .slick-slide {
+                        @include border-radius(3px);
+                    }
+                }
+            }
+
+            // IMAGENES
+            .slick-list {
+                background: $white;
+                .slick-slide {
+                    overflow: hidden;
+                    &:focus {
+                        outline: 0;
+                    }
+                }
+            }
+        }
+
+        &.wpis-slider-for {
+            // imagen
+            img {
+                max-width: none;
+                width: 100%;
+                margin: 0 auto;
+                &:not(.zoomImg) {
+                    display: block !important;
+                    max-width: none;
+                }
+            }
+        }
+
+        // div de los thumbnails
+        &.wpis-slider-nav {
+            .slick-slide {
+                margin-right: 3px;
+                border: solid 1px transparent;
+                position: relative;
+                height: auto;
+
+                img {
+                    opacity: 1;
+                    position: relative;
+                    width: 100%;
+                }
+
+                &:hover, &:active, &:focus {
+                    border-color: $color-gray-lite;
+                }
+
+                &.slick-current {
+                    border-color: $color-gray-lite;
+                }  
+            }
+        }
+
+        // Las flechas <>
+        .slick-arrow {
+            @include padding(0);
+            @include text-shadow(none);
+            @include fs(30px);
+            background-color: transparent;
+            color: $color-gray-lite;
+            &:hover, &:active, &:focus {
+                color: $color-default;
+            }
+            &.slick-disabled {
+                pointer-events: none;
+                cursor: default;
+            } 
+        }
+
+        // Aplica solo al segundo <section>
+        &.wpis-slider-nav {
+            .slick-arrow {
+                &.slick-prev {
+                    left: -15px;
+                }
+                &.slick-next {
+                    right: -15px;
+                }
+            }
+        }
+    }
+}
+
+div.slider[class*="wpis"] .slick-arrow {
+
+
+}

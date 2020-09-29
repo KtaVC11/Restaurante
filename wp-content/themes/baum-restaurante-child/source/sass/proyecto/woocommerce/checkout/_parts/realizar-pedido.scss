@@ -1,0 +1,237 @@
+/*
+* === PASO 2 => REALIZAR PEDIDO ===
+*/
+.woocommerce-page {
+    // notificaciones
+    .woocommerce-info ~ form {
+        float: left;
+        width: 100%;
+    }
+
+    // Cupon de descuento
+    form.checkout_coupon {
+        @include clearfix;
+        width: 100%;
+        &.actions {
+            .coupon {
+                // @include cupon-style(none);
+                .button.button.alt {
+                    float: right;
+                }
+            }
+        }
+    }
+
+    form.woocommerce-form-login {
+        label {
+            &:hover,
+                &:active,
+                &:focus {
+                cursor: pointer;
+            }
+        }
+    }
+
+    form {
+        // todos los checkboxes del checkout
+        @include checkbox-input-2($color-text);
+    }
+
+    // forms de acciones de login
+    form[class*="woocommerce"] {
+        .form-row {
+            @include padding(0);
+            @include margin(0 auto 15px);
+            &.form-row {
+                &-first, &-last {
+                    clear: both;
+                    width: 100%; 
+                    padding: 0;
+                    @include media-breakpoint($media-small) {
+                        clear: none;
+                        width: 50%;
+                    }
+                }
+                &-first {
+                    padding-right: 5px;
+                    clear: left;
+                }
+                &-last {
+                    padding-left: 5px;
+                }
+                @media screen and (max-width: 480px) {
+                    /*
+                    &-first, &-last {
+                        @include block(0 0 10px);
+                        @include padding(0);
+                    }
+                    */
+                }
+
+                &[id*="state"],
+                &[id*="city"],
+                &[id*="address_1"] {
+                    .optional {
+                        display: none;
+                    }
+                }
+                // accesible / hidden elements
+                &#calc_shipping_postcode_field, &#calc_shipping_country_field {
+                    @extend %visual-hide;
+                }
+
+                // input[]
+                input[type] {
+                    max-width: none;
+                    //line-height: 40px;
+                }
+                textarea {
+                    max-width: none;
+                    min-height: 120px;
+                }
+            }
+
+            &#text_field .optional {
+                display: none;
+            }
+
+            &#billing_phone_field {
+                @include align-content(baseline);
+            }
+        }
+
+        &.login {
+
+            // -------------------------------------------
+            @extend %checkbox-custom-realizar-pedido;
+            // -------------------------------------------
+
+        }
+
+        #payment .place-order {
+            .wc-terms-and-conditions {
+                float: none;
+                clear: both;
+
+                .checkbox {
+                    display: inline-block;
+                    line-height: 1.2;
+                }
+            }
+        }
+    }
+
+    // Acciones de login o canjear cupon
+    #page .woocommerce {
+        @include pedido-notificaciones;
+        // Form login
+        @include pedido-form-login;
+    }
+
+    // Formulario de los datos del checkout
+    form.woocommerce-checkout.checkout {
+        margin-bottom: 30px;
+
+        .__infoUsuario {
+            margin-bottom: 25px;
+        }
+
+        .subscribe-field {
+            @include em(12px);
+            // -------------------------------------------
+            @extend %checkbox-custom-realizar-pedido;
+            // -------------------------------------------
+            padding-top: 10px;
+        }
+
+        // titulo direccion       
+        .woocommerce-billing-fields {
+            h3 {
+                @include cart-heading-title();
+                position: relative;
+                &:before {
+                    display: none;
+                }
+            }
+            .form-row {
+                &.woocommerce-validated {
+                    input[class]:not(.button), {
+                        border-color: $color-primary;
+                    }    
+                }
+            }
+        }
+
+        // titulo informacion adicional
+        .woocommerce-additional-fields {
+            h3 {
+                @include cart-heading-title();
+                &:before {
+                    @include font-awesome("\f067");
+                    display: inline-block;
+                    margin-right: 5px;
+                }
+            }
+            .form-row {
+                &.woocommerce-validated {
+                    input[class]:not(.button), {
+                        border-color: inherit;
+                    }    
+                }
+            }
+        }
+
+        // crear una cuenta
+        .woocommerce-account-fields {
+            @include background-options;
+            border: 1px solid $gris;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 1rem;
+            
+            .col-md-7 {
+                @media (min-widht: $mobile-wc-table) {
+                    padding-right: 0;
+                }
+            }
+            .create-account-message {
+                margin-bottom: 20px;
+                font-weight: $font-bold;
+                strong {
+                    line-height: normal;
+                    color: $color-main;
+                    font-size: 25px;
+                }
+                p {
+                    line-height: normal;
+                }
+            }
+            .create-account {
+                .form-row-first,
+                .form-row-last {
+                    width: 100%;
+                    float: none;
+                    padding: 0;
+                }
+            }
+        }
+
+        // informacion del pedido
+        @include __infoPedido;
+    }
+}
+
+.woocommerce-checkout {
+    .woocommerce-form-login-toggle,
+    .woocommerce-form-coupon-toggle {
+        @media screen and (max-width: $media-sm) {
+            width: 50%;
+            display: inline-block;
+            vertical-align: top;
+            float: left;
+        }
+    }
+    #order_payment_heading {
+        margin-top: 15px;
+    }
+}

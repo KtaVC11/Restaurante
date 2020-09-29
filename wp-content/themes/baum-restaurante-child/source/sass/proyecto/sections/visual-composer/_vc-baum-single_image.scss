@@ -1,0 +1,53 @@
+/** Originally vc-row-features **/
+$column_width: 570px; // ($container / 2), bootstrap mobile
+
+.full-width-image {
+    &_left {
+        justify-content: flex-start;
+
+        > .wpb_column:first-child {
+            > .vc_column-inner {
+                max-width: $column_width;
+
+                @media screen and (min-width: $media-xs) {
+                    padding: 0 35px;
+                }
+                
+                @media screen and (max-width: $media-xs - 1) {
+                    padding: 0 15px;
+                    margin: auto;
+                }
+            }
+        }
+
+        @media screen and (min-width: $media-xs) {
+            > .wpb_column {
+                &:first-child {
+                    left: 50%;
+                }
+
+                &:nth-child(2n) {
+                    left: -50%;
+                }
+            }
+            
+        }
+    }
+    
+    &_right {
+        justify-content: flex-end;
+
+        > .wpb_column:first-child {
+            max-width: $column_width;
+
+            @media screen and (min-width: $media-xs) {
+                padding: 0 35px;
+            }
+            
+            @media screen and (max-width: $media-xs - 1) {
+                padding: 0 15px;
+                margin: auto;
+            }
+        }
+    }
+}

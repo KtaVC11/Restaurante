@@ -1,0 +1,250 @@
+
+.xoo-qv-opac {
+    @include z-index(xoo-qv-opac); // 21
+    background-color: $color-default;
+    opacity: .5;
+}
+
+.xoo-qv-panel {
+    @include z-index(xoo-qv-panel); // 20
+}
+
+// navegacion entre productos
+.xoo-qv {
+    // prev + next
+    &-prev, &-nxt {
+        display: none;
+        color: $color-main;
+        opacity: 0.65;
+        @include em(40px);
+
+        &:hover, &:active, &:focus {
+            opacity: 1;
+        }
+    }
+
+    // prev
+    &-prev {
+        &:before {
+            @include font-awesome("\f053");
+        }
+    }
+    // next
+    &-nxt {
+        &:before {
+            @include font-awesome("\f054");
+        }
+    }
+
+    // Se muestran las flecas
+    @media screen and (max-width: $media-xs) {
+        // prev + next
+        &-prev, &-nxt {
+            @include transform(none)
+            @include display-flex
+            color: $white;
+            background: $color-secondary;
+            width: 50%;
+            opacity: 1;
+            top: auto;
+            bottom: 0;
+            height: 50px;
+            font-size: 26px;
+        }
+
+        // prev > left 
+        &-prev {
+            left: 0;
+        }
+        // next > right
+        &-nxt {
+            right: 0;
+        }
+    }
+}
+
+// panel principal
+.xoo-qv-top-panel {
+    top: 0;
+
+    // loader BG
+    &.loading {
+        background: rgba($color-default, 0.8);
+        z-index: 6;
+    }
+
+    // boton de cerrar
+    .xoo-qv-close {
+        background-color: $color-danger;
+        @include border-radius(100%);
+        @include transition;
+        @include block-size(28px);
+        coilor: $white;
+        border: none;
+        top: -15px;
+        right: -15px;
+        z-index: 1;
+        display: block;
+        // position > 768
+        @include media-breakpoint($media-xs) {
+            border: solid 1px $gris;
+            background-color: $white;
+            top: 10px;
+            right: 30px;   
+            color: $gris;
+        }
+
+        &:before, &:after {  
+            @include transition
+            @include transform-origin
+            @include transform-translate(-50%, -50%);
+            @include font-awesome('\f715');
+            font-size: 12px;
+            color: inherit;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+
+        &:before {}
+        &:after { @include transform(rotateY(180deg) translateX(50%) translateY(-50%)) }
+
+
+
+        &:hover, &:active,&:focus {
+            background-color: $color-danger;
+            border-color: $color-danger;
+            &:before, &:after {
+                color: $white;
+            }
+        }
+    }
+
+    .xoo-qv-preloader {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        left: 0;
+        width: 100%;
+    }
+}
+
+// Contenedor principal
+.xoo-qv-container {
+    @include border-radius(4px)
+    @include transition(400ms)
+    @include padding(0);
+    @include box-shadow(0 0 30px 0 rgba(0, 0, 0, 0.4));
+    text-align: left;
+    display: block;
+    background: $white;
+    max-width: 992px;
+    top: 15%;
+    bottom: 15%;
+    left: 10%;
+    right: 10%;
+    border: solid 1px $gris;
+
+    //link de ver carrito
+    .added_to_cart.wc-forward{
+        display: none;
+    }
+}
+
+// Principal
+.xoo-qv-main {
+    background: none;
+    @include media-breakpoint($media-xs) {
+        padding-top: 40px;
+    }
+
+    #{$producto} {
+        @include media-breakpoint(650px) {
+            @include flexbox;
+        }
+        
+        //  LEFT PRICE
+        .price {
+            text-align: left !important;
+        }
+
+        > div {
+            clear: both;
+            float: none;
+            width: 100%;
+
+            &.xoo-qv-images,
+            &.xoo-qv-summary {
+                @include padding(0 20px);
+                @include media-breakpoint(650px) {
+                    max-width: 50%;
+                }
+            }
+
+            &.xoo-qv-images {
+                padding-top: 20px;
+                margin-bottom: 15px;
+            }
+
+            &.xoo-qv-summary {
+                h1 {
+                    @include font-family(1, $font-bold);
+                    text-transform: uppercase;
+                    color: $color-default;
+                    @include media-breakpoint(650px - 1px, max-width) {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+
+        form {
+            &.cart {
+                margin-bottom: 20px;
+                button {
+
+                }
+            }
+
+        }
+        // Boton de ver detalle
+        /*
+        .xoo-qv-plink {
+            @include reset;
+            width: 100%;
+            a {
+                padding: 15px 10px;
+                min-height: 50px;
+                @extend %button-main-style;
+                @extend %button-main;
+                display: block;
+                max-width: none;
+                width: 100%;
+                text-align: center;
+            }
+        }
+        */
+    }
+
+    // Button de favoritos
+    .wishlist-icon-container {
+        margin-bottom: 30px;
+    }
+}
+
+// * === GALERIA EN QUICKVIEW ===
+.pp_woocommerce {
+    .pp_content_container {
+        .pp_gallery {
+            display: block !important;
+        }
+        .pp_next,
+        .pp_previous {
+            &:before {
+                display: block !important;
+            }
+        }
+    }
+}
+
+//* == Loading ==

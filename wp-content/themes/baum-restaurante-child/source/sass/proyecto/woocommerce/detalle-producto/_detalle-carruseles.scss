@@ -1,0 +1,45 @@
+
+.carousel-container {
+    margin-bottom: 50px;
+    .slider-header {
+        text-align: center;
+
+        // h3
+        .wcbox-carousel-title {
+            @include em(30px);
+            //color: $color-text;
+            margin-bottom: 0;
+            font-weight: $font-bold-extra;
+        }
+    }
+    .woocommerce {
+        ul.products {
+            @include transition;
+
+            &:not(.owl-loaded) {
+                opacity: 0;
+            }
+
+            li.product{
+                @include padding(0);
+                @include margin(0);
+                border: none;
+            }
+            // FAVORITOS
+            .tinv-wraper.tinv-wishlist {
+                /* Favoritos del carrusel*/
+                @extend %boton-de-favoritos;
+            }
+
+            .owl-nav {
+                display: none;
+            }
+        }
+    }  
+}
+
+.tt_container {
+    ul.products li.product {
+        min-width: 100%;
+    }
+}

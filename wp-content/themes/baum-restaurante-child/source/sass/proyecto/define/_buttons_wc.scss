@@ -1,0 +1,73 @@
+// @mixin woocommerce-buttons {
+//   // Buttons woocommerce
+//   $button-class: (alt);
+
+//   // buttons wp & wc
+//   #{$button-main-class} {
+//     // estilo base del button ==> .button
+//     @include set-button-style($color-main);
+
+//     // wc button main colors ==> .button
+//     @include button-main;
+
+//     &:hover,
+//     &:active,
+//     &:focus {
+//       text-decoration: none;
+//     }
+
+//     // each ==> button alt
+//     @each $clase in $button-class {
+//       &.#{$clase} {
+//         @include button-main-alt;
+//       }
+//     }
+//   }
+
+//   // los a href con clase buttons
+//   a#{$button-main-class} {
+//     // estilo base del button ==> .button
+//     @include set-button-style(solid 1px transparent);
+
+//     // wc button main colors
+//     @include button-main;
+//     &.alt {
+//       @include button-main-alt;
+//     }
+//   }
+// }
+
+@mixin woocommerce-buttons {
+    // Buttons woocommerce
+    $button-class: (
+        alt: (color-gris(1),$color-main,$color-main)
+        );
+
+    // buttons wp & wc
+    #{$button-main-class} {
+        // estilo base del button ==> .button
+        @include set-button-style(solid 1px transparent);
+        @include set-new-button-style($color-main,$white,darken($color-main, 15%));
+        @include set-new-button-hover( darken($color-main, 10%),$white,darken($color-main, 10%));
+
+        // each new class button:  .button + .class
+        @each $clase, $index, $index_color, $index_border in $button-class {
+            $bgcolor: nth($index, 1);
+            $fontcolor: nth($index, 2);
+            $border: nth($index, 3);
+
+            &.#{$clase} {
+                background: $bgcolor;
+                color: $fontcolor;
+                border-color: $border;
+                &:hover,
+                    &:active,
+                    &:focus {
+                    background: $fontcolor;
+                    color: $white;
+                    border-color: darken($fontcolor, 10%);
+                }
+            }
+        }
+    }
+}

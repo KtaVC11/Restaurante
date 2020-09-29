@@ -1,0 +1,119 @@
+div.images {
+	$buttons: ".slick-prev, .slick-next";
+	&.slick-loaded {
+		opacity: 1;
+	}
+
+	.slick-slider {
+		@at-root .shop-wrapper #{&} {
+			@include media-breakpoint($media-md) {
+				max-width:75%;
+				width: 100%;
+				margin: {
+					left: auto;
+					right: auto;
+				}
+			}
+		}
+
+		&.slider {
+			border: none;
+			margin-bottom: 15px;
+
+			// .click-mobile {
+			// 	display: none;
+			// 	opacity: 0;
+			// }
+
+			// IMAGENES
+			.slick-list {
+				background: $white;
+
+				.slick-slide {
+					overflow: hidden;
+
+					&:focus {
+						outline: 0;
+					}
+				}
+
+				// Boton de ver mas grande
+				a.wpis-popup {
+					// visibility: hidden;
+					@include border-radius(100%);
+					@include em(14px);
+					@include padding(0);
+					@include margin(0);
+					border: solid 2px $black;
+					bottom: 15px;
+					color: $black;
+					cursor: pointer;
+					display: block;
+					height: 28px;
+					line-height: 24px;
+					opacity: .65;
+					right: 15px;
+					text-align: center;
+					width: 28px;
+					z-index: 50;
+
+					&:before {
+						@include font-awesome-icon('\f067');
+						line-height: 26px;
+					}
+
+					&:hover, &:focus {
+						opacity: 1;
+						text-decoration: none;
+					}
+					&:active {
+						color: $color-main;
+						border-color: $color-main;
+					}
+
+					/* ######## DISPLAY NONE ######## */
+					display: none !important;
+					/* ######## DISPLAY NONE ######## */
+				}
+			}
+		}
+
+		&.wpis-slider-for {
+			// imagen
+			img {
+				max-width: none;
+				width: 100%;
+				margin: 0 auto;
+
+				&:not(.zoomImg) {
+					display: block !important;
+					max-width: 100% !important;
+				}
+			}
+		}
+
+		// div de los thumbnails
+		&.wpis-slider-nav {
+			.slick-slide {
+				margin-right: 3px;
+				border: solid 1px transparent;
+				position: relative;
+				height: auto;
+
+				img {
+					opacity: 1;
+					position: relative;
+					width: 100%;
+				}
+
+				&:hover, &:active, &:focus {
+					border-color: color-gris(15);
+				}
+
+				&.slick-current {
+					border-color: $light;
+				}  
+			}
+		}
+	}
+}

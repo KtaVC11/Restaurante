@@ -1,0 +1,142 @@
+.woocommerce-checkout-review-order {
+    table.shop_table {
+        tbody {
+            tr {
+                td {
+                    border-bottom: solid 1px $light;
+
+                    &:first-child {
+                        padding-left: 0;
+                    }
+                    &:last-child {
+                        padding-right: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+//Checkout
+body.woocommerce-checkout {
+    article div.woocommerce form.checkout {
+
+        table.shop_table {
+            margin-bottom: 15px;
+            tbody {
+                tr:last-child {
+                    td {
+                        border-bottom: 0;
+                    }
+                }
+            }
+            tfoot {
+                tr {
+                    &:first-child {
+                        padding-top: 15px;
+                    }
+                    td:first-child {
+                        border: 1px solid $light;
+                        padding: 0 15px;
+                        border-radius: 15px;
+                    }
+                    td {
+                        table {
+                            tbody {
+                                tr {
+                                    th,
+                                    th strong {
+                                        font-weight: $font-medium;
+                                    }
+                                }
+                                .order-total {
+                                    th,
+                                    .woocommerce-Price-amount {
+                                        font-size: 25px;
+                                        font-weight: bold;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.woocommerce-order-pay {
+    #order_review .form-row {
+        margin: auto;
+        @include flex-direction(column);
+
+        #place_order {
+            float: none;
+            max-width: 250px;
+        }
+    }
+
+    form#payment input[id*="baum_payment_gateway-card"] {
+        border-width: 2px;
+        &.is_required {
+            border-color: $color-main;
+        }
+    }
+}
+
+/**
+** Terms and Conditions
+**/
+.woocommerce-terms-and-conditions-wrapper {
+    label {
+        cursor: pointer;
+    }
+
+    .woocommerce-terms-and-conditions {
+        border: 1px solid $light;
+        @include border-radius(5px);
+    }
+}
+
+// === > MI CARRITO
+@import "_parts/mi-carrito.scss";
+
+// ===> REALIZAR PEDIDO (PASO 2)
+@import "_parts/realizar-pedido.scss";
+
+// ===> PAGAR EL PEDIDO
+@import "_parts/pagar-pedido.scss";
+
+// ===> CONFIRMACION DE ORDEN
+@import "_parts/confirmacion-de-orden.scss";
+
+// ===> modal notification
+@import "_parts/modal-notification.scss";
+
+// ===> LAYOUT DE TABLA EN RESPONSIVE
+
+form {
+    &#order_review {
+        tbody {
+            td:not(.product-name) {
+                font-weight: 700;
+            }
+        }
+    }
+    &.woocommerce-checkout,
+    &#order_review {
+        tbody {
+            td.product-name {
+                text-align: left;
+
+                .product-title {
+                    font-weight: 700;
+                }
+
+                .product-subtitle {
+                    font-weight: 400;
+                    font-size: 0.9em;
+                }
+            }
+        }
+    }
+}

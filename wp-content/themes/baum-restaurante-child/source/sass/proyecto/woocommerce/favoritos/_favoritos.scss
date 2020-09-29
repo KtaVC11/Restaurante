@@ -1,0 +1,477 @@
+
+// boton de agregar a mis favoritos
+#{$favoritos} {
+    @extend %boton-de-favoritos;
+} 
+
+div#page {
+    div.tinv-wishlist.woocommerce {
+
+        .tinv-header {
+            text-align: center;
+            h2 {
+                @include _bottom-line;
+                color: $color-primary;
+                text-align: center;
+                width: auto;               
+            }
+        }
+
+        table.shop_table {
+            table-layout: initial;
+
+            thead {
+                @media screen and (max-width: 767px) {
+                    display: none
+                }
+            }
+
+            @media screen and (max-width: 1024px) and (min-width: 641px) {
+                th.product-action,
+                td.product-action {
+                    width: 20% !important;
+                }
+            }
+
+            tbody {
+                tr {
+
+                    // <td> => Imagen
+                    @include table-thumbnail;
+
+                    // <td> => Info del producto
+                    @include table-info-producto;
+
+                    // <td> => Precio del producto & subtotales
+                    @include table-precio;
+
+                    td {
+                        border-left: none;
+                        border-right: none;
+                        text-align:center;
+
+
+                        &.product-thumbnail {
+                            vertical-align: top;
+                            min-width: 100px;
+                        }
+
+                        // nombre del producto
+                        &.product-name {
+                            .product-title {
+                                font-weight: $font-regular;
+                                text-align: left;
+                                color: $color-default;
+                                a {
+                                    font-weight: $font-regular;
+                                    width: auto;
+                                }
+                            }
+
+                            dl.variation {
+                                @include block(0 0 20px);
+                                @include em(14px);
+                                color: $color-text;
+
+                                dt, dd {
+                                    @include margin(0);
+                                    font-weight: $font-regular;
+                                    color: inherit;
+                                    font-weight: normal;
+                                    line-height: 1.3;
+                                    color: $color-text;
+                                }
+
+                                p {
+                                    @include margin(0 5px 0 0);
+                                    line-height: 1.3;
+                                }
+                            }
+                        }
+
+                        &.product {
+                            &-price, &-date, &-stock  {
+                                @include em(14px);
+                            }
+                            &-price {
+                                del {
+                                    color: $color-default;
+                                    span {
+                                        margin-right: 6px;
+                                        display: inline-block;
+                                    }
+                                }
+                                ins {
+                                    text-decoration: none;
+                                    span {
+                                        text-decoration: line-through;
+                                    }
+                                }
+                                span {
+                                    font-weight: $font-bold;
+                                }
+                            }
+                        }
+
+                        // en stock
+                        &.product-stock {
+                            p {
+                                display: inline-block;
+                                width: 100%;
+                                text-align: center;
+
+                                span {
+                                    display: inline;
+                                }
+                            }
+                            i {
+                                color: $color-main;
+                                margin-right: 8px;
+                            }
+                        }
+
+                        // eliminar
+                        .product-remove {
+                            display: inline-block;
+                            button {
+                                @include flexbox-inline;
+                                @include align-items(center);
+                                @include em(13px);
+                                text-transform: uppercase;
+                                width: auto;
+                                font-weight: $font-bold;
+                                color: $gray !important;
+                                position: relative;							
+                                background: none;
+                                height: auto;
+                                text-indent: 0;
+
+                                &:before {
+                                    @include fontawesome5('\f00d');
+                                    display: inline-block;
+                                    color: $color-main;
+                                    margin-right: 6px;
+                                    @include media-breakpoint($media-xs) {
+                                        margin: 0;  
+                                    }
+                                }
+                                &:hover, &:active, &:focus {
+                                    color: $color-main !important;
+                                }
+
+                                span {
+                                    @include em(10px);
+                                    opacity: .8;
+                                    color: $color-main;
+
+                                }
+                            }
+                        }
+                    }
+
+                    // <td> => acciones
+                    .product-action {
+                        width: 250px;
+
+                        &-wrapper {
+                            @include flexbox;
+                            @include justify-content(flex-end);
+                        }
+                        .tinvwl-txt.button {
+                            width: auto !important;
+                            padding-left: 30px;
+                            padding-right: 30px;
+                            margin-right: 20px;
+                        }
+                        .tinvwl-txt.button, .product-remove {
+                            @include flexbox;
+                        }
+                        .product-remove {
+                            /*
+                            width: 100%;
+                            min-width: 80px;
+                            max-width: 80px;
+                            */
+                            span {
+                                @include media-breakpoint($media-xs) {
+                                    display: none;
+                                }
+                            }
+                        }
+
+                        .tinvwl-txt.button {
+                            // @extend %button-main-style;
+                            // @include button-main;
+                            @include set-new-button-style($color-main, $white);
+                            @include set-new-button-hover(darken($color-main, 15%), $white);
+                            @include border-radius(500px);
+                            @include display-flex;
+                            @include em(12px);
+                            @include padding(8px 30px);
+                            text-transform: uppercase;
+                            height: 40px;
+                            border: none;
+                            line-height: 1.1;
+                            font-weight: $font-bold;
+                            position: relative;
+                            width: auto;
+
+                            .fa {
+                                display: inline-block !important;
+                                margin-right: 8px;
+                                @media screen and (max-width: 1024px) and (min-width: 641px) {
+                                    margin: 0 8px;
+                                }
+                            }
+                        }
+                    }
+
+                    td[class] {
+                        @media screen and (max-width: 767px) {
+                            // font-size: 14px;
+                            padding-top: 30px + 10px;
+                            position: relative;
+                            border: none;
+
+                            &:before {
+                                @include flexbox;
+                                font-size: 14px;
+                                font-weight: $font-bold;
+                                content: attr(data-title);
+                                background: $color-primary;
+                                color: $white;
+                                width: 100%;
+                                line-height: 30px;
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                text-align: center;
+                            }
+
+                            &:first-child {
+                                &:before {
+                                    text-align: left;
+                                    text-indent: -9999em;
+                                }
+                            }
+
+                            &.product-thumbnail {
+                                max-width: none;
+                                a {
+                                    width: 100%;
+                                    max-width: 130px;
+                                }
+                            }
+
+                            &.product-name {
+                                max-width: none;
+                                &:before {
+                                    text-align: left;
+                                    text-indent: 10px;
+                                }
+                            }
+
+                            // <td> estilo distinto
+                            &.product {
+                                &-price, &-date, &-stock, &-action {
+                                    &:before {
+                                        @include display-flex;
+                                        background-color: transparent;
+                                        color: $color-primary;
+                                        font-weight: $font-bold;
+                                        border-bottom: none;
+                                        border-top: solid 1px $gray;
+                                    }
+                                }   
+                            }
+
+                            // <td> misma linea
+                            &.product {
+                                &-price, &-date, &-stock {
+                                    width: 33.3333%;
+                                }
+                            }
+
+                            &.product-action {
+                                width: 100% !important;
+                                .product-action-wrapper {
+                                    @include justify-content(center);
+                                    a.tinvwl-txt.button {
+
+                                        span {
+                                            display: inline;
+                                        }
+                                    }
+                                    .product-remove {
+                                        padding-left: 8px;
+                                        padding-right: 8px;
+                                        button {
+                                            &:before {
+
+                                            }
+                                            span {
+
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+
+                        @media screen and (max-width: 650px) {
+                            @include float;
+                            width: 30%;
+                            padding-bottom: 8px;
+                            min-height: 0;
+                            &.product {
+                                &-price, &-date {
+                                    &:before {
+                                        border-top: none;
+                                    }
+                                }
+                            }
+
+
+                            &.product-thumbnail {
+                                a {
+                                    width: 100%;
+                                    img {
+                                        margin: 0 auto;
+                                    }
+                                }
+                            }
+                            &.product-name {
+                                &:before {
+                                    text-align: left;
+                                    text-indent: -15%;
+                                }
+                            }
+                            &.product-price { clear: left;}
+                            &.product-stock {
+                                &:before {
+                                    text-align: center;
+                                }
+                            }
+
+                            &.product-thumbnail, &.product-name,
+                            &.product-price, &.product-date, &.product-stock {
+                                width: 50%;
+                                max-width: none;
+                            }
+
+                            &.product-action {
+                                //width: 50%;
+
+                                .product-action-wrapper {
+                                    padding-top: 5px;
+                                    @include justify-content(center);
+                                    margin-bottom: 20px;
+                                    padding-bottom: 15px;
+                                    border-bottom: solid 1px darken($light, 10%);
+                                }
+
+                                .fa {
+                                    margin-right: 6px;
+                                }
+
+                            }
+
+                            .product-remove {
+                                text-align: center;
+                                color: $color-main;
+                                line-height: 1;
+
+                                button {
+                                    /*
+                                    border-radius: 3px;
+                                    color: $color-main !important;
+                                    font-weight: 400;
+                                    text-transform: capitalize;
+                                    
+
+                                    &:before {
+                                        margin-right: 6px;
+                                    }
+                                    */
+                                }
+                            }
+
+                            &.product-stock, &.product-action {
+                                width: 100% !important;
+                            }
+                        }
+
+                        @include media-breakpoint(520px, max-width) {
+                            &.product-price, 
+                            &.product-date, 
+                            &.product-quantity, 
+                            &.product-stock, 
+                            &.product-action{ 
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        ul li {
+            &:before {
+                content: none;
+            }
+        }
+    }
+}
+
+
+// Modal cuando se agrega a favoritos
+%mb {
+    margin-bottom: 15px;   
+}
+.tinv-wishlist {
+
+    // overlaty
+    .tinv-overlay {
+        background-color: $color-default;
+        opacity: .5;
+    }
+
+    .tinv-modal {
+        .tinv-modal-inner {
+            width: 90%;
+            i[class] {
+                &.far, &.fas {
+                    color: $color-secondary;
+                    @extend %mb;    
+                }
+            }
+            .tinvwl-buttons-group {
+                @include flexbox;
+                @include flex-direction(column);
+
+
+                .tinv-txt {
+                    @extend %mb;   
+                }
+                .tinvwl_button_close {
+                    @include order(2);
+                    @include set-new-button-style(transparent, $color-secondary, $color-secondary);
+                    @include set-new-button-hover($color-secondary, $white, $color-secondary);
+                    margin: 0;
+                }
+                .tinvwl_button_view {
+                    @include set-new-button-style($color-secondary, $white, $color-secondary);
+                    @include set-new-button-hover(darken($color-secondary, 10%), $white, darken($color-secondary, 10%));
+                    @include order(1);
+                    @include margin(0 0 15px);
+                    i[class] {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}  
+

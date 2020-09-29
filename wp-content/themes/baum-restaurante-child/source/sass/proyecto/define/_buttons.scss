@@ -1,0 +1,27 @@
+@import "_buttons_bs.scss";
+@import "_buttons_wc.scss";
+@import "_buttons_custome.scss";
+
+$bootstrap-buttons: true;
+$woocoomerce-buttons: true;
+$custom-buttons: true;
+
+@mixin set-button-style($border: null) {
+  @extend %button-main-style;
+  border: $border;
+}
+
+// Render => Buttons woocommerce
+@if $woocoomerce-buttons {
+  @include woocommerce-buttons;
+}
+
+// Render => Buttons Bootstrap
+@if $bootstrap-buttons {
+  @include bootstrap-buttons;
+}
+
+// Render => Custome Buttons
+@if $custom-buttons {
+  @include custom-buttons;
+}

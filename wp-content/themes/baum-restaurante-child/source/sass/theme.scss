@@ -1,0 +1,14 @@
+/* === Core === */
+@import "dev/includes/_inc.scss";
+
+/* === define woocommerce === */
+@import "proyecto/woocommerce/_wc-define.scss";
+
+/* === define global styles project === */
+@import "proyecto/_global.scss";
+
+/* === define project classes (utiles) === */
+@import "proyecto/define/_clases.scss";
+
+/* === secciones del proyecto === */
+@import "proyecto/_sections.scss";

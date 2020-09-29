@@ -1,0 +1,34 @@
+2020-09-29T01:03:07+00:00 CRITICAL Uncaught Error: Call to undefined function fuertes() in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wc\wc-custom-functions.php:119
+Stack trace:
+#0 C:\xampp\htdocs\restaurante\wp-includes\class-wp-hook.php(287): remove_shop_breadcrumbs('')
+#1 C:\xampp\htdocs\restaurante\wp-includes\class-wp-hook.php(311): WP_Hook->apply_filters(NULL, Array)
+#2 C:\xampp\htdocs\restaurante\wp-includes\plugin.php(478): WP_Hook->do_action(Array)
+#3 C:\xampp\htdocs\restaurante\wp-includes\template-loader.php(13): do_action('template_redire...')
+#4 C:\xampp\htdocs\restaurante\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\restaurante\index.php(17): require('C:\\xampp\\htdocs...')
+#6 {main}
+  thrown in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wc\wc-custom-functions.php on line 119
+
+2020-09-29T01:04:32+00:00 CRITICAL syntax error, unexpected '-', expecting '(' in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wc\wc-custom-functions.php on line 117
+
+2020-09-29T01:07:23+00:00 CRITICAL Uncaught Error: Call to undefined function category() in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wc\wc-custom-functions.php:124
+Stack trace:
+#0 C:\xampp\htdocs\restaurante\wp-includes\class-wp-hook.php(287): remove_shop_breadcrumbs('')
+#1 C:\xampp\htdocs\restaurante\wp-includes\class-wp-hook.php(311): WP_Hook->apply_filters(NULL, Array)
+#2 C:\xampp\htdocs\restaurante\wp-includes\plugin.php(478): WP_Hook->do_action(Array)
+#3 C:\xampp\htdocs\restaurante\wp-includes\template-loader.php(13): do_action('template_redire...')
+#4 C:\xampp\htdocs\restaurante\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\restaurante\index.php(17): require('C:\\xampp\\htdocs...')
+#6 {main}
+  thrown in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wc\wc-custom-functions.php on line 124
+
+2020-09-29T01:08:59+00:00 CRITICAL syntax error, unexpected '-', expecting '(' in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wc\wc-custom-functions.php on line 122
+
+2020-09-29T01:15:07+00:00 CRITICAL Cannot redeclare disable_site_header() (previously declared in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wc\wc-custom-functions.php:122) in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wc\wc-custom-functions.php on line 131
+
+2020-09-29T01:15:39+00:00 CRITICAL Cannot redeclare disable_site_header() (previously declared in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wc\wc-custom-functions.php:122) in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wc\wc-custom-functions.php on line 131
+
+2020-09-29T01:17:03+00:00 CRITICAL Cannot redeclare disable_site_header() (previously declared in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wc\wc-custom-functions.php:122) in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wc\wc-custom-functions.php on line 131
+
+2020-09-29T01:19:03+00:00 CRITICAL Cannot redeclare disable_site_header() (previously declared in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wc\wc-custom-functions.php:122) in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wc\wc-custom-functions.php on line 131
+

@@ -1,0 +1,13 @@
+
+
+/*
+* Devuelve el valor de un color usando la funcion darken() de sass
+* @param1: valor numeríco, del 1 al 100
+*/
+@function gris($percent: null) {
+    @if $percent {
+        @return darken(#fff, $percent);
+    }@else {
+        @error "No se definió el valor";
+    }
+}

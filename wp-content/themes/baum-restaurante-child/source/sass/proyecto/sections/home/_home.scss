@@ -1,0 +1,78 @@
+.home {
+
+    // common elements
+    h1, h3 {
+        color: $color-primary;
+    }
+
+    // sobre nosotros
+    #sobre-nosotros {
+        @include padding (0);
+        .wpb_column {
+            &:not(.bg-image) {
+                @include padding(30px);
+            }
+            
+            h1 {
+                content: 'Este es el h1 de sobre nosotros';
+            }
+        }
+    }
+
+    //productos
+    #nuestros-productos{
+        background-color: $color-default;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        @include padding (35px 0);
+
+        // overlay color negro
+        &:before {
+            @include z-index(nuestros-productos-overlay);
+        }
+
+        > div.wpb_column {
+            position: relative;
+            @include z-index(nuestros-productos);
+        }
+
+        // Custom title
+        h2 {
+            color: $white;
+        }
+
+        // Layout nuestros productos
+        ul {
+            &.products {
+                @include flexbox
+                @include flex-wrap
+                @include align-items(stretch);
+
+                li {
+                    @include flex(0 1 auto);
+                    @include padding(0 15px);
+                    width: 100%;
+                    max-width: 100%;
+                    margin: 0 auto 30px;
+                    $media-xsmall: 480px;
+                    @include media-breakpoint($media-xsmall) {
+                        max-width: 50%;
+                    }
+                    @include media-breakpoint($media-xs) {
+                        max-width: 33.3333%;
+                    }
+
+                    // Item
+                    &.product {
+                        .product-wrapper {
+                            height: 100%;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

@@ -1,0 +1,104 @@
+
+/*
+* === font awesome
+* @param1 = icon value. Default: "\f069" 
+*/
+
+@mixin font-awesome($icon: null) {
+    content: $icon ; 
+    font-family: FontAwesome !important;
+    font-kerning: auto;
+    font-language-override: normal;
+    font-size-adjust: none;
+    font-stretch: normal;
+    font-style: normal;
+    font-synthesis: weight style;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+/* 
+* === change awesome icon value if needed ===
+*/
+@mixin font-awesome-icon($icon: null) {
+    content: $icon ; 
+}
+
+/*
+* Icono facebook
+*/
+@mixin inc-facebook {
+    &:before {
+        @include aweIcon('\f09a');
+    }
+}
+
+/*
+* Icono twitter
+*/
+@mixin inc-twitter {
+    &:before {
+        @include aweIcon('\f099');
+    }
+}
+
+/*
+* Icono Pinterest
+*/
+@mixin inc-pinterest {
+    &:before {
+        @include aweIcon('\f231');
+    }
+}
+
+/*
+* Icono google
+*/
+@mixin inc-google {
+    &:before {
+        @include aweIcon('\f0d5');
+    }
+}
+
+/*
+* Icono email
+*/
+@mixin inc-email {
+    &:before {
+        @include aweIcon('\f0e0');
+    }
+}
+
+/*
+* == font awesome circular spin ===
+* @param1 = speed. Default: 1s
+*/
+@mixin font-awesome-spin($speed: 1s) {
+
+    -webkit-animation: fa-spin $speed infinite linear;
+    animation: fa-spin $speed infinite linear;
+
+    @-webkit-keyframes fa-spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+        }
+    }
+    @keyframes fa-spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+        }
+    }
+}

@@ -1,0 +1,12 @@
+
+/*
+* === gray scale filter ===
+* @param1 = value from 0 to 1. Default: 1
+*/
+@mixin grayscale($v:1) {
+    -webkit-filter: grayscale($v);
+       -moz-filter: grayscale($v);
+         -o-filter: grayscale($v);
+        -ms-filter: grayscale($v);
+            filter: grayscale($v);
+}

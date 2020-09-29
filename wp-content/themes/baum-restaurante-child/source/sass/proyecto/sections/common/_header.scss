@@ -1,0 +1,180 @@
+.site-header {
+    @include box-shadow(0 2px 5px 0 rgba($black, .1));
+    background: rgba($color-main, .8);
+    color: $white;
+    width: 100%;
+    min-height: 50px;
+    @include z-index(site-header);
+    position: relative;
+    @include media-breakpoint($media-small) {
+        min-height: 70px;
+    }
+
+    &-fixed {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+
+        @at-root body.admin-bar #{&} {
+            top: 32px;
+
+            @include media-breakpoint(782px, max-width) {
+                top: 46px;
+            }
+        }
+    }
+
+    // nav
+    &-nav {
+        // @include flexbox;
+        // @include align-items(center);
+        width: 100%;  
+    }
+
+    // container => .site-header-container
+    &-container {
+        @include flexbox;
+        @include align-items(center);
+        @include flex-wrap;
+    }
+
+    // Toggler > antes del logo
+
+    &-toggle {
+        @include display-flex;
+        text-align: center;
+        width: 42px;
+
+        .menu-toggle {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: currentColor;
+            @include em(25px);
+
+            &.toggle-open {
+                i:before {
+                    @include font-awesome-icon("\f00d");
+                }
+            }
+        }
+
+        @include media-breakpoint($mobile-bp) {
+            display: none;
+        }
+    }
+
+    // Logo Principal
+    $logo_desktop   : 120px;
+    $logo_mobile    : 80px;
+    $logo_shape     : 100px; // height;
+
+    &-logo {
+        @include flexbox;
+        // @include display-flex(flex-end);
+        @include transition(500ms);
+        background-color: transparent; /* cyan;  $white; */
+        position: relative;
+        padding: {
+            top: 15px;
+        }
+        background-color: $white;
+        &:after {
+            $num: 40px;
+            @include box-shadow(0 3px 3px 0 rgba($black, .1));
+            @include border-radius(0 0 $num $num);
+            content: '';
+            height: $num;
+            background: $white;
+            position: absolute;
+            bottom: -($num - 1px);
+            display: block;
+            left: 0;
+            width: 100%;
+        }
+
+        // before / after
+        /*
+        &:before, &:after {
+            background-color: $white;
+            display: block; 
+            position: absolute;
+            left: 0;
+            width: 100%;
+        }
+        */
+        // shape del logo before
+        /*
+        &:before {
+            content: none;
+            @include media-breakpoint($media-small) {
+                content: '';
+                height: $logo_shape;
+                top: -70px;
+            }
+        }
+
+        // shape del logo
+        &:after {
+            @include box-shadow(0 2px 3px 0 rgba($black, .1));
+            content: '';
+            @include border-radius(0 0 50% 50%);
+            height: $logo_shape;
+            bottom: -40px;
+            @include media-breakpoint($media-small - 1px, max-width) {
+                bottom: -30px;
+            }
+        }
+        */
+
+        .logo-container {
+            display: block;
+            width: $logo_mobile + 20px;
+            height: 100%;
+            @include media-breakpoint($mobile-bp) {
+                width: $logo_desktop + 20px;
+            }
+            .logo {
+                //@include display-flex(null, null);
+                display: block;
+                position: relative;
+                padding: 0 10px;
+                height: auto;
+                &, img {
+                    width: 100%;
+                    max-width: none;
+                }
+                img {
+                    @include z-index(logo-img);
+                    height: auto;
+                }
+            }
+        }
+    }
+
+    // contenedor del menu principal
+    &-menu {
+        // refiere a =>  _menu-principal.scss
+    }
+
+    // Vertical align w/ flex
+    &-menu, &-bar {
+        @include flexbox;
+        // @include align-items(center);
+    }
+
+    // contenedor de menu secundario
+    &-bar {
+        margin-left: auto;
+    }
+
+
+    // carrito .site-header-bar => dentro de site-header-bar
+    &-cart {
+        @include media-breakpoint($mobile-bp + 1) {
+            text-align: right;
+        }
+    }
+
+}

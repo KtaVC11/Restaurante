@@ -1,0 +1,1435 @@
+
+
+@mixin font-awesome($icon: '') {
+    @include fontawesome5($icon);
+}
+@mixin font-awesome-icon($icon: '') {
+    @include fontawesome5-icon($icon);
+}
+
+@mixin fs($size: $font-size) {
+    font-size: $size;
+}
+
+@mixin checkbox-input-style($style: 1) {
+    @if $style == 1 {
+        @include checkbox-input-1($color-gris-25, $color-main, $color-main);
+    } @else {
+        @include checkbox-input-2($color-gris-25, $color-main, $color-main);
+        label[class*="checkbox"] {
+            padding-left: 0;
+            display: block;
+            position: relative;
+            width: 22px;
+            height: 22px;
+            border-radius: 3px;
+            &:before {
+                position: absolute;
+                left: 0;
+                color: $color-main;
+            }
+        }
+    }
+}
+
+// Estilo de input
+@mixin input-proyecto() {
+    /*
+    //$light: #FFFFFF;
+    background-color: $white;
+    outline: none;
+    font-family: $font-primary;
+    box-shadow: none;
+    @include input-style(
+    0 15px,
+    solid 1px $light,
+    $color-gris, 
+    null,
+    $font-light,
+    10px,
+    null,
+    $forms-line-height,
+    300ms
+    );
+    &:hover, &:focus, &:active {
+        box-shadow: none;
+        border-color: $color-default;
+    }
+    */
+}
+
+// font-size
+@mixin size($value: inherit) {
+    font-size: $value;
+}
+
+/** Custom button bordered in WC tables - Favoritos, Métodos de pago **/
+@mixin button_bordered_in_table() {
+    background: transparent;
+    border-color: currentColor;
+    color: $color-base;
+    margin-bottom: 10px;
+    text-transform: unset;
+    width: auto;
+
+    &:hover {
+        color: #000;
+    }
+}
+
+// Main buttons style = Woocommerce
+@mixin main-button-style { 
+    @include font-family(1, $font-bold);
+    @include transition(250ms);
+    @include text-shadow(none);
+    @include padding(15px 20px);
+    @include border-radius(1000px);
+    @include box-shadow(none);
+    @include em(13px);
+    position: relative;
+    cursor: pointer;
+    line-height: 1.3;
+    overflow: hidden;
+    display: inline-block;
+    text-transform: uppercase; 
+    outline: none;
+    background-image: none;
+    border: {
+        width: 1px;
+        style: solid;
+    }
+}
+// Button default
+@mixin btn-default {
+    @include set-new-button-style($color-main, $white);
+    @include set-new-button-hover(darken($color-main, 10%),$white);
+}
+// wc button main
+@mixin button-main {
+    @include set-new-button-style($white, $color-main, $color-main);
+    @include set-new-button-hover(rgba($color-main, 1), $white, $color-main);
+}
+// wc button alt
+@mixin button-main-alt {
+    @include set-new-button-style($color-main, $white, $color-main);
+    @include set-new-button-hover(darken($color-main, 10%),$white,darken($color-main, 10%));
+}
+
+// Mixin para los colores del menu
+@mixin menu_color($color) {
+    // cuando está abierto
+    &.mega-toggle-on {
+        a.mega-menu-link {
+            font-weight: $font-bold;
+            color: $color-default;
+            background-color: $color;
+
+            // up effect ^
+            &:after {
+                -moz-transform: rotateX(180deg);
+                -webkit-transform: rotateX(180deg);
+                -o-transform: rotateX(180deg);
+                -ms-transform: rotateX(180deg);
+                transform: rotateX(180deg);
+            }
+        }
+    }
+
+    // Color del link
+    a.mega-menu-link {
+        color: $color;
+        @include box-shadow(none);
+        &:hover,
+            &:active,
+            &:focus {
+            @include box-shadow(none);
+            color: $color-default;
+            background-color: $color;
+        }
+    }
+
+    // color del SUB MENU
+    .mega-sub-menu {
+        background: $color;
+    }
+}
+
+// Toggle X -- toggle-x
+@mixin toggleX {
+    .toggle-x .icon-bar {
+        width: 22px;
+        @include transition;
+        background: $color-main;
+    }
+
+    /* ANIMATED X */
+    .toggle-x .icon-bar:nth-of-type(1) {
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        -webkit-transform-origin: 10% 10%;
+        -ms-transform-origin: 10% 10%;
+        transform-origin: 10% 10%;
+    }
+
+    .toggle-x .icon-bar:nth-of-type(2) {
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+
+    .toggle-x .icon-bar:nth-of-type(3) {
+        -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        -webkit-transform-origin: 10% 90%;
+        -ms-transform-origin: 10% 90%;
+        transform-origin: 10% 90%;
+    }
+
+    /* ANIMATED X COLLAPSED */
+    .toggle-x.collapsed .icon-bar:nth-of-type(1) {
+        -webkit-transform: rotate(0);
+        -ms-transform: rotate(0);
+        transform: rotate(0);
+    }
+
+    .toggle-x.collapsed .icon-bar:nth-of-type(2) {
+        opacity: 1;
+        filter: alpha(opacity=100);
+    }
+
+    .toggle-x.collapsed .icon-bar:nth-of-type(3) {
+        -webkit-transform: rotate(0);
+        -ms-transform: rotate(0);
+        transform: rotate(0);
+    }
+    /* END ANIMATED X */
+}
+
+/* menu-secundario-links */
+@mixin menu-secundario-links {
+    @include border-radius(1px);
+    @include borde($black);
+    display: block;
+    width: 40px;
+    line-height: 40px;
+    color: color-gris(65);
+    text-align: center;
+
+    &:hover,
+        &:active,
+        &:focus {
+        border-color: $color-default;
+    }
+}
+
+/* estilo del menu responsive y fixed */
+@mixin menu-secundario-style {
+    > li {
+        margin-left: 10px;
+        float: left;
+        clear: none;
+        display: block;
+        a {
+            @include menu-secundario-links;
+            span,
+            i[class] {
+                @include transition;
+                @include em(20px);
+                color: $color-main;
+                margin: 0;
+                line-height: 40px;
+                display: block;
+                width: 100%;
+                height: 38px;
+            }
+
+            // Oculta los <span> menos el span de mi carrito
+            span:not(.text-shopping-cart) {
+                display: none;
+            }
+
+            // cart valur
+            span.cart-value {
+                @include border-radius(100%);
+                @include box-shadow(0 0 0 1px $color-gris-50, true);
+                background: $white;
+                display: block;
+                position: absolute;
+                color: $white;
+                font-size: 11px;
+                width: 22px;
+                height: 22px;
+                line-height: 22px;
+                top: -5px;
+                right: -5px;
+
+                &.items-in-cart {
+                    background: $color-main;
+                    color: $white;
+                }
+            }
+        }
+
+        //  Muestra el boton del buscador
+        &.search-mobile-opener {
+            display: block;
+        }
+
+        // LI que abre el menu principal
+        &.mobile-opener {
+            button.navbar-toggle {
+                @include margin(0);
+                @include padding(0);
+                @include menu-secundario-links;
+                height: 40px;
+                > .icon-bar {
+                    @include transform-translate(-50%, 0);
+                    left: 50%;
+                    position: relative;
+                    background: $color-gris-50;
+
+                    &:first-child {
+                        margin-top: -6px;
+                    }
+                }
+                small {
+                    font-size: 60%;
+                    text-transform: uppercase;
+                    position: absolute;
+                    bottom: 1px;
+                    line-height: normal;
+                    display: block;
+                    width: 100%;
+                    text-align: center;
+                    left: 0;
+                }
+
+                &:hover,
+                    &:active,
+                    &:focus {
+                    .icon-bar {
+                        background-color: $color-default;
+                    }
+                    small {
+                        color: $color-default;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Icono de contacto */
+@mixin icono-menu-contacto {
+    // icono
+    &:after {
+        @include em(20px);
+        @include transition;
+        @include font-awesome("\f0e0");
+        background: $white;
+        color: $color-main;
+        position: absolute;
+        display: block;
+        margin-left: 2px;
+        width: 100%;
+        height: 100%;
+        line-height: 40px;
+        text-align: center;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+    // hover
+    &:hover,
+        &:active,
+        &:focus {
+        &:after {
+            @include font-awesome-icon("\f2b6");
+            top: -1px;
+            color: color-gris(65);
+        }
+    }
+}
+
+/* estilo buscador en mobile y fixed */
+@mixin estilo-buscador {
+    @include padding(5em 15px);
+    position: fixed;
+    top: -150%;
+    left: 0;
+    max-width: none;
+    height: 100%;
+    z-index: 151;
+    width: 100%;
+
+    &.search-is-open {
+        top: 0;
+    }
+
+    // BUTTON
+    .close-search {
+        @include border-radius(2px);
+        @include em(10px);
+        @include margin(0);
+        @include padding(0 10px);
+        @include borde($white);
+        background: none;
+        color: $white;
+        line-height: 28px;
+        text-transform: uppercase;
+        display: block;
+        float: right;
+        z-index: 102;
+        opacity: 0.85;
+    }
+
+    // DIV DEL FORM
+    #ajaxsearchpro1_1,
+    #ajaxsearchpro1_2,
+    div.asp_m.asp_m_1 {
+        @include border-radius(5px);
+        position: relative;
+        z-index: 102;
+        max-width: 580px;
+        margin: 0 auto;
+        border: 0px;
+        height: 50px;
+        div.probox {
+            @include margin(0);
+            height: 100%;
+            .promagnifier {
+                padding-left: 10px;
+                padding-right: 10px;
+                margin-left: 5px;
+                border-left: solid 1px gris(30);
+                height: 40px;
+                position: relative;
+                top: 5px;
+
+                > div {
+                    &.innericon,
+                    &.asp_clear {
+                        height: 100%;
+                    }
+                }
+            }
+
+            // close
+            .proclose,
+            .proloading {
+                height: 100%;
+                max-height: none;
+            }
+            // color del close
+            .proclose {
+                svg {
+                    @include box-shadow(none, !important);
+                    fill: $black;
+                    width: 22px;
+                }
+            }
+
+            // loader
+            div.proloading {
+                @include padding(0);
+                .asp_loader {
+                    height: 100%;
+                    max-height: none;
+                    .asp_loader-inner {
+                        > div {
+                            position: relative;
+                            top: 50%;
+                            height: 20px;
+                            margin-top: -8px;
+                        }
+                    }
+                }
+            }
+
+            // input
+            .proinput {
+                form {
+                    position: relative;
+                    input[type] {
+                        &.orig {
+                            color: $black;
+                            height: 100%;
+                        }
+                        &.autocomplete {
+                            height: 100%;
+                            position: absolute;
+                            top: 0;
+                            left: -4px;
+                            height: 51px;
+                            color: $black;
+                            max-height: none;
+                            line-height: 50px;
+                            margin: 0 !important;
+                            padding: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Overlay BG */
+@mixin overlaybg($bgcolor: rgba($color-main, 0.65), $position: fixed) {
+    display: block;
+    position: $position;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $bgcolor;
+}
+
+/* Form del Newsletter en el footer */
+@mixin newsletter-form {
+    form {
+        .mc4wp-form-fields {
+            position: relative;
+            .input__text {
+                input[type="email"] {
+                    padding-right: 60px;
+                    width: 100%;
+                    max-width: 768px;
+                    &:hover,
+                        &:active,
+                        &:focus {
+                        border-color: gris(50);
+                    }
+                }
+                @include placeholder-props(
+                'input[type="email"]',
+                $props: (font-size: 13px)
+                    );
+            }
+            .input__button {
+                @include transition;
+                @include transform-translate(0, -50%);
+                @include calc(height, 40px, 4px);
+                background-color: rgba($color-main, 0);
+                border-left: solid 1px $color-gris-30;
+                width: 58px;
+                display: block;
+                position: absolute;
+                right: 2px;
+                top: 50%;
+                text-align: center;
+                line-height: 36px;
+                input[type="submit"] {
+                    @include padding(0);
+                    opacity: 0;
+                    height: 100%;
+                    line-height: normal;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    & ~ i.fa {
+                        @include em(18px);
+                        @include transition(300ms);
+                        color: $color-main;
+                        &:before {
+                            @include transition(300ms);
+                            @include font-awesome-icon("\f054");
+                        }
+                    }
+                }
+
+                &:hover,
+                    &:active,
+                    &:focus {
+                    background-color: rgba($color-gris-10, 1);
+                    input[type="submit"] ~ i.fa {
+                        color: $black;
+                    }
+                }
+            }
+        }
+    }
+}
+@mixin newsletter-form-2 {
+    form {
+        .mc4wp-form-fields {
+            position: relative;
+            overflow: hidden;
+            border-radius: 21px 21px 21px 21px;
+            .input__text {
+                input[type="email"] {
+                    padding-right: 60px;
+                    width: 100%;
+                    max-width: 768px;
+                    border: 2px solid $white;
+                    border-radius: 21px 21px 21px 21px;
+                    background-color: $color-main;
+                    color: $white;
+                    // &:hover, &:active, &:focus {
+                    //     border-color: gris(50);
+                    // }
+                }
+                @include placeholder-props(
+                'input[type="email"]',
+                $props: (font-size: 13px, color: #fff)
+                    );
+            }
+            .input__button {
+                @include transition;
+                @include transform-translate(0, -50%);
+                @include calc(height, 50px, 4px);
+                background-color: $white;
+                //border-left: solid 1px $color-gris-30;
+                width: 58px;
+                display: block;
+                position: absolute;
+                right: 2px;
+                top: 50%;
+                text-align: center;
+                line-height: 50px;
+                input[type="submit"] {
+                    @include padding(0);
+                    opacity: 0;
+                    height: 100%;
+                    line-height: normal;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    & ~ i.fa {
+                        @include em(18px);
+                        @include transition(300ms);
+                        color: $color-main;
+                        text-indent: -5px;
+                        &:before {
+                            @include transition(300ms);
+                            @include font-awesome-icon("\f1d8");
+                        }
+                    }
+                }
+
+                &:hover,
+                    &:active,
+                    &:focus {
+                    background-color: $white;
+                    input[type="submit"] ~ i.fa {
+                        color: darken($color-main, 10%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Precio default */
+@mixin precio-default() {
+    @include font-family(1, $font-bold);
+    @include margin(0);
+    width: 100%;
+    display: block;
+    color: $black;
+    clear: both;
+    text-align: center;
+    line-height: normal;
+    font-size: 18px;
+    @include media-breakpoint($media-small) {
+        font-size: 20px;
+    }
+    .amount {
+        font-weight: $font-bold;
+    }
+}
+
+// Precios con variantes
+@mixin precio-variantes() {
+    ins,
+    del {
+        @include font-family(1, $font-regular);
+        width: 100%;
+        display: block;
+        text-decoration: none;
+        opacity: 1;
+    }
+    del {
+        font-size: 14px;
+        .amount {
+            text-decoration: line-through;
+            opacity: 0.85;
+            color: $color-danger;
+        }
+    }
+}
+
+// listado de items en el carrito
+@mixin lista-productos-in-cart {
+    ul {
+        @include block;
+        border: none;
+        li {
+            @include padding(0 0 7px);
+            @include margin(0 0 8px);
+            background: none;
+            border: none;
+            border-bottom: solid 1px $color-gris;
+            position: relative;
+
+            a[href] {
+                &:hover,
+                    &:active,
+                    &:focus {
+                    cursor: pointer;
+                }
+            }
+
+            // remove
+            a[href].remove {
+                @include border-radius(1px);
+                @include padding(0);
+                left: auto;
+                position: absolute;
+                right: -10px;
+                top: 0;
+                color: $danger;
+                width: 20px;
+                height: 20px;
+                line-height: 17px;
+                font-weight: $font-regular;
+
+                &:hover,
+                    &:active,
+                    &:focus {
+                    &:before {
+                        background: $danger;
+                        color: $white;
+                    }
+                }
+
+                &:before {
+                    @include border-radius(1000px);
+                    content: $icono-cerrar;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    background: $white;
+                    text-align: center;
+                    line-height: 18px;
+                }
+            }
+
+            // el producto
+            // a[href]:not(.remove) {
+            .item-details {
+                @include calc(width, 100%, 10px);
+                display: block;
+                text-align: left;
+                line-height: 1;
+                overflow: hidden;
+                clear: both;
+
+                img {
+                    @include padding(1px);
+                    border: solid 1px $gray;
+                    margin: 0;
+                    float: left;
+                    width: 50px;
+                    margin-right: 10px;
+                }
+            }
+
+            // variciones
+            dl {
+                width: 100%;
+                padding: 0;
+                border: 0;
+                overflow: hidden;
+                &:before {
+                    content: none;
+                }
+                dt,
+                dd {
+                    width: 50%;
+                    margin: 0 0 5px;
+                    padding: 0;
+                    font-size: 13px;
+                    font-weight: $font-regular;
+                    color: $color-gris;
+                    * {
+                        font-size: 13px;
+                        font-weight: $font-regular;
+                        color: $color-text;
+                        margin: 0;
+                    }
+                }
+                dt {
+                    margin-right: 1px;
+                }
+                dd {
+                    @include calc(width, 50%, 1px);
+                }
+            }
+
+            // cantidad
+            .quantity {
+                @include precio-default
+                @include precio-variantes
+                width: 100%;
+                display: block;
+                padding: 5px 0;
+                font-size: 13px;
+            }
+        }
+    }
+}
+
+/* Woocommerce Item */
+@mixin item { 
+    @include margin(0 0 20px);
+    @include float;
+    @include padding(5px 10px);
+    @media screen and (max-width: $media-xsmall){
+        @include margin(0 0 10px);
+        @include padding(5px);
+    }
+    .product {
+        // product-wrapper
+        &-wrapper {
+            @include transition;
+            border: none;
+            background: $white;
+            border-radius: 0 0 10px 10px;
+            text-align: center;
+        }
+
+        // Imagen
+        &-image-container {
+            overflow: hidden;
+            position: relative;
+            background-color: $light;
+            // vertical align = @param 1: elemento, <a>
+            .vertical {
+                height: 100%;
+                // @include vertical-align-1("a.woocommerce-LoopProduct-link", bottom);
+            }
+
+            img {
+                @include transition(700ms);
+                // @include mar(0 auto);
+                max-width: none;
+                width: 100%;
+                clear: both;
+            }
+
+            img.secondary-image {
+                @include transition(1s);
+                left: 0;
+                margin: auto;
+                opacity: 0;
+                top: 0;
+                bottom: 0;
+                position: absolute;
+                right: 0;
+                z-index: 2;
+                opacity: 0;
+                visibility: hidden;
+            }
+            &:hover,
+                &:active,
+                &:focus {
+                img {
+                    &.secondary-image {
+                        @include transform-scale(1.02);
+                        visibility: visible;
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        // Info
+        &-title-container {
+            @include padding(15px);
+            // @include clearfix;
+            @media screen and (max-width: $media-xsmall){
+                @include padding(10px);
+            }
+
+            .tinv-wraper.tinv-wishlist {
+                display: none;
+            }
+        }
+    }
+
+    // href con el link al producto
+    a.woocommerce-LoopProduct-link {
+        // la imagen
+        img {
+            @include transition;
+            @include margin(0);
+            max-width: none;
+            width: 100%;
+            position: relative;
+            opacity: 1;
+        }
+    }
+
+    // titulo del producto
+    .woocommerce-loop-product__title {
+        @include padding(6px 0);
+        @include margin(0);
+        @include em(20px);
+        line-height: 1.2;
+        letter-spacing: 0;
+        color: $color-base;
+        // @media screen and (max-width: $media-xsmall){
+        //    @include em(12px);
+        //     line-height: 1.1;
+        // }
+    }
+
+    // Precio
+    .price {
+        @extend %precio-default;
+        @extend %precio-variantes;
+        font-family: $font-secondary;
+        margin-top: 5px;
+        text-align: center;
+        @media screen and (max-width: $media-xsmall){
+            @include em(16px);
+        }
+    }
+    // El hover a los links
+    a.woocommerce-loop-product_title_link {
+        .woocommerce-loop-product__title,
+        .product-subtitle {
+            &:hover,
+                &:active,
+                &:focus {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+// Estilo de los Select
+@mixin select2($borde: $color-main) {
+    .select2-container {
+        max-width: 100%;
+        outline: 0;
+
+        * {
+            outline: 0;
+        }
+
+        @include em(14px);
+        @include margin(0);
+
+        .select2-selection.select2-selection--single {
+            @include border-radius(10px);
+            @include margin(0);
+            border: solid 1px $light;
+            height: auto;
+            line-height: $forms-line-height;
+            background-color: lighten($light, 5);
+            > span {
+                line-height: inherit;
+            }
+            .select2-selection__rendered {
+                padding-left: 15px;
+                padding-right: 30px;
+                line-height: inherit;
+            }
+            .select2-selection__arrow {
+                @include calc(height, 100%, 2px);
+                width: 30px;
+                top: 2px;
+                b {
+                    //@include translate(0, -50%);
+                    @include transition;
+                    width: 40px;
+                    height: 100%;
+                    display: block;
+                    position: absolute;
+                    left: auto;
+                    right: 0;
+                    top: 0;
+                    border: none;
+                    line-height: $forms-line-height;
+
+                    &:before {
+                        color: $color-text;
+                        @include transition;
+                        //@include font-awesome("\f107");
+                        content: "\f347";
+                        font-family: dashicons;
+                        position: relative;
+                        line-height: inherit;
+                        width: 100%;
+                        height: 100%;
+                        display: block;
+                        font-size: 18px;
+                        text-align: center;
+                        -webkit-transform-style: preserve-3d;
+                        transform-style: preserve-3d;
+                        -webkit-backface-visibility: visible;
+                        backface-visibility: visible;
+                    }
+                }
+            }
+        }
+
+        // cuando está abierto
+        &.select2-container--open {
+            // el select
+            .select2-selection.select2-selection--single {
+                border-color: $color-gris-25;
+            }
+
+            .select2-selection {
+                .select2-selection__arrow {
+                    //height: 100%;
+                    b {
+                        &:before {
+                            color: $color-base;
+                            -moz-transform: rotateX(180deg);
+                            -webkit-transform: rotateX(180deg);
+                            -o-transform: rotateX(180deg);
+                            -ms-transform: rotateX(180deg);
+                            transform: rotateX(180deg);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Estilo boton de los filtros && Button light false => 100% --  true: asignarle valor
+@mixin button-light($w: true, $width: 100%) {
+    @include set-new-button-style(transparent, $color-gris-50, $color-gris-25);
+    @include set-new-button-hover(darlen($white, 5%), $color-default, $color-default);
+    @if $w {
+        @include calc(width, 100%, 20px);
+    } @else {
+        width: $width;
+    }
+    @include padding(0 15px);
+    @include margin(0 auto 20px);
+    line-height: 34px;
+}
+
+// Selector de Cantidad
+@mixin cantidad($mar: 15px 0, $f:left ) {
+    @include margin($mar);
+    display: block;
+    width: 100px;
+    float: $f;
+    clear: none;
+    position: relative;
+    @include media-breakpoint($media-small, max-width) {
+        width: 80px;
+    }
+    $input-width: 30px;
+    input.input-text {
+        @include box-shadow(none);
+        @include calc(width, 100%, ($input-width * 2));
+        @include padding(0);
+        @include margin(0);
+        min-width: 0;
+        line-height: $input-width;
+        text-align: center;
+        display: block;
+        margin: 0 auto;
+        float: none;
+        border: none;
+        outline: none;
+        color: $black;
+        background-color: transparent;
+        &:hover, &:active, &:focus {
+            outline: none;
+        }
+        @include media-breakpoint($media-small, max-width) {
+            @include calc(width, 100%, (24px * 2));
+        }
+    }
+
+    .quantity-button {
+        @include block-size($input-width)
+        @include padding(0);
+        @include border-radius(100%);
+        @include transition;
+        font: {
+            size: 10px;
+            weight: $font-regular;
+        }
+        background: $color-main;
+        border: none;
+        color: $white;
+        cursor: pointer;
+        position: absolute;
+        outline: 0;
+        top: 0;
+        bottom: 0;
+        line-height: 1;
+
+        @include media-breakpoint($media-small, max-width) {
+            @include block-size(24px);
+        }
+
+        i.fa {
+            @include padding(0);
+            font-size: 10px;
+        }
+
+        // menos [ - ]
+        &.quantity-down {
+            right: auto;
+            left: 0;
+        }
+
+        // mas [ + ]
+        &.quantity-up {
+            right: 0;
+        }
+
+        &.quantity-disabled {
+            background: $light;
+            opacity: 0.85;
+            pointer-events: none;
+            border-color: $gris;
+            cursor: not-allowed;
+            color: $gris;
+            &:hover,
+                &:active,
+                &:focus {
+                cursor: not-allowed;
+            }
+        }
+
+        // hover
+        &:hover {
+            background: $color-main;
+            color: $white;
+            border-color: $color-main;
+        }
+    }
+}
+
+// Boton de favoritos
+@mixin boton-de-favoritos {
+    background: none;
+    border: none;
+    display: block;
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    overflow: hidden;
+    @include float;
+
+    a.tinvwl_add_to_wishlist_button.no-txt {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        @include margin(0);
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(center);
+
+        &:before {
+            position: static;
+            line-height: 1;
+            margin-top: 4px !important;
+            font-weight: 500 !important;
+            @include font-awesome("\f004");
+            @include margin(0);
+            @include padding(0);
+        }
+        &:hover,
+            &:active,
+            &:focus {
+            &:before {
+                color: $color-danger;
+            }
+        }
+
+        &.tinvwl-product-in-list {
+            &:before {
+                // content: '\f004' !important;
+                color: $color-danger;
+                font-weight: 700 !important;
+            }
+        }
+    }
+}
+
+// form row
+@mixin form-row {
+    @include reset-content;
+    @include padding(0);
+    @include margin(0 0 30px);
+    .form-row-first {
+        clear: both !important;
+    }
+}
+
+// Mi cuenta subtitulo
+@mixin subtitulo-cuenta($w: $font-regular) {
+    @include em(26px);
+    @include margin(0 auto);
+    text-align: center;
+    color: $color-default;
+    letter-spacing: 0;
+    font-weight: $w;
+    text-transform: none;
+}
+
+// order detail
+@mixin order-detail {
+    @include margin(0 auto 20px);
+    // @include padding(0 0 0 0);
+    padding-left: 0 !important;
+    display: block;
+    background: none;
+    width: 100%;
+    text-align: center;
+    li {
+        @include calc(width, 50%, 10px);
+        @include padding(10px 0);
+        @include size($font-size);
+        font-weight: $font-bold;
+        color: $black;
+        margin-right: 0;
+        margin-left: 5px;
+        margin-bottom: 15px;
+        clear: none;
+        border: none;
+        border-bottom: solid 1px $light;
+        text-transform: none;
+        text-align: center;
+        float: none;
+        display: inline-block;
+
+        &:before {
+            content: none;
+        }
+
+        strong {
+            @include em($font-size);
+            padding-top: 7px;
+            font-weight: $font-regular;
+            color: $color-text;
+        }
+
+        &:nth-child(odd) {
+            margin-right: 5px;
+            margin-left: 0;
+        }
+        &.woocommerce-order-overview__payment-method{
+            display: none;
+        }
+        // @media screen and (max-width: 480px) {
+        //   @include block(0 0 10px);
+        // }
+    }
+}
+
+// print order
+@mixin print-order {
+    a.button.print {
+        border-radius: 25px;
+        @include padding(15px 10px);
+        @include em(13px);
+        min-width: 200px;
+        text-align: center;
+        position: relative;
+        text-transform: uppercase;
+        @include set-new-button-style($gray, $white, $gray);
+        @include set-new-button-hover($color-default, $white, $color-default);
+        &:after {
+            @include font-awesome("\f02f");
+            position: relative;
+            display: inline-block;
+            margin-left: 5px;
+        }
+
+        @media screen and (max-width: 480px) {
+            min-width: 0;
+            @include block(0 0 10px);
+        }
+    }
+}
+
+// Style for customer details address boxes
+@mixin wc-customer-details {
+    margin: 0 auto 20px;
+    max-width: 720px;
+
+    @media screen and (max-width: 600px) {
+        .woocommerce-columns .col-1 {
+            margin-bottom: 30px;
+        }
+
+        .woocommerce-columns .col-1,
+        .woocommerce-columns .col-2 {
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            float: none;
+            width: 100%;
+        }
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    address {
+        p {
+            @include block;
+            @include padding(0);
+            text-align: left;
+            font-weight: $font-regular;
+            color: $color-text;
+            &:before {
+                display: inline-block;
+                margin: 0;
+                position: static;
+                margin-right: 6px;
+            }
+
+            &.woocommerce-customer-details- {
+                &-phone,
+                &-email {
+                    margin-top: 10px;
+                    &:before {
+                        @include font-awesome();
+
+                    }
+                }
+
+                &-phone {
+                    &:before {
+                        @include font-awesome-icon("\f095");
+                    }
+                }
+                &-email {
+                    &:before {
+                        @include font-awesome-icon("\f0e0");
+                    }
+                }
+            }
+        }
+    }
+
+    address,
+    .woocommerce-cedula-details .cedula-details {
+        @include padding(10px);
+        border-radius: 5px;
+        border: solid 2px $light;
+        line-height: normal;
+        max-width: 400px;
+        margin: 0 auto;
+        text-align: center;
+        p{
+            text-align: center;
+        }
+    }
+
+    .woocommerce-cedula-details {
+        margin: 30px auto;
+        max-width: 500px;
+        padding-top: 0;
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+// Arrow read more -->
+@mixin arrow-link($selector: ".arrow-link", $color: $color-main) {
+    #{$selector} {
+        background: $color;
+        height: 2px;
+        width: 18px;
+        margin: 0 auto;
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+        margin-left: 6px;
+        top: -2px;
+        @content;
+        &:before,
+            &:after {
+            content: "";
+            background: $color;
+            position: absolute;
+            height: 2px;
+            width: 10px;
+        }
+
+        &:before {
+            right: -2px;
+            bottom: -3px;
+            @include transform-rotate(-45deg);
+        }
+
+        &:after {
+            right: -2px;
+            top: -3px;
+            @include transform-rotate(45deg);
+        }
+    }
+}
+
+// Fondo footer
+@mixin footer-bg {
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#eeeeee+0,ffffff+100 */
+    background: #eeeeee; /* Old browsers */
+    background: -moz-linear-gradient(left,  #eeeeee 0%, #ffffff 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  #eeeeee 0%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  #eeeeee 0%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+
+}
+
+// Bg > transparent > black
+@mixin call2actionbg() {
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,1+80 */
+    background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 80%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 80%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 80%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=1 ); /* IE6-9 */
+
+}
+
+@mixin _bottom-line($c: #ccc) {
+    @include em(36px);
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    @include media-breakpoint($media-xs) {
+        @include em(40px);
+    }
+    &:after {
+        content: '';
+        width: 100px;
+        height: 1px;
+        background: $c;
+        display: block;
+        margin: 0 auto;
+        position: absolute;
+        left: 50%;
+        margin-left: -50px;
+        bottom: 0;
+    }
+}
+
+// Utilities detale de producto
+@import "../woocommerce/detalle-producto/_detalle-utilities.scss";
+
+// Utilities Checkout
+@import "../woocommerce/checkout/_checkout-utilities.scss";

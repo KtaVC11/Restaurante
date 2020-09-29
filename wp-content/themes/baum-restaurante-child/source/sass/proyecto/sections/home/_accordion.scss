@@ -1,0 +1,91 @@
+#preguntas-frecuentes {
+
+    h3.vc_custom_heading {
+
+    }
+
+    // max width
+    > .wpb_column {
+        > .vc_column-inner {
+            width: 100%;
+            max-width: 820px;
+            margin: {
+                right: auto;
+                left: auto;
+            }
+        }
+    }
+
+    .vc_tta.vc_tta-accordion {
+        .vc_tta-panels {
+            .vc_tta-panel {
+                @include border-radius(50px);
+                background-color: $white;
+                margin: 0 auto 20px;
+
+                &.vc_active {
+                    @include border-radius(50px 50px 10px 10px);
+                    .vc_tta-panel-heading {
+                        @include box-shadow(0 2px 4px 0 rgba($black, .2))
+                        background-color: $color-main !important;
+                        border: 0;
+                        .vc_tta-panel-title {
+                            a {
+                                .vc_tta-controls-icon {
+                                    &:before {
+                                        border-color: $white;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                // heading
+                .vc_tta-panel-heading {
+                    @include z-index(vc_tta-panel-heading)
+                    @include border-radius(50px);
+                    position: relative;
+                    background-color: $color-primary;
+                    border: 0;
+                    .vc_tta-panel-title {
+                        @include display-flex(center, null);
+                        @include font-family(1);
+                        @include z-index(vc_tta-panel-title)
+                        min-height: 60px;
+                        border-radius: 10px;
+                        position: relative;
+                        a {
+                            width: 100%;
+                            color: $white !important;
+                            font-size: 16px;
+                            text-transform: none;
+
+                            .vc_tta-controls-icon {
+                                width: 20px;
+                                height: 20px;
+                                &:before {
+                                    border-color: $white;
+                                    border-width: 0 3px 3px 0;
+                                }
+                            }
+                            span.vc_tta-title-text {}
+                        }
+                    }
+                }
+                .vc_tta-panel-body {
+                    @include z-index(vc_tta-panel-body);
+                    @include padding(0)
+                    position: relative;
+                    border: 0;
+                    background-color: transparent;
+
+                    .wpb_content_element {
+                        @include padding(40px 20px)
+                    }
+                }
+            }
+        }
+    }  
+}
+
+

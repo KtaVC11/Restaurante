@@ -1,0 +1,217 @@
+
+// Must be in woocommerce
+.woocommerce {
+
+    // main product class
+    .product {
+
+        // produt prefix product-class
+        .product {
+            // product-wrapper
+            &-wrapper {
+                @include border-radius(10px)
+                @include transition
+                overflow: hidden;
+                border: none;
+                background: $light;
+                text-align: center;
+                position: relative;
+
+                // padding for position
+                padding-bottom: 50px + 15px + 15px;
+
+            }
+
+            // Imagen
+            &-image-container {
+                overflow: hidden;
+                position: relative;
+                background-color: $light;
+                // vertical align = @param 1: elemento, <a>
+                .vertical {
+                    height: 100%;
+                }
+                a, img {
+                    display: block;
+                    max-width: none;
+                    width: 100%;         
+                }
+
+                img {
+                    @include transition(700ms)
+                    @include margin(0)
+                    clear: both;
+                }
+
+                &:hover, &:active, &:focus {
+                    img {
+                        &.secondary-image {
+                            @include transform-scale(1.02);
+                            visibility: visible;
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+
+            // Info
+            &-title-container {
+                @include padding(10px);
+                @include media-breakpoint($media-xs) {
+                    @include padding(15px);
+                }
+            }
+
+            // Link
+            &-link-container {
+                @include margin(0 auto);
+                @include transform-translate-x(-50%)
+                position: absolute;
+                bottom: 15px;
+                left: 50%;
+                display: block;
+                width: 100%;
+                max-width: 180px;
+                text-align: center;
+
+                a.btn {
+                    display: block;
+                    width: 100%;
+                    max-width: 180px;
+                    margin: 0 auto;
+                }
+            }
+        }
+
+        // mis favoritos
+        @at-root #nuestros-productos & {
+            .tinv-wraper.tinv-wishlist {
+                @include z-index(favoritos-wrapper)
+                @include border-radius(100%)
+                @include block-size(28px)
+                background-color: $white;
+                top: 5px;
+                right: 15px;
+                position: absolute;
+
+                // link
+                a {
+                    @include block-size(100%);
+                    margin: 0;
+                    line-height: 1;
+                    position: relative;
+                    &:before {
+                        @include font-awesome('\f004')
+                        @include block-size(100%)
+                        @include display-flex
+                        @include margin(0)
+                        top: 0;
+                        left: 0;
+                        font-size: 16px;
+                        font-weight: $font-regular; // <--  regular = NO está en favoritos
+                        color: $color-main;
+                    }
+
+                    &.tinvwl-product-in-list {
+                        &:before {
+                            font-weight: $font-bold; // <--  bold = SÍ está en favoritos
+                        }
+                    }
+                }
+            }        
+        }
+
+
+        // href con el link al producto
+        a.woocommerce-LoopProduct-link {
+            // la imagen
+            img {
+                display: block;
+                @include transition;
+                @include margin(0);
+                max-width: none;
+                width: 100%;
+                position: relative;
+                opacity: 1;
+            }
+        }
+
+        // titulo del producto
+        .woocommerce-loop-product__title {
+            @include padding(6px 0);
+            @include margin(0);
+            @include font-family(1, $font-bold);
+            font-size: 20px;
+            text-transform: uppercase;
+            line-height: 1.2;
+            color: $color-default;
+        }
+
+        // Short description
+        .product-short-description {
+            text-align: center;
+            line-height: 1.3;
+            font-weight: $font-light;
+            p {
+                margin: 0;
+                line-height: inherit;
+            }
+        }
+
+
+        // Precio
+        .price {
+            @extend %precio-default;
+            @extend %precio-variantes;
+            text-align: center;
+        }
+
+        // Add margin bottom
+        .woocommerce-loop-product__title,
+        .product-short-description,
+        .price { 
+            margin-bottom:  21px;
+        }
+
+        // button
+        a.xoo-qv-button {
+
+
+        }
+
+        /*
+        a.xoo-qv-button {
+            @include margin(0 auto)
+            @include transform-translate-x(-50%)
+            @include main-button-style
+            @include set-new-button-style($color-main, $white, $color-main)
+            @include set-new-button-hover(darken($color-main, 15%), $white, darken($color-main, 15%))
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            display: block;
+            width: 100%;
+            max-width: 180px;
+            text-align: center;
+            @include margin( 0 auto 15px);
+        }
+        */
+
+
+        // El hover a los links
+        a.woocommerce-loop-product_title_link {
+            .woocommerce-loop-product__title,
+            .product-subtitle {
+                &:hover, &:active, &:focus {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }   
+}
+
+
+
+
+
+

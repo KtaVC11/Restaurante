@@ -1,0 +1,13 @@
+form.woocommerce-EditAccountForm {
+    @extend %max-account;
+
+    p.form-row {
+        input[type] + span {
+            em {
+                font-style: normal;
+                font-size: 70%;
+                line-height: 1.1;
+            }
+        }
+    }
+}

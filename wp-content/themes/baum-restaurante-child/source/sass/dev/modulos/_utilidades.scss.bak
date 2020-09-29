@@ -1,0 +1,300 @@
+
+/*
+*  SCSS snippets
+*  _utils.scss
+*  Autor: Francisco Chanto
+*  v1.0.0
+*  Mayo, 2018
+*/
+
+
+/*
+* === selection color ===
+* @param 1 = background color, default: $black
+*/
+@mixin selection-color($bg:$color-base, $color:$white) { 
+    ::selection { background: $bg; color:$color; @include text-shadow(none);} /* webkit */
+    ::-moz-selection { background: $bg; color:$color; @include text-shadow(none); } /* Moz */
+}
+
+/*
+* === selection none ===
+* @params = none
+*/
+@mixin selection-none {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/*
+* === clearfix ===
+* @param = none
+*/
+@mixin clearfix { *zoom: 1; &:before, &:after { content: " "; display: table; line-height: 0; } &:after { clear: both; } }
+
+/*
+* === Padding ===
+* @param1 = valores, default: 0 15px
+*/
+@mixin padding($valor:0 15px)  { padding:$valor;}
+
+/*
+* === margin ===
+* @param1 = valores, default: 0
+*/
+@mixin margin($valor: 0)  { margin: $valor;}
+
+/*
+* === float ===
+* @param1 = left/right, default: left
+* @param2 = display. default: inherit
+*/
+@mixin float($float: left, $display: null) {
+    float: $float;
+    clear: none;
+    display: $display;
+}
+
+/* 
+* === border ===
+* @param1 = borde color, default: #000000
+*/
+@mixin borde($color: #000) {
+    border: solid 1px $color;
+}
+
+/*
+* === arrow down ===
+* @param1 = direction: top, right, bottom, left. Default: bottom
+* @param2 = border width, default: 10px
+* @param3 = border color, default: #000000
+*/
+@mixin arrow($direction: bottom, $width: 10px, $color:#000) {
+    content: " ";
+    border: solid transparent;
+    height: 0;
+    width: 0;
+    pointer-events: none;
+    border-color: transparent;
+    border-#{$direction}-color: $color;
+    border-width: $width;
+}
+
+/*
+* === col 100% ===
+* @param1 = margin values, default: 0 0 15px;
+*/
+@mixin block($mar: null) {
+    margin: $mar;
+    display: block;
+    clear: both;
+    float: none;
+    width: 100%;
+}
+
+/*
+* === calc function ===
+* @param3 = string, calc property,  width, height. default: width
+* @param2 = percent value, default: 100%
+* @param3 = pixel value, default: 0
+*/
+@mixin calc($calc: "width", $val: 100%, $pix: 0) {
+    #{$calc}: -webkit-calc(#{$val} - #{$pix});
+    #{$calc}:    -moz-calc(#{$val} - #{$pix});
+    #{$calc}:         calc(#{$val} - #{$pix});
+}
+
+/*
+* === Listas sin estilo ===
+* @params: none
+*/
+@mixin list-unstyled {
+    list-style:none;
+    padding: 0;
+    margin: 0;
+}
+
+/*
+* === content reset ===
+* @param1 = reset after true/false. Default: true
+*/
+@mixin reset-content($after: true) {
+    &:before {
+        content: none;
+    }
+    @if $after {
+        &:after {
+            content: none;
+        }
+    }
+}
+
+/*
+* === Vertical align method 1 ===
+* @param1 = align, default: center
+*/
+@mixin vertical-align-1($element: "div", $align: center) {
+    display: table;
+    width: 100%;
+    height: 100%;
+    > #{$element} {
+        display: table-cell;
+        vertical-align: middle;
+        height: 100%;
+        text-align: $align;
+    }
+}
+
+/*
+* === Vertical align method 2 ===
+* @param1 = align, default: center
+*/
+@mixin vertical-align-2($element: "div", $align:center) {
+    text-align: $align;
+    white-space: nowrap;
+    height: 100%;
+    font-size: 100%;
+    &:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    }
+    > #{$element} {
+        display: inline-block;
+        vertical-align: middle;
+        width: 100%;
+    }
+}
+
+/*
+* === responsive iframe ===
+* @param1 = custom aspect ratio. Default: NULL
+* @param1 = aspect ratio view (4:3, 16:) true/false. Default: true
+* Parametro 1 sobrescribe el aspect ratio default.
+* Para 4:3, usar como parametro 1: null y como segundo parametro: false
+*/
+@mixin responsive-iframe($padding: null, $wide: true) {
+    display: block;
+    width: 100%;
+    float: none;
+    height: auto;
+    position: relative;
+    > div {
+        @if $padding != null {
+            padding-bottom: $padding;   // custom aspect ratio
+        }@else {
+            @if $wide == true {
+                padding-bottom: 56.25%; // 16:9 aspect ratio * default
+            }@else {
+                padding-bottom: 75%;    // 4:3 aspect ratio
+            }
+        }
+        position: relative;
+        height: 0;
+        overflow: hidden;
+        z-index: 9;
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+            z-index: 7;
+        }
+    }
+}
+
+/*
+* === Bootstrap 3 breakpoint v.1 ===
+* @params: insetar en un media queria < 768
+*/
+@mixin breakpoint-nav-1 {
+    .navbar-header { float: none }
+    .navbar-left, .navbar-right { float: none !important }
+    .navbar-toggle { display: block }
+    .navbar-collapse { border-top: 1px solid transparent; box-shadow: inset 0 1px 0 rgba(255,255,255,0.1); }
+    .navbar-fixed-top { top: 0; border-width: 0 0 1px; }
+    .navbar-collapse.collapse { display: none!important }
+    .navbar-nav { float: none!important; margin-top: 7.5px; }
+    .navbar-nav>li { float: none }
+    .navbar-nav>li>a { padding-top: 10px; padding-bottom: 10px; }
+    .collapse.in { display: block !important }
+}
+
+/*
+* === Bootstrap 3 breakpoint v.2 ===
+* @param1 = $min value. Default: 768px
+* @param2 = $max value. Default: 900px
+*/
+@mixin breakpoint-nav-2($min: 768px, $max: 900px) {
+    @media (min-width: $min) and (max-width: $max) {
+        .navbar-collapse.collapse{display:none !important;}
+        .navbar-collapse.collapse.in{display:block !important;}
+        .navbar-header .collapse, .navbar-toggle{display:block !important;}
+        .navbar-header{float:none;}
+        .navbar-right{float:none !important;}
+        .navbar-nav > li{float:none;}
+        .navbar-nav > li > a{padding-top:10px;padding-bottom:10px;}
+        .navbar-collapse{-webkit-box-shadow:inset 0 1px 0 rgba(255, 255, 255, .1);box-shadow:inset 0 1px 0 rgba(255, 255, 255, .1);}
+        .container-fluid > .navbar-collapse{margin-right:-15px;margin-left:-15px;}
+        .container-fluid > .navbar-header{margin-right:-15px;margin-left:-15px;}
+    }
+}
+
+/*
+* === basic reset ===
+*
+*/
+@mixin reset {
+    min-width:0;  
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    font:inherit;
+    vertical-align:baseline;
+    text-transform: none;
+    text-shadow: none;
+    -webkit-border-radius: 0; 
+    -moz-border-radius: 0;    
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow:none ;
+    box-shadow: none ; 
+    background: none;
+}
+
+/*
+* === width, height ===
+*
+*/
+@mixin block-size($width:null, $height: null, $str: null) {
+    @if $height == null  {
+        width: $width $str;
+        height: $width $str;  
+    }@else {
+        width: $width $str;
+        height: $height $str;   
+    }
+}
+/*
+* === background options ===
+*
+*/
+@mixin background-options($position: center center, $size: cover, $repeat: no-repeat, $color: null, $attachment: scroll ) {
+    @if $position != none {
+        background-attachment: $attachment;
+        background-repeat: $repeat;
+        background-position: $position;
+        background-color: $color;
+        background-size: $size;
+    }
+    @else {
+        background:  none !important;
+    }
+}

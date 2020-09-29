@@ -1,0 +1,159 @@
+
+
+%flex {
+    @include flexbox;
+}
+// detalle del producto
+div.summary {
+    // Ttulo principal
+    @include producto-titulo;
+
+    // Sub titulo
+    @include producto-subtitulo;
+
+    // Precio grande
+    @include producto-precio;
+
+    // overwrite precio
+    .single_variation_wrap {
+        .single_variation {
+            .amount{
+                // color: $color-default;
+            }
+        }
+        .price {
+            ins, del {
+            }
+            del {
+                .amount {
+                    color: $color-default;
+                }
+            }
+            ins {
+                .amount {
+                    color: $color-main; 
+                }
+            }
+        }
+    }
+
+
+    // Boton de Agregar al carrito
+    @include producto-add2cart;
+
+    // Tavla de variaciones
+    @include producto-variaciones(false);
+
+    // favoritos en detalle
+    form {
+        margin-bottom: 0;
+    }
+
+    .tinv-wraper {
+        @include clearfix;
+        margin-bottom: 30px;
+        .tinvwl_add_to_wishlist_button {
+            @include transition;
+            @include border-radius(500px);
+            @include set-new-button-style(transparent, $color-main, $color-main);
+            @include set-new-button-hover($color-main, $white, $color-main);
+            @include grayscale(1);
+            @include padding(15px);
+            @include em(16px);
+            opacity: .5;
+            line-height: 1.1;
+            border-width: 2px;
+            width: 100%;
+            text-align: center;
+            font-weight: $font-regular;
+            text-decoration: none;
+            &:before {content: none;}
+            &:hover, &:active, &:focus {
+                @include grayscale(0);
+                opacity: 1;
+                span {
+                    &:after {
+                        color: $white;
+                    }   
+                }
+            }
+            span {
+                position: relative;
+                &:after {
+                    @include fontawesome5('\f004');
+                    display: inline-block;
+                    margin-left: 4px;
+                    color: $color-main;
+                    font-weight: 400;
+                }
+            }
+
+            &.disabled-add-wishlist {
+                pointer-events: none;
+                @include set-new-button-hover(transparent, $light-alt, $light-alt);
+            }
+
+            // in tinvwl-product-in-list
+            &.tinvwl-product-in-list {
+                span {
+                    &:after {
+                        font-weight: 900;
+                    }
+                }
+            }
+        }
+    }
+
+    // descripcion del producto
+    .product-description {
+        @include padding(0 0 15px);
+        @include margin(0 0 15px);
+        border-bottom: solid 1px $light;
+
+        h3.description-title {
+            color: $color-default;
+            @include em(20px);
+        }
+
+
+        h1, h2, h3, h4, h5, h6 {
+            color: $color-default;
+            @include em(16px);
+            margin-bottom: 20px;
+        }
+
+        li {
+            line-height: 1.2;
+            width: 100%;
+            @include flexbox;
+            @include align-items(flex-start);
+            &:before {
+                @include display-flex();
+                padding: 0;
+                width: 18px;
+                height: 18px;
+                min-width: 18px;
+                margin-right: 10px;
+            }
+        }
+        ol {
+            @include ol-li($color-primary, $white, 1px, inherit, 0);
+            li {
+                &:before {
+                    border: solid 1px $color-primary;
+                }    
+            }
+
+        }
+
+        ul {
+            @include ul-li(0 0 10px, true);
+            li {
+                &:before {
+                    @include fs(8px);
+                    color: $color-primary;
+                }    
+            }
+        }
+    }
+}

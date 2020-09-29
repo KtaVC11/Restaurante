@@ -1,0 +1,32 @@
+
+/* default */
+@import "../default/_placeholders.scss";
+@import "../default/_functions.scss";
+@import "../default/_variables.scss";
+
+
+/* fx */
+@import "../fx/_blur.scss";
+@import "../fx/_grayscale.scss";
+@import "../fx/_toggleButtonFX.scss";
+
+/* animaciones css */
+@import "../animations/_BounceIn.scss";
+@import "../animations/_BounceInRight.scss";
+@import "../animations/_BounceUpAndDown.scss";
+@import "../animations/_fadeInDown.scss";
+@import "../animations/_fadeInLeft.scss";
+@import "../animations/_rotate360.scss";
+@import "../animations/_rotateIn.scss";
+
+/* ### PROYECT DEFAULT INCLUDES ### */
+@import "../family/_family.scss";
+@import "../flexbox/_flexbox.scss";
+@import "../modulos/_buttons.scss";
+@import "../modulos/_font-awesome-5.scss";
+@import "../modulos/_body.scss";
+@import "../modulos/_css3.scss";
+@import "../modulos/_elements.scss";
+@import "../modulos/_forms.scss";
+@import "../modulos/_typo.scss";
+@import "../modulos/_utilidades.scss";

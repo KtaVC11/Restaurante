@@ -1,0 +1,215 @@
+/* ## VARIABLES DEL PROYECTO ## */
+@import "_variables.scss";
+
+/* ## INCLUDE PRINCIPAL ## */
+//@import "../dev/includes/_inc.scss";
+
+/* ## CUSTOM PROJECT FUNCTIONS ## */
+@import "mixins-and-placeholders/functions.scss";
+
+/* ## INCLUDE MIXINS ## */
+@import "mixins-and-placeholders/mixins.scss";
+
+/* ## INCLUDE PLACEHOLDERS ## */
+@import "mixins-and-placeholders/placeholders.scss";
+
+/* ## DEFINE EL ESTILO DE LOS HEADINGS H1-H6 ## */
+@import "define/_headings.scss";
+
+/* ## DEFINE EL ESTILO DE LOS BOTONES */
+@import "define/_buttons.scss";
+
+/*
+* ###
+* ### 
+* ###
+*/
+
+/* ## DEFINE EL ESTILO DE <LA SELECCION */
+@include selection-color($color-main, $white);
+
+/* ## OVERFLOW VISIBLE PARA LOS SVG ## */
+svg:not(:root) {
+  overflow: visible;
+}
+
+/* ## DEFINE EL ESTILO DE <HTML> */
+html {
+  @include html;
+}
+
+/* ## DEFINE EL ESTILO DE BODY
+* @param1 = body base font size. Default: 16px ($font-size)
+* @param2 = font family. Default: $font-primary (font, helvetica.. etc)
+* @param3 = body color, Default: $color-base
+* @param4 = body background (color / string), Default: null
+*/
+
+body {
+  @include body($font-size, $font-primary, $color-text, $white);
+  font-weight: $font-light;
+
+  &:not(.home) .site-content .content-area {
+    margin-bottom: 30px;
+  }
+  .cover-top {
+    min-height: 300px;
+  }
+
+  &:not(.home) {
+    // padding top
+    &.baumchild-header-fixed {
+      &:not(.woocommerce-checkout) {
+        .mm-page.mm-slideout {
+          padding-top: 50px + 20px + 20px;
+          @include media-breakpoint($media-small) {
+            padding-top: 70px + 30px + 20px;
+          }
+        }
+      }
+    }
+
+    .entry-header {
+      display: none;
+    }
+
+    // not cart
+    &.woocommerce-cart {
+      .mm-page.mm-slideout {
+        @include media-breakpoint(0) {
+          padding-top: 0;
+        }
+      }
+    }
+  }
+}
+body.woocommerce-login-register {
+  &:not(.home) {
+    .site-content .content-area {
+      &#primary {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+/* ## DEFINE EL ESTILO DE FOOTER */
+footer {
+  @include footer(false);
+}
+
+/* ## DEFINE EL ESTILO DE UN <P> */
+p {
+  @include p;
+  letter-spacing: 0.2px;
+  a {
+    color: $color-main;
+    &:hover,
+    &:hover,
+    &:active {
+      color: darken($color-main, 10%);
+      text-decoration: underline;
+    }
+  }
+}
+
+/* ## DEFINE EL ESTILO DE LOS LINKS */
+a {
+  @include links($color-main, inherit, none);
+}
+
+// quote
+/* ## DEFINE EL ESTILO DE LOS BLOCKQUOTES */
+blockquote {
+  &:before {
+    @include georgia;
+    content: "\201C";
+    color: $color-default;
+    font-size: 5em;
+    font-weight: 700;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    line-height: 1;
+    text-shadow: none;
+    z-index: 0;
+  }
+
+  // inside styles
+  @include blockquote(null, 0 0 0 50px);
+  font-size: 1em;
+  position: relative;
+}
+
+/* ## DEFINE EL ESTILO DE UN <HR> */
+hr {
+  @include hr($gray);
+  &.small {
+    width: 30%;
+  }
+}
+
+/* ## DEFINE EL ESTILO DE UNA TABLA */
+table {
+  @include table;
+}
+
+/* ## DEFINE EL ESTILO DEL TITULO entry-header páginas internas */
+/*
+.entry-header {
+    background-color: $color-default;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width: 100%;
+    vertical-align: middle;
+    align-content: center;
+    position: relative;
+    min-height: 350px;
+    @media (max-width: $media-xs) {
+        min-height: 250px;
+    }
+    &:before{
+        content: "";
+        display: block;
+        background-color: rgba(0,0,0,0.5);
+        width: 100%;
+        height: 100%;
+        top:0;
+        left: 0;
+        right: 0;
+        position: absolute;
+    }
+    h1{
+        color: $white;
+        margin-top: 40px;
+        margin-bottom: 0;
+        z-index: 1;
+        @include z-index(h1_entry_header);
+    }
+}
+*/
+
+figure {
+  max-width: 100%;
+
+  figcaption {
+    font-style: italic;
+  }
+}
+
+iframe {
+  max-width: 100%;
+}
+
+.overlay-black,
+#nuestros-productos {
+  &:before {
+    @include overlay(0.75, absolute, 100%, 100%, $black);
+  }
+}

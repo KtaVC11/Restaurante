@@ -1,0 +1,32 @@
+@mixin BounceIn() {
+
+    // Set the animation
+    -webkit-animation-duration: 0.95s; 
+    animation-duration: 0.95s; 
+    -webkit-animation-fill-mode: both; 
+    animation-fill-mode: both;
+
+    // Set keyframes
+    @-webkit-keyframes bounceIn { 
+        0% { 
+            opacity: 0; 
+            -webkit-transform: scale(.3); 
+        } 
+        50% { 
+            opacity: 1; 
+            -webkit-transform: scale(1.05); 
+        } 
+        70% { 
+            -webkit-transform: scale(.9); 
+        } 
+        100% { 
+            -webkit-transform: scale(1); 
+        } 
+    } 
+}
+
+// Apply the effect
+@mixin applyBounceIn() { 
+    -webkit-animation-name: bounceIn; 
+    animation-name: bounceIn; 
+}

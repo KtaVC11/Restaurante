@@ -1,0 +1,98 @@
+
+/*
+*  SCSS snippets
+*  _typo.scss
+*  Autor: Francisco Chanto
+*  v1.0.0
+*  Mayo, 2018
+*/
+
+/*
+* === font family verdana ===
+*/
+@mixin verdana   { font-family: Verdana, Geneva, sans-serif; }
+
+/*
+* === font family arial ===
+*/
+@mixin arial     { font-family: Arial, Helvetica, sans-serif; }
+
+/*
+* === font family tahoma ===
+*/
+@mixin tahoma    { font-family: Tahoma, Geneva, sans-serif;  }
+
+/*
+* === font family helvetica ===
+*/
+@mixin helvetica { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+/*
+* === font family georgia ===
+*/
+@mixin georgia   { font-family: Georgia, Times, Times New Roman, serif;}
+
+/*
+* === font family primary ===
+*/
+@mixin font-family($primary: 1, $font-weight: null, $font-style: null, $str: null) {
+    @if $primary == 1  {
+        font-family: $font-primary, $font-base $str;
+    }@else {
+        font-family: $font-secondary, $font-base $str;
+    }
+    font-weight: $font-weight;
+    font-style: $font-style;
+}
+
+/*
+* === em coverter ===
+* @param1 = pixel value, default: 16px
+* @param2 = font size base, default: 16px (_globals.scss)
+* @param3 = string (para uso de !important)
+*/
+@mixin em($px: 24px, $base: $font-size, $str: null) {
+    font-size: (($px / $base) + 0em) $str;
+
+}
+
+/*
+* === Parrafos ===
+* @param1 = margin, default null
+* @param2 = line height, default null
+*/
+@mixin p($margin: null, $dir: null, $weight: null, $line-height: null) {
+    font-weight: $weight;
+    margin#{$dir}: $margin;
+    line-height: $line-height;
+}
+
+/*
+* === links ===
+* 
+*/
+@mixin links($color:null, $hover-color: null, $decoration: null, $weight: null, $style: null) {
+    outline: none !important;
+    color: $color;
+    font-weight: $weight;
+    font-style: $style;
+    &:hover, &:active, &:focus {
+        color: $hover-color;
+        text-decoration: $decoration;
+    } 
+    @content
+}
+
+/*
+* === Headings styles ===
+* @param1 = margin, default null
+* @param1 = color, default null
+* @param1 = weight, default null
+* @param1 = style, default null
+*/
+@mixin headings($margin: null, $color:null, $weight:null, $style:null) {
+    margin: $margin;
+    color: $color;
+    font-weight: $weight;
+    font-style: $style;
+}

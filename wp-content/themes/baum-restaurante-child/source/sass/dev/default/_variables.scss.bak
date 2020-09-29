@@ -1,0 +1,167 @@
+
+/*
+*  SCSS snippets
+*  _variables.scss
+*  Autor: Francisco Chanto
+*  v1.0.0
+*  Mayo, 2018
+*/
+
+/*
+* === font-sizes ===
+*/
+$font-size          : 16px !default;                // Base font
+$font-size-clean    : strip-unit($font-size) !default;       // Base font unit
+$line-height        : (($font-size-clean / 10) + 0);        // line height
+$letter-spacing     : 0 !default;                           // letter spacing
+$forms-line-height  : 40px !default;                        // alto del input de los forms
+
+/*
+* === font families ===
+*/
+$font-monospace     : "Lucida Console", Monaco, monospace !default;
+$font-base          : "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-primary       : null !default;
+$font-secondary     : null !default;
+
+/*
+* === font weights ===
+*/
+$font-light         : 300 !default;
+$font-regular       : 400 !default;
+$font-medium        : 700 !default;
+$font-semibold      : 600 !default;
+$font-bold          : 700 !default;
+$font-black         : 800 !default;
+
+/* 
+* === default colors ===
+*/
+$color-default  : #000000 !default;
+$color-base     : #666666 !default;
+$color-main     : #ffcc00 !default;
+$color-primary  : #00ff66 !default;
+$color-secondary: #4e45c1 !default;
+$color-text     : #666666 !default;
+$color-main    : #000000 !default;
+$white          : #ffffff !default;
+$black          : #000000 !default;
+$gray           : #CCCCCC !default;
+$light          : darken($white, 10%) !default;
+$dark           : #333333 !default;
+$red            : #FF0000 !default;
+$yellow         : #ffff00 !default;
+$blue           : #0033ff !default;
+$green          : #33ff00 !default;
+$cyan           : #00b9ff !default;
+$color-main         : #ff6600 !default;
+$baum           : #00B499 !default;
+
+/*
+* === Bootstrap default colors ===
+*/
+$primary            : #007bff !default;
+$secondary          : #6c757d !default;
+$success            : #28a745 !default;
+$info               : #17a2b8 !default;
+$warning            : #ffc107 !default;
+$danger             : #dc3545 !default;
+$light              : #f8f9fa !default;
+$dark               : #343a40 !default;
+
+$color-primary      : #007bff !default;
+$color-secondary    : #6c757d !default;
+$color-success      : #28a745 !default;
+$color-info         : #17a2b8 !default;
+$color-warning      : #ffc107 !default;
+$color-danger       : #dc3545 !default;
+$color-light        : #f8f9fa !default;
+$color-dark         : #343a40 !default;
+
+/*
+* === Escala de grises ===
+*/
+$escala-gris: (
+1:  darken(#ffffff, 2.5%),
+2:  darken(#ffffff, 2.5%),
+3:  darken(#ffffff, 3%),
+4:  darken(#ffffff, 2.5%),
+5:  darken(#ffffff, 5%),
+6:  darken(#ffffff, 6%),
+7:  darken(#ffffff, 7%),
+8:  darken(#ffffff, 8%),
+9:  darken(#ffffff, 9%),
+10: darken(#ffffff, 10%),
+15: darken(#ffffff, 15%),
+20: darken(#ffffff, 20%),
+25: darken(#ffffff, 25%),
+30: darken(#ffffff, 30%), 
+35: darken(#ffffff, 35%),
+40: darken(#ffffff, 40%), 
+45: darken(#ffffff, 45%), 
+50: darken(#ffffff, 50%), 
+55: darken(#ffffff, 55%), 
+60: darken(#ffffff, 60%), 
+65: darken(#ffffff, 65%), 
+70: darken(#ffffff, 70%), 
+75: darken(#ffffff, 75%),
+80: darken(#ffffff, 80%),
+85: darken(#ffffff, 85%),
+90: darken(#ffffff, 90%),
+95: darken(#ffffff, 95%),
+)!default;
+
+
+$color-gris-5: #f2f2f2 !default;
+$color-gris-10: #e6e6e6 !default;
+$color-gris-15: #d9d9d9 !default;
+$color-gris-20: #cccccc !default;
+$color-gris-25: #bfbfbf !default;
+$color-gris-30: #b3b3b3 !default;
+$color-gris-35: #a6a6a6 !default;
+$color-gris-40: #999999 !default;
+$color-gris-45: #8c8c8c !default;
+$color-gris-50: gray !default;
+$color-gris-55: #737373 !default;
+$color-gris-60: #666666 !default;
+$color-gris-65: #595959 !default;
+$color-gris-70: #4d4d4d !default;
+$color-gris-75: #404040 !default;
+$color-gris-80: #333333 !default;
+$color-gris-85: #262626 !default;
+$color-gris-90: #1a1a1a !default;
+
+
+/*
+* === Default button clases
+*/
+$button-main-class  :  null !default;
+$button-style-class :  null !default;
+
+/*
+* === Social networks ===
+*/
+$facebook   : #4267b2 !default; //  facebook
+$twitter    : #00B6F1 !default; //  Twitter
+$instagram  : #d93175 !default; //  instagram 
+$linkedin   : #006699 !default; //  Linkedin
+$youtube    : #CC181E !default; //  Youtube
+$pinterest  : #cb2027 !default; //  Pinterest
+$google     : #dd4b39 !default; //  Google Plus
+$dropbox    : #007ee5 !default; //  DropBox
+$google-map : #4285F4 !default; //  Google Map
+$waze       : #92c2d1 !default; //  Waze   
+$flickr     : #FF0084 !default; //  Flickr
+$pdf        : #E84C3D !default; //  PDF
+$whatsapp   : #1ebea5 !default; //  WhatsApp
+
+/*
+* === Media queries ===
+*/
+$media-xsmall   : 420px !default;
+$media-small    : 600px !default;
+$media-xs       : 768px !default;
+$media-sm       : 992px !default;
+$media-md       : 1200px !default;
+$media-lg       : 1360px !default;
+

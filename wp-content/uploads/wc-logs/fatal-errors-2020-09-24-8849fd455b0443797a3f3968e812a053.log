@@ -1,0 +1,30 @@
+2020-09-24T17:32:38+00:00 CRITICAL syntax error, unexpected '.' in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wp-fonts.php on line 44
+
+2020-09-24T17:35:02+00:00 CRITICAL syntax error, unexpected ':' in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wp-fonts.php on line 44
+
+2020-09-24T17:35:17+00:00 CRITICAL syntax error, unexpected '.' in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wp-fonts.php on line 44
+
+2020-09-24T17:40:35+00:00 CRITICAL syntax error, unexpected ':' in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wp-fonts.php on line 44
+
+2020-09-24T17:40:39+00:00 CRITICAL syntax error, unexpected ':' in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wp-fonts.php on line 44
+
+2020-09-24T17:40:53+00:00 CRITICAL syntax error, unexpected '.' in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wp-fonts.php on line 44
+
+2020-09-24T17:47:51+00:00 CRITICAL syntax error, unexpected '.' in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wp-fonts.php on line 44
+
+2020-09-24T18:05:39+00:00 CRITICAL syntax error, unexpected '.' in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wp-fonts.php on line 44
+
+2020-09-24T20:05:00+00:00 CRITICAL syntax error, unexpected '.' in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wp-fonts.php on line 44
+
+2020-09-24T20:05:27+00:00 CRITICAL syntax error, unexpected '.' in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wp-fonts.php on line 44
+
+2020-09-24T20:05:27+00:00 CRITICAL syntax error, unexpected '.' in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wp-fonts.php on line 44
+
+2020-09-24T20:05:45+00:00 CRITICAL syntax error, unexpected '.' in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wp-fonts.php on line 44
+
+2020-09-24T20:27:35+00:00 CRITICAL syntax error, unexpected '.' in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wp-fonts.php on line 44
+
+2020-09-24T20:28:33+00:00 CRITICAL syntax error, unexpected '.' in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wp-fonts.php on line 44
+
+2020-09-24T20:41:08+00:00 CRITICAL require(): Failed opening required 'C:\xampp\htdocs\restaurante/wp-content/themes/baum-restaurante-child/functions/vc-elements/custom-elements.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\includes.php on line 47
+

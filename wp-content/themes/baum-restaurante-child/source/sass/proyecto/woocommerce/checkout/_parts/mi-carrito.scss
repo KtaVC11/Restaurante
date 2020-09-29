@@ -1,0 +1,222 @@
+// Lista de items de mi carrito => tbody
+/*
+.woocommerce-cart {
+    table.shop_table {
+        @extend %table-shop;
+
+        // Tabla de los productos
+        tbody {
+            tr {
+                &.cart-discount {
+                    // <tr> <td> => cart discount
+                    @include table-cart-discount;
+                }
+                &.cart_item {
+                    background-color: lighten($light, 5);
+                    @include media-breakpoint($mobile-wc-table, max-width) {
+                        border:none;
+                        display: inline-block;
+                        margin-bottom: 10px;
+                        width: 100%;
+                        @include border-radius(5px);
+                    }
+                }
+                td[class] {
+                    @include media-breakpoint($mobile-wc-table, max-width) {
+                        width: 33.33%;
+                        &.product-thumbnail {
+                            width: 35%;
+                            a {
+                                width: 100%;
+                                padding-left: 10px;
+                                img {
+                                    border-radius: 5px;
+                                }
+                            }
+                        }
+                        &.product-name {
+                            width: 65%;
+
+                            &:before {
+                                text-indent: -55%;
+                            }
+                            .quantity-mobile .quantity .input-container {
+                                margin: 10px 0 0 0;
+                            }
+                        }
+                        &.product-price {
+                            clear: left;
+                        }
+
+                        &.product-quantity {
+                            padding-right: 0;
+                            padding-left: 0;
+                        }
+                        // colores
+                        &.product-price,
+                        &.product-quantity,
+                        &.product-subtotal,
+                        &.product-remove {
+                            min-height: 70px;
+                        }
+                        &.product-remove{
+                            width: 100%;
+                            padding-top: 10px;
+                            min-height: auto;
+                            &:before{
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+*/
+
+.woocommerce-cart {
+
+    // Tabla comun
+    table.shop_table {
+        @extend %table-shop; 
+        border-collapse: separate;
+
+        // Tabla de los productos
+        tbody {
+            tr {
+                td {}
+
+                // <td> => Imagen
+                @include table-thumbnail;
+
+                // <td> => Info del producto
+                @include table-info-producto;
+
+                // <td> => Precio del producto & subtotales
+                @include table-precio;
+
+                // <td> => Cantidad
+                @include table-cantidad;
+
+                // <td> => remover
+                @include table-remove;
+
+                &.cart-discount {
+                    // <tr> <td> => cart discount
+                    @include table-cart-discount;
+                }
+            }
+        }
+
+        @include table-shop-layout;
+
+        // layout de la tabla
+        /*
+        @media screen and (min-width: 660px) {
+            //table-layout: fixed;
+        }
+
+        @media screen and (min-width: 580px) and (max-width: 659px) {
+            table-layout: auto;
+            width: 100%;
+        }
+        */
+    }
+}
+
+// Cupon
+.woocommerce {
+    table.cart.shop_table {
+        // tbody => actions
+        tfoot {
+            tr {
+                td.actions {
+                    width: 100%;
+                    @include padding(20px 0 0);
+                    border: none;
+
+                    // cupon
+                    .coupon {
+                        @include cupon-style;
+                    }
+
+                    // update
+                    .update-cart-button {
+                        max-width: 280px;
+                        width: 100%;
+                        float: right;
+                        @include media-breakpoint($mobile-wc-table, max-width) {
+                            @include margin(0 0 30px)
+                            overflow: hidden;
+                        }
+                        button.button {
+                            // @include button-main;
+                            @include set-new-button-style($color-main, $white, $color-main)
+                            @include set-new-button-hover(darken($color-main, 10%), $white, darken($color-main, 10%))
+                            @include border-radius(50px);
+                            @include em(13px);
+                            @include padding(0 10px);
+                            @include margin(0 auto);
+                            border-width: 2px;
+                            max-width: none;
+                            width: 100%;
+                            line-height: 42px;
+                            outline: none;
+                            @include media-breakpoint($mobile-wc-table, max-width){
+                                margin: 0 auto;
+                                min-width: 280px;
+                                width: auto;
+                            }
+                            &:disabled {
+                                @include set-new-button-style(transparent, $color-main, $color-main)
+                                opacity: 0.5;
+                                @include grayscale(1);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Subtotales
+.woocommerce-cart {
+    .cart-collaterals {
+        @include reset-content;
+        overflow: hidden;
+        clear: both;
+        @include free-shipping;
+        // DIV cart_totals
+        @include cart-totales;
+
+        // Titulo
+        h2 {
+            //@include cart-heading-title; //es diferente en este proyecto
+            @include border-radius(25px);
+            @include block(0 0 15px);
+            @include em(12px);
+            @include padding(5px 10px);
+            font-weight: $font-regular;
+            font-family: $font-primary;
+            text-align: center;
+            text-transform: uppercase;
+            background: $light;
+            line-height: 40px;
+            color: $color-text;
+            letter-spacing: 0;
+            border: none;
+        }
+
+        // Tabla de desglose (sobre escribe .shop_table)
+        @include cart-table-desglose;
+    }
+}
+
+#{$mi-carrito} {
+    .woocommerce {
+        // Buton proceder al pago
+        @include cart-realizar-pedido;
+    }
+}

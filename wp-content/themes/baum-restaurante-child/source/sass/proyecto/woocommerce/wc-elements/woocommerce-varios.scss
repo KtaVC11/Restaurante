@@ -1,0 +1,29 @@
+body.overlay {
+  overflow: auto;
+  &.overlay-checkout {
+    overflow: hidden;
+  }
+  &:before {
+    background: rgba($black, 0.5);
+    content: "";
+    display: block;
+    height: 100%;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 31;
+  }
+}
+
+.woocommerce {
+  div.product {
+    .stock {
+      @include em(16px);
+      //text-transform: uppercase;
+      color: $color-default;
+      font-family: $font-primary;
+      font-weight: $font-bold;
+    }
+  }
+}

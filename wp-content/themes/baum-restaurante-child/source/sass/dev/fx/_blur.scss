@@ -1,0 +1,12 @@
+
+/*
+* === blur filter ===
+* @param1 = pixel ratio. Default: 5px
+*/
+@mixin blur($ratio:5px) {
+    -webkit-filter: blur($ratio);
+       -moz-filter: blur($ratio);
+         -o-filter: blur($ratio);
+        -ms-filter: blur($ratio);
+            filter: blur($ratio);
+}

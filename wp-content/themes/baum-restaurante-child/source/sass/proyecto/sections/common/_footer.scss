@@ -1,0 +1,258 @@
+/*
+**
+**
+** FOOTER
+**
+**
+*/
+@mixin footer-nav-li-style {
+    li {
+        @include flexbox;
+        width: 100%;
+        margin-bottom: 15px;
+        a {
+            line-height: 1.1;
+        }
+    }    
+}
+// footer main
+.site-footer {
+    color: $color-secondary;
+    border-top: solid 12px $color-main;
+    .widget {
+        margin: 0 0 15px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    // footer bottom wrapper
+    &-bottom {
+        @include footer-bg;
+        padding-top: 30px;
+        padding-bottom: 100px;
+        position: relative;
+        // before > la imagen de fondop
+        &:before { 
+            @include block-size(100%)
+            @include background-options(right bottom, 320px auto);
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            @include media-breakpoint($media-xs) {
+                background-size: 420px auto;
+            }
+        }
+
+        // images
+        img { max-width: 100%; }
+
+        // reset <ul>
+        ul {
+            padding: 0;
+            margin: 0;
+            @include footer-nav-li-style;
+        }
+
+        a { 
+            @include em(14px);
+            color: $color-default;
+            &:hover, &:active, &:focus {
+                color: $color-secondary;
+                text-decoration: underline;
+            }
+        }
+
+        // Titulos
+        .widget-title {
+            @include font-family(1, $font-bold);
+            @include em(16px);
+            text-transform: uppercase;
+            color: $color-main;
+            margin-bottom: 10px;
+            width: 100%;
+            @include media-breakpoint($media-small, max-width) {
+                text-align: center;
+            }
+        }
+
+        // row
+        .row {
+            // all widgets
+            > div {
+                @include flex(0 1 auto);
+            }
+        }
+
+
+        // widget prefix -> site-footer-class
+        .site-footer {
+            // first
+            &-first {
+                @include media-breakpoint($media-small - 1px, max-width ) {
+                    @include flexbox;
+                    @include flex-direction(column);
+                    @include align-items(center);
+                    text-align: center;
+                }
+                .widget_media_image {
+                    max-width: 130px;
+                    width: 100%;
+                    display: block;
+                    margin-bottom: 30px;
+                }
+                .widget_text {
+                    line-height: 1.5;
+
+                }
+            }
+
+            // second and third
+            &-second, &-third { 
+                @include media-breakpoint($media-xs) {
+                    max-width: 30%;
+                }
+            }
+
+            // second
+            &-second {
+
+            }
+            &-third {  
+                .widget_nav_menu {
+                    &.footer-nav {
+                        max-width: 100%
+                    }
+                }
+            }
+
+            // thirth
+            &-third {
+                max-width: 100%;
+                @include media-breakpoint($media-xs) {
+                    max-width: 40%;
+                }
+                @include media-breakpoint($media-xs - 1px, max-width) {
+                    .widget_nav_menu {
+                        &.footer-nav {
+                            margin-top: 30px;
+                        }
+                    }
+                    .widget-title {
+                        text-align: center;
+                    } 
+                    ul li {
+                        @include justify-content(center);
+                    }
+                }
+            }
+
+
+            // all columns
+            &-first, &-second { 
+                @include media-breakpoint($media-xs) {
+                    max-width: 30%;
+                }
+            }
+            &-second { 
+                color: $color-default;
+            }
+            &-third {
+                @include media-breakpoint($media-xs) {
+                    max-width: 40%;
+                }
+            }
+
+            // flex para aplicar estilo a los sections
+            &-second, &-thirth {
+                @include flexbox
+                @include flex-wrap
+                @include flex-direction(column)
+                section {
+                    width: 100%;
+                    max-width: 100%;
+                }
+            }
+        }
+
+        // a todos los widgets > 992 mismo tamaño
+        [class*="site-footer"] {
+            @include media-breakpoint($media-sm) {
+                max-width: 33.3333%;
+            }
+        }
+
+        // menu dentro de .site-footer-second
+        .footer-nav {
+            @include padding(0 10px);
+            @include flex(0 1 auto);
+            width: 100%;
+            max-width: 100%;
+            @include media-breakpoint($media-xsmall) {
+                max-width: 50%;
+            }
+            nav[class] {
+                float: none;
+                width: 100%;
+                ul {
+                    //@include footer-nav-li-style;
+                }
+            }
+        }
+
+        // sociales
+        .widget_baumchild_sociales_widget {
+            &.sociales-info {
+                .sociales-wrapper {
+                    > span {
+                        @include media-breakpoint($media-small - 1px, max-width) {
+                            display: block;
+                            text-align: center;   
+                            margin-bottom: 8px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .sociales-wrapper {
+            margin-bottom: 0;
+        }
+
+    }
+
+
+    // fila de copyright y logo baum
+    &-copyright {
+        padding: 6px 0;
+        background-color: $color-default;
+        color: $white;
+        .container {
+            > div {
+                @include media-breakpoint($media-xs, max-width) {
+                    @include flex-direction(column);
+                }
+            }
+        }
+
+        p {
+            font-size: 12px;
+            margin-bottom: 0;
+            @include media-breakpoint($media-xs, max-width) {
+                text-align: center;
+            }
+        }
+    }
+
+
+    .logo-baum {
+        width: 50px;
+        figure {
+            margin-bottom: 0;
+            @include logo-baum($white);
+        }
+    }
+}
+
+

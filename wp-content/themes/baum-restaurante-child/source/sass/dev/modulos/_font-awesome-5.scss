@@ -1,0 +1,24 @@
+/*
+* === font awesome
+* @param1 = icon value. Default: null
+* @param2 = display. Default: null
+*/
+@mixin fontawesome5($icon: null, $w: 900, $str: null) {
+    font-family: "Font Awesome 5 Free", "Font Awesome 5 Brands" !important;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: inherit;
+    font-weight: $w;
+    @if $icon != null {
+        content: fa-content($icon);    
+    }
+}
+/* 
+* === change awesome icon value if needed ===
+*/
+@mixin fontawesome5-icon($icon: null, $str: null) {
+    content: fa-content($icon) $str; 
+}

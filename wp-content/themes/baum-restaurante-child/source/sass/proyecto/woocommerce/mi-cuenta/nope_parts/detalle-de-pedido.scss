@@ -1,0 +1,62 @@
+.woocommerce-MyAccount-content {
+  > p {
+    font-weight: $font-bold;
+    text-align: center;
+    line-height: normal;
+  }
+
+  mark[class*="order"] {
+    @include padding(0);
+    background: none;
+    color: $color-main;
+    font-weight: $font-bold;
+  }
+  table.shop_table.order_details {
+    tfoot {
+      tr {
+        th {
+          border-bottom: 1px solid lighten($light , 5%);
+          font-weight: 500;
+        }
+        td {
+          border-bottom: 1px solid lighten($light , 5%);
+        }
+      }
+    }
+  }
+  .woocommerce-customer-details {
+    float: left;
+    address,
+    .woocommerce-cedula-details {
+      color: $color-base;
+      width: 50%;
+      float: left;
+      border: 0;
+      margin: 15px auto;
+      padding-top: 0;
+      padding-bottom: 0;
+      @include media-breakpoint($mobile-wc-table, max-width) {
+        width: 100%;
+      }
+      strong {
+        color: $dark;
+      }
+      h2 {
+        @include cart-heading-title();
+        position: relative;
+        &:before {
+          @include font-awesome("\f3c5");
+          display: inline-block;
+          margin-right: 5px;
+        }
+      }
+      div.info {
+        padding: 10px;
+        border-radius: 5px;
+        border: solid 2px lighten($light , 5%);
+        text-align: left;
+        line-height: normal;
+      }
+    }
+  }
+}

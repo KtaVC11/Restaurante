@@ -1,0 +1,42 @@
+sass/
+|
+|== +dev 
+|       //// animations/
+|                   |– BounceIn.scss                # Animaciones
+|                   |– BounceInRight.scss           # Animaciones
+|                   |– BounceUpAndDown.scss         # Animaciones
+|                   |– fadeInDown.scss              # Animaciones
+|                   |– fadeInLeft.scss              # Animaciones
+|                   |– rotate360.scss
+|                   |– rotateIn.scss
+|
+|       //// default/
+|                   |– _functions.scss              # Funciones
+|                   |– _variables.scss              # variables default
+|
+|       //// fx/
+|                   |– _blur.scss                   # Blur FX
+|                   |– _grayscale.scss              # Escala de grises
+|                   |– _stripesCss.scss             # Gradiente tipo "stripes"
+|                   |– _toggleButtonFX.scss         # Animacion del toogle button de BS
+|
+|       //// -includes/
+|                   |– _inc.scss                    # Include de archivos, no editar.
+|
+|       //// modulos/
+|                   |– _body.scss                   # Body, footer
+|                   |– _buttons.scss                # Buttons, se definen en  #proyeto/_define.scss
+|                   |– _elements.scss               # ul, ol, hr, tables, breadcrumbs, pagination, blockquote
+|                   |– _font-awesome.scss           # font awesome mixin
+|                   |– _forms.scss                  # estilo de los formularios
+|                   |– _typo.scss                   # font families, font primary/secondary, convertidor em,  headings h1-h6
+|                   |– _utilidades.scss             # coleccion de utilidades css
+|
+|== +proyecto
+|       //// sections/
+|                   |– ## Cada seccion del proyecto ##
+|                   |- _define.scss                 # Se definen los estilos de los elementos 
+|
+|
+| * theme-inline.scss                           # above the fold css
+| * theme-styles.scss                           # non essential css

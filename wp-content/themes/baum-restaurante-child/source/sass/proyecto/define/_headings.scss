@@ -1,0 +1,30 @@
+/* style */
+
+$headings-size: (
+1: (40, 32),
+2: (40, 32),
+3: (40, 32),
+4: (18, 18),
+5: (16, 16),
+6: (14, 14) 
+);
+
+/*%headings {
+    @include font-family();
+    @include headings(0 auto 30px, $color-default, $font-bold);
+}*/
+
+/* each */
+@each $name, $value in $headings-size {
+    $size_desktop: nth($value, 1);
+    $size_mobile:  nth($value, 2);
+    h#{$name} {
+        @include font-family(2)
+        @include headings(0 0 20px, $color-default);
+        font-size: ($size_mobile / strip-unit($font-size)) + 0em;
+        @include media-breakpoint($media-xs) {
+            margin-bottom: 40px;
+            font-size: ($size_desktop / strip-unit($font-size)) + 0em;
+        }
+    }
+}

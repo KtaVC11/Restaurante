@@ -1,0 +1,84 @@
+.vc_blurb {
+    .media-wrapper {
+        @include padding(5px);
+        display: inline-block;
+
+        @at-root .blurb-circle#{&} {
+            @include border-radius(100%);
+
+            img {
+                @include border-radius(100%);
+            }
+        }
+
+        @at-root .blurb-square#{&} {}
+
+        @at-root .blurb-icon#{&} {
+            @include display-flex;
+
+            &.size-bmn {
+                font-size: 30px;
+            }
+            &.size-bsm {
+                font-size: 50px;
+            }
+            &.size-bnm {
+                font-size: 70px;
+            }
+            &.size-blg {
+                font-size: 80px;
+            }
+            &.size-bxl {
+                font-size: 100px;
+            }
+        }
+
+        @at-root .blurb-image#{&} {}
+
+        &.size {
+            &-bmn {
+                height: 60px;
+                width: 60px;
+            }
+            &-bsm {
+                height: 70px;
+                width: 70px;
+            }
+            &-bnm {
+                height: 100px;
+                width: 100px;
+            }
+            &-blg {
+                height: 115px;
+                width: 115px;
+            }
+            &-bxl {
+                height: 130px;
+                width: 130px;
+            }
+        }
+
+        img {
+            height: auto;
+            max-width: 100%;
+            width: auto;
+        }
+    }
+
+    .blurb-content {
+        p {
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .blurb-title {
+            font-size: 16px;
+        }
+
+        .blurb-excerpt {
+            color: #999;
+            font-size: 14px;
+        }
+    }
+}

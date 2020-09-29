@@ -1,0 +1,147 @@
+
+@mixin form-account {
+    padding: 30px 0;
+    border-radius: 5px;
+    margin: 25px auto;
+    @media (max-width: $media-small) {
+        padding: 20px;
+    }
+    button.woocommerce-Button {
+        &.button {
+            text-transform: uppercase;
+            @include display-flex;
+            @include border-radius(50px);
+            @include em(13px);
+            @include padding(0 10px);
+            margin-bottom: 20px;
+            border-width: 2px;
+            max-width: none;
+            width: 100%;
+            height: 60px;
+            line-height: 1.1;
+            outline: none;     
+            &.alt {
+                @include set-new-button-style($white, $color-main, $color-main);
+                @include set-new-button-hover($color-main, $white, $color-main);
+                content: 'Este es el ALT';
+            }
+        }
+
+
+    }
+    .btn-login {
+        .woocommerce-Button,.button.alt, #login-btn {
+
+        }
+    }
+    .form-row {
+        @include form-row;
+    }
+}
+
+
+// Pagina de LOGIN / Registro
+body.woocommerce-login-register {
+    .site-content {
+        min-height: 85vh;
+        position: relative;
+        &:before {
+            @include background-options(left bottom, contain, no-repeat, null);
+            pointer-events: none;
+            content: '';
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            top: auto;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            opacity: .3;
+        }
+
+
+        // HEADER
+        h2 {
+            color: $color-primary;
+            text-align: center;
+        }
+
+    }
+}
+
+
+// FORM LOGIN
+@at-root .woocommerce-account {
+    #customer_login {
+        @include reset-content;
+        @include clearfix;
+        > div[id*="-woocommerce"] {
+            width: 100%;
+            max-width: 100%;
+            display: block;
+            float: none;
+            margin: 0 auto;
+            padding-right: 0;
+            padding-left: 0;
+            h2 {
+                @include _bottom-line;
+                margin-bottom: 15px;
+            }
+            form {
+                max-width: 460px;
+                @include form-account;
+            }
+        }
+
+        // FORM LOGIN
+        #login-woocommerce {
+            form {
+                .login-actions {
+                    @include align-items(center);
+                    a.lost_password, label {
+                        @include em(13px);
+                        margin: 0 0 30px;
+                        opacity: 1;
+                        line-height: 1.2;
+                        margin-bottom: 12px;
+                    }
+                    a.lost_password {
+                        color: $color-secondary;
+                        margin-left: auto;
+                    }
+                    label {
+
+                    }
+                }
+            }
+        }
+    }
+}
+//contraseña
+
+@at-root .woocommerce-lost-password {
+    form {
+        &.woocommerce-ResetPassword, &.lost_reset_password {
+            max-width: 768px;
+
+            p {
+                @include first-child {
+                    margin-bottom: 30px;
+                    font-weight: $font-bold;
+                }
+            }
+
+            @include form-account;
+            .woocommerce-Button {
+                max-width: 320px;
+                margin: 0 auto;
+            }
+        }
+        &.lost_reset_password {
+            max-width: 400px;
+        }
+    }
+    h2 {
+        color : $color-primary;
+    }
+}

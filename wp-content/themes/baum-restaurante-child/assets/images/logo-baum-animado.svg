@@ -1,0 +1,65 @@
+<svg 
+    version="1.1" 
+    xmlns="http://www.w3.org/2000/svg" 
+    xmlns:xlink="http://www.w3.org/1999/xlink" 
+    x="0px" 
+    y="0px" 
+    viewBox="0 0 80 80" 
+    style="enable-background:new 0 0 80 80;" 
+    xml:space="preserve" 
+    id="baum_ID"
+>
+	<style>
+@-webkit-keyframes baum_line_Animation{
+     0%{
+        opacity: 0;
+    }
+     49.9%{
+        opacity: 0;
+    }
+     50%{
+        opacity: 1;
+    }
+     100%{
+        opacity: 1;
+    }
+}
+ @keyframes baum_line_Animation{
+     0%{
+        opacity: 0;
+    }
+     49.9%{
+        opacity: 0;
+    }
+     50%{
+        opacity: 1;
+    }
+     100%{
+        opacity: 1;
+    }
+}
+ #baum_ID *{
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: cubic-bezier(0, 0, 1, 1);
+    animation-timing-function: cubic-bezier(0, 0, 1, 1);
+}
+ #baum_line_color{
+    fill: #01B69B;
+}
+ #baum_line{
+    -webkit-animation-name: baum_line_Animation;
+    animation-name: baum_line_Animation;
+    opacity: 0;
+}
+	</style>
+
+<g id="baum_letter">
+	<path id="baum_letter_path" d="M25.719,27.365c0-1.54-0.668-2.362-2.363-2.362h-1.898v-2.415h8.628v13.971h0.103&#xA;&#9;&#9;c1.592-2.979,4.263-4.727,7.756-4.727c7.188,0,10.786,5.805,10.786,12.792c0,6.983-3.598,12.789-10.786,12.789&#xA;&#9;&#9;c-3.699,0-6.474-1.591-8.271-4.879l-1.694,4.363h-2.261V27.365z M36.968,54.536c5.443,0,6.881-5.344,6.881-9.912&#xA;&#9;&#9;c0-4.572-1.438-9.916-6.881-9.916c-5.445,0-6.883,5.343-6.883,9.916C30.085,49.192,31.522,54.536,36.968,54.536z"/>
+</g>
+<g id="baum_line">
+	<rect id="baum_line_color" x="57.106" y="13.772" width="1.437" height="52.456"/>
+</g>
+<script>(function(){var a=document.querySelector('#baum_ID'),b=a.querySelectorAll('style'),c=function(d){b.forEach(function(f){var g=f.textContent;g&amp;&amp;(f.textContent=g.replace(/transform-box:[^;\r\n]*/gi,'transform-box: '+d))})};c('initial'),window.requestAnimationFrame(function(){return c('fill-box')})})();</script></svg>

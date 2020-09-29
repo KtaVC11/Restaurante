@@ -1,0 +1,12 @@
+
+/*
+* === Do an animation ===
+* @param1: animation name, default null
+* @param2: animation time, default null
+* @param3: animation adional params, default null
+*/
+@mixin _do($animation: null, $time: null, $str: null) {
+    -webkit-animation: $animation $time $str;
+    -moz-animation: $animation $time $str;
+    animation: $animation $time $str;
+}

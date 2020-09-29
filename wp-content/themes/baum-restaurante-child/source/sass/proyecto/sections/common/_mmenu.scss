@@ -1,0 +1,226 @@
+/*
+**
+**
+** <HOME>
+**
+**
+*/
+
+/* Cuando el mmenu está abierto */
+.mm-wrapper_opened {
+    .mm-page.mm-slideout, header {
+        @include blur(1px);
+
+    }
+}
+
+/* Panels */
+body {
+    .mm-menu_position-bottom.mm-menu_opened,
+    .mm-menu_position-front.mm-menu_opened,
+    .mm-menu_position-top.mm-menu_opened {
+        @include z-index(mmenu_panel);
+    }
+}
+
+// Ancho maximo que abre
+.mm-menu_offcanvas {
+    width: 90%;
+}
+
+.mm-wrapper_opening .mm-menu_position-right.mm-menu_opened ~ .mm-slideout {
+    @include blur(1px);
+}
+.mm-wrapper__blocker.mm-slideout {
+    background-color: rgba(lighten($color-default, 5%), .4);
+}
+
+/* Overlay */
+.mm-menu_opened.mm-menu_pagedim-black ~ .mm-wrapper__blocker {
+    @include z-index(mmenu_overlay);
+}
+
+// reset before/after
+.mm-panel {
+    @include reset-content(true);
+}
+
+// mm-menu styles
+.mm-menu {
+
+    .mm-panels {
+
+    }
+
+    // Main Panel
+    .mm-panel {
+        background: $color-main;
+        @include padding(40px 25px 25px);
+        @include media-breakpoint($media-xs) {
+            @include padding(45px 30px);
+        }
+        //contenido
+        .widget_text{
+            text-align: center;
+        }
+
+        // button close panel
+        $m: 34px;
+
+        .mmenu-close-button {
+            @include transition($transition);
+            @include border-radius(100%);
+            background: none;
+            padding: 0;
+            cursor: pointer;
+            position: absolute;
+            width: $m;
+            height: $m;
+            line-height: 0;
+            top: 10px;
+            bottom: auto;
+            right: 15px;
+            left: auto;
+            text-align: center;
+            color: $white;
+            border: solid 1px $white;
+            //@include fs(26px);
+            @include display-flex;
+            .icon_cerrar {
+                line-height: 1;  
+            }
+            &:hover {
+
+            }
+        }
+
+        // Cuando el mmenu está abierto
+        &.mm-menu_opened {
+            // style
+        }
+    }
+
+    // Elementos
+    .__mmenu {
+        &-wrap {
+
+            // Titulos
+            h2, h3 {
+                line-height: 1;
+                @include em(30px);
+                @include media-breakpoint($media-xs) {
+                    @include em(35px);
+                }
+            }
+        }
+
+        // div title - div content
+        &-title, &-content {
+            margin-bottom: 25px;
+        }
+
+
+    }
+
+    .mm-tabstart, .mm-tabend {
+        @extend %visual-hide;
+    }
+}
+
+
+/* ### PANELES ### */
+
+//Panel cambiar-busqueda
+#sidebar-panel{
+    .sidebar-contacto{
+        background: $color-main !important;
+    }
+    .widget-contacto{
+        text-align: center;
+    }
+    // mm panel
+    .mm-menu {
+        .mm-panel {
+            background: pink;
+            // Button
+            .mmenu-close-button {
+                color: $white;
+            }
+        }
+    }
+
+    // mm panel
+    .mm-panel {
+
+        // mmenu-*
+        .__mmenu {
+
+            // wrap principal
+            &-wrap {
+
+            }
+
+            // content
+            &-content {
+                h3 {
+                    color: $white;
+                }
+            }
+
+            &-form {
+                // Seleccion de los botones
+                .btn {
+                    padding: 18px 4px;
+                }
+
+                .form-group-radios {
+                    label {
+                        color: $white;
+                    }
+
+                    // los input radio
+                    input[type="radio"] {
+                        &:hover, &:active {
+                            &:not(:checked) {
+                                cursor: pointer;
+                            }
+                            ~ label {
+                                &.btn {
+                                    &:not(.checked) {
+                                        @include set-new-button-style($white, $color-main, $white); 
+                                        @include box-shadow(none);
+                                    }
+                                    &.checked {
+                                        cursor: default;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    label {
+                        &.btn {
+                            @include text-shadow(none);
+                            @include set-new-button-style($color-main, $white, $white);
+                            @include box-shadow(none);
+                            @include em(12px);
+                            &.checked {
+                                @include set-new-button-style($white, $color-main, $white);
+                            }
+                        }
+                    }
+                }
+
+                .enviar {
+                    padding-top: 15px;
+                    .btn {
+                        @include border-radius(0);
+                        width: 100%;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+

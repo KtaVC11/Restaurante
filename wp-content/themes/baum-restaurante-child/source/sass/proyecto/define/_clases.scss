@@ -1,0 +1,39 @@
+
+// Clase Hide, esconde todo > $media-primary
+._hide:not(._small) {
+    @include media-breakpoint($media-xs + 1px) {
+        display: none;
+    }
+}
+._small {
+    @include media-breakpoint($media-xs + 1px) {
+        display: none;
+    }
+}
+
+// Clase pad
+.pad {
+    @include padding(0 15px);
+}
+
+// Clase col
+.col {
+    @include block;
+}
+
+// Clase no-padding
+.no-padding {
+    @include padding(0);
+}
+
+
+body .container {
+    @include media-breakpoint(($media-md - 1px), max-width) {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+.body-overflow {
+    overflow: hidden;
+}

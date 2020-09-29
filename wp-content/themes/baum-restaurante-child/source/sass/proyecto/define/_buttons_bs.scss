@@ -1,0 +1,60 @@
+@mixin bootstrap-buttons {
+  //@include set-button-style;
+
+  // Buttons bootstrap default
+  $buttons: (
+    warning:    ($color-warning,        $white,     $color-warning),
+    primary:    ($color-main,           $white,     $color-main),
+    secondary:  ($color-secondary,      $white,     $color-secondary),
+    dark:       ($color-default,        $white,     $color-default)
+  );
+
+  // Buttons bootstrap outline
+  $buttons-outline: (
+      primary-alt:    ($white,      $color-main,    $color-main),
+      secondary-alt:  ($white,      $color-default, $color-default)
+  );
+
+  /* main buttons: bootstrap*/
+  .btn {
+    @extend %button-main-style;
+
+    // Buttons normales
+    @each $name, $colors in $buttons {
+            $bgcolor: nth($colors, 1);
+            $fontcolor: nth($colors, 2);
+            $border-color: nth($colors, 3);
+            &-#{$name} {
+                background: $bgcolor;
+                color: $fontcolor;
+                border-color: $border-color;
+                &:hover,&:active, &:focus, &:not(:disabled):not(.disabled):active, &:not(:disabled):not(.disabled):active:focus {
+                    background: darken($bgcolor, 8%);
+                    color: $fontcolor;
+                    border-color: darken($border-color, 8%);
+                    @include box-shadow(none); 
+                    outline: 0 dotted;
+                    outline: 0 auto -webkit-focus-ring-color;
+                }
+            }
+        }
+
+    // Outline buttons
+    @each $name, $colors in $buttons-outline {
+        $bgcolor: nth($colors, 1);
+        $fontcolor: nth($colors, 2);
+        $border-color: nth($colors, 3);
+        &-#{$name} {
+            background: $bgcolor;
+            color: $fontcolor;
+            border-color: $border-color;
+            &:hover,&:active, &:focus {
+                @include box-shadow(none);
+                background: $fontcolor;
+                color: $white;
+                border-color: $border-color;
+            }
+        }
+    }
+  }
+}

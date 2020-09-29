@@ -1,0 +1,385 @@
+
+/*
+*  SCSS snippets
+*  _utils.scss
+*  Autor: Francisco Chanto
+*  v1.0.0
+*  Mayo, 2018
+*/
+
+
+/* 
+* === UL LI ===
+* @param1 = > li margin, default: 0 0 10px
+* @param2 = font awesome ? default: false
+* @param3 = font awesome icono 1, default circle 
+* @param4 = font awesome icono 2, default circle-o 
+*/
+@mixin ul-li($margin: 0 0 10px, $awesome: false, $icono1: '\f111', $icono2: '\f10c') {
+    display: block;
+    clear: both;
+    padding: 0;
+    font-size: inherit;
+    li {
+        font-size: inherit;
+    }
+    > li {
+        list-style:none;
+        height:auto;
+        margin: $margin;
+        color: inherit;
+        ul {
+            margin:10px 0 0;
+            > li {
+                list-style:none;
+                margin: $margin;
+                color: inherit;
+            }
+        }
+    }
+
+    @if $awesome != false   {
+        >  li {
+            padding: 0;
+            background: none;
+            &:before {
+                @include font-awesome($icono1);
+            }
+            > ul {
+                > li {
+                    padding: 0;
+                    &:before {
+                        @include font-awesome($icono2);
+                        font-size: inherit;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* 
+* === OL LI ===
+* @param1  = $ol-textcolor, color del texto del consecutivo numeral
+* @param2  = $ol-bgcolor         = color del background del consecutivo numeral
+* @param3  = $ol-border-radio    = borde redondeado del elemento como consecutivo numeral
+* @param4  = $ol-font            = font que utiliza el consecutivo numeral
+* @param5  = $ol-top             = position TOP del consecutivo numeral
+* @param6  = $ol-left            = position LEFT del consecutivo numeral
+* @param7  = $ol-pad             = padding del elemento como consecutivo numeral
+* @param8  = $ol-mar             = margen del elemento como consecutivo numeral
+* @param9  = $ol-size            = tamaño del font dentro del elemento como consecutivo numeral
+* @param10 = $ol-weight          = font-weight del font dentro del elemento como consecutivo numeral
+* @param11 = $mar-ol-ol          = margen del segundo **OL**   ol > li > **OL**
+*/
+@mixin ol-li(
+$ol-textcolor: $color-text, 
+$ol-bgcolor : $color-base, 
+$ol-border-radio: 2px, 
+$ol-font : null, 
+$ol-top: -1px, 
+$ol-left: 0, 
+$ol-pad : 1px 5px 2px, 
+$ol-mar : 0 10px 0 0, 
+$ol-size: 10px, 
+$ol-weight : normal, 
+$mar-ol-ol : 10px 0 0 25px
+) {
+    counter-reset:li; 
+    margin:0 0 30px;
+    padding-left:0;
+    > li {
+        list-style: none outside none; 	
+        margin: 0 0 10px 0;
+        padding: 0 0 0 0;	
+        position: relative;	
+        border:none;            
+        &:before {
+            color: $ol-textcolor;
+            background: $ol-bgcolor;
+            content:counter(li, decimal);
+            counter-increment: li;
+            font-family: $ol-font;
+            left: $ol-left;
+            margin: $ol-mar;
+            position: relative;
+            text-align: center;
+            top: $ol-top;
+            padding: $ol-pad;
+            font-size: $ol-size;
+            font-weight: $ol-weight;
+            text-indent:0;
+            -webkit-border-radius: $ol-border-radio;
+            border-radius: $ol-border-radio;
+        }
+        > ol {
+            margin: $mar-ol-ol;
+            li{
+                list-style: decimal inside;	
+                padding:0;	
+                text-indent:0;
+                &:before {
+                    content: none;
+                    text-indent:0;            
+                }
+            }
+        }
+    }
+}
+
+/*
+* === hr element ===
+* @param1 = hr color value. Default: #333
+* @param2 = hr height. Default: 1px
+* @param3 = hr margin. Default: 0 0 25px
+*/
+@mixin hr($hrcolor: #333, $height: 1px, $margin: 0 0 25px) {
+    margin: $margin;
+    width: 100%;
+    display: block;
+    clear: both;
+    border: none;
+    background: $hrcolor;
+    height: $height;
+}
+
+
+/*
+* === Bootstrap table ===
+* @param1 = table background color. Default: null
+* @param2 = table border width & color. Default: 1px #000
+* @param3 = caption enable, true/false. Default: false
+* @param4 = caption color. Default: #fff
+* @param4 = caption background color. Default: null
+*/
+@mixin table( $bgcolor: null, $border: solid 1px #000, $caption: false ,$caption-color: #fff, $caption-bg: none) {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    background-color: $bgcolor;
+    border: $border;
+    > thead > tr > th,
+    > tbody > tr > th,
+    > tfoot > tr > th,
+    > thead > tr > td,
+    > tbody > tr > td,
+    > tfoot > tr > td {
+        padding: 8px;
+        line-height: normal;
+        vertical-align: top;
+        border-top: 1px solid $border;
+    }
+
+    > thead > tr > th {
+        vertical-align: bottom;
+        border-bottom: 2px solid $border;
+    }
+    @if $caption {
+        > caption {
+            background: $caption-bg;
+            color: $caption-color;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            text-align: left;
+        }
+        > caption + thead > tr:first-child > th,
+            > colgroup + thead > tr:first-child > th,
+            > thead:first-child > tr:first-child > th,
+            > caption + thead > tr:first-child > td,
+            > colgroup + thead > tr:first-child > td,
+            > thead:first-child > tr:first-child > td {
+            border-top: 0;
+        }
+    }
+    > tbody + tbody {
+        border-top: 2px solid $border;
+    }
+
+
+
+    > thead > tr > th,
+    > tbody > tr > th,
+    > tfoot > tr > th,
+    > thead > tr > td,
+    > tbody > tr > td,
+    > tfoot > tr > td {
+        border: 1px solid $border;
+    }
+    > thead > tr > th,
+    > thead > tr > td {
+        border-bottom-width: 2px;
+    }
+
+    th {
+        text-align: left;
+    }
+}
+
+
+/*
+* === Bootstrap breadcrumbs ===
+* @ $bc-link:       => COLOR
+* @ $bc-current     => COLOR CURRENT
+* @ $bc-current-bg  => COLOR DEL BG CURRENT
+* @ $bc-hover       => COLOR HOVER
+* @ $bc-hover-bg    => BACKGROUND DEL HOVER
+* @ $bc-bg-color    => BACKGROUND DE LOS BREADCRUMBS GLOBAL
+* @ $bc-font        => FONT DEL BREADCRUMB
+* @ $bc-size        => TAMAÑO PIXELES == default : $pixeles, 
+* @ $bc-pad         => PADDING
+* @ $bc-mar         => MARGIN
+* @ $fa-mar         => AWESOME FONT MARGEN
+* @ $dec-1          => TEXT DECORATION 1
+* @ $dec-2          => TEXT DECORATION 2
+*/
+@mixin breadcrumbs(
+$bc-link        : $color-default,
+$bc-current     : $color-main, 
+$bc-current-bg  : transparent,
+$bc-hover       : $red, 
+$bc-hover-bg    : $color-main,
+$bc-bg-color    : transparent, 
+$bc-font        : $font, 
+$bc-size        : $pixeles, 
+$bc-pad         : 0, 
+$bc-mar         : 0 10px 0 0, 
+$fa-mar         : 0 5px 0 0, 
+$dec-1          : underline,
+$dec-2          : underline)
+{
+    list-style: none;
+    margin-bottom: 0;
+    @include pad(0 0 0 25px);
+    > li {
+        line-height: normal;
+        list-style: none;   
+        display:  inline-block;
+
+        a {
+            background-color: $bc-bg-color;
+            display: inline-block;
+            font-family: $bc-font;
+            font-size: $bc-size;
+            color: $bc-link;
+            margin: $bc-mar;
+            padding: $bc-pad;
+
+            i {
+                margin: $fa-mar;
+                position: relative;
+                top: -1px;
+            }
+            &:hover, &:active, &:focus {
+                color: $bc-hover;
+                background-color: $bc-hover-bg;
+                text-decoration: $dec-1;
+            }
+        }
+    }
+
+    > li.current {
+        a {
+            color: $bc-current;
+            background: $bc-current-bg;
+            text-decoration: none;
+            cursor: default;
+        }
+    }
+}
+
+
+/*
+* === bootstrap pagination ===
+*/
+@mixin pagination(
+/* 01 */ $colordelbgdela: $black,           /* COLOR DEL BACKGROUND DEL AL      */
+/* 02 */ $linkcolor: $white,                /* COLOR DEL LINK > A               */
+/* 03 */ $linkhover: $red,                  /* COLOR DEL A HOVER                */
+/* 04 */ $linkhoverbg: $colorbase,          /* COLOR DEL BG DEL A HOVER         */
+/* 05 */ $current: $white,                  /* COLOR DEL A CUANDO ES CURRENT    */
+/* 06 */ $bgcurrent: $colorbase,            /* COLOR DEL BACKGROUND CURRENT     */
+/* 07 */ $link-size: inherit,               /* TAMAÑO PX DEL LINK > A           */
+/* 08 */ $fontfamily: inherit ,             /* FUENTE PARA LA PAGINACION        */
+/* 09 */ $linkWeight: normal,               /* FONT-WEIGHT  DEL LINK > A        */
+/* 10 */ $border-radio: 0,                  /* BORDE RADI DEL A                 */
+/* 11 */ $disable-bg: inherit,              /* COLOR DE FONDO DEL ITEM DISABLE  */
+/* 12 */ $link-disable : rgba($white, .25), /* COLOR DEL LINK DISABLE           */
+/* 13 */ $pag-a-borde: none,                /* BORDE DEL A  ¿?                  */
+/* 14 */ $pagul-borde: none,                /* BORDE DEL UL ¿?                  */
+/* 15 */ $pagli-borde: none,                /* BORDE DEL LI ¿?                  */
+/* 16 */ $w : auto,                         /* WIDTH DEL UL                     */
+/* 17 */ $ul-display : inline-block,        /* DISPLAY DEL LI                   */
+/* 18 */ $li-display : inline               /* DISPLAY DEL LI                   */
+) {
+    @include clearfix;
+    display: block;
+    width: $w;
+    border: $pagul-borde;
+    margin: 0;
+    > li {
+        display: $li-display;
+        @include pad(0);      
+        list-style: none;
+        background-image: none;
+        border: $pagli-borde;
+        > a {
+            border: $pag-a-borde;
+            line-height: normal;
+            font-size: $link-size;
+            font-family: $fontfamily;
+            font-weight: $linkWeight;
+            background: $colordelbgdela;
+            color: $linkcolor;
+            @include pad(4px 10px);        
+            @include mar(0 0 0 4px);
+            @include border-radio($border-radio);
+            &:hover { background: $linkhoverbg; color: $linkhover; }
+        }
+    }
+    > li.active {
+        > a { background: $bgcurrent; color: $current; border-color: $current; }
+    }
+    > li.disable  {
+        > a {
+            background: $disable-bg;
+            color: $link-disable;
+            pointer-events: none;
+            &:hover, &:active, &:focus {
+                background: $disable-bg;
+                color: $link-disable;
+                pointer-events: none;
+            }
+        }
+    }
+}
+
+/*
+* === Blockquotes ===
+* @param1 = blockquote image ". Default: null
+* @param2 = blockquote padding. Default null
+* @param3 = color del texto. Default: #666
+* @param4 = font size value. Default: 100%
+* @param5 = margin values. Default 0 auto 20px
+*/
+@mixin blockquote( $blockquote-img : null, $blockquote-pad: null, $p-color: #666, $p-size: null, $blockquote-mar: 0 0 20px) {
+    @if $blockquote-img != null {
+        background: $blockquote-img;
+    }
+    margin: $blockquote-mar;
+    padding: $blockquote-pad;
+    min-height: 50px;  
+    border: none;
+    font-size: inherit;
+    p {
+        color: $p-color;
+        font-size: $p-size;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+    h2, h3, h4, h5, h6 {
+        margin-top: 20px;
+    }
+}

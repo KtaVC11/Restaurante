@@ -1,0 +1,79 @@
+/* 
+======== PLUGINS ======== 
+*/
+@import "sections/_plugins/_select2.scss";
+@import "sections/_plugins/_litepicker.scss";
+// @import "sections/_plugins/_cf7.scss";
+
+/* 
+======== COMMON ======== 
+*/
+@import "sections/z-index/_z-index.scss";
+@import "sections/common/_form-proyecto.scss";
+@import "sections/common/_content.scss";
+@import "sections/common/_baum-sociales.scss";
+/* 
+======== HEADER ======== 
+*/
+@import "sections/common/_header.scss";
+@import "sections/common/_menu-mi-cuenta.scss";
+@import "sections/common/_menu-principal.scss";
+@import "sections/common/_mmenu.scss";
+/* 
+======== FOOTER ======== 
+*/
+@import "sections/common/_footer.scss";
+
+/* 
+======== HOME ======== 
+*/
+@import "sections/home/_home.scss";
+@import "sections/home/_call-to-action.scss";
+@import "sections/home/_accordion.scss";
+@import "sections/home/_contacto.scss";
+/* 
+======== Visual Composer ======== 
+*/
+@import "sections/visual-composer/_vc-baum-single_image.scss";
+@import "sections/visual-composer/_vc-icon.scss";
+@import "sections/visual-composer/_vc_baum-blurb.scss";
+/* 
+======== WOOCOMMERCE ELEMENTS ======== 
+*/
+@import "woocommerce/_wc-twenty-nineteen.scss";
+@import "woocommerce/_main-utilities.scss";
+
+@import "woocommerce/wc-elements/woocommerce-buttons.scss";
+@import "woocommerce/wc-elements/woocommerce-forms.scss";
+@import "woocommerce/wc-elements/woocommerce-header.scss";
+@import "woocommerce/wc-elements/woocommerce-notificaciones.scss";
+@import "woocommerce/wc-elements/woocommerce-ajax-loader.scss";
+@import "woocommerce/wc-elements/woocommerce-varios.scss";
+@import "woocommerce/wc-elements/woocommerce-breadcrumb.scss";
+@import "woocommerce/wc-elements/woocommerce-carousels.scss";
+/* 
+======== WOOCOMMERCE PROYECT ======== 
+*/
+//@import "woocommerce/listado-productos/listado-productos";
+@import "woocommerce/listado-productos/_listado-productos.scss";
+@import "woocommerce/listado-productos/_quick-view.scss";
+@import "woocommerce/favoritos/_favoritos.scss";
+@import "woocommerce/detalle-producto/_detalle.scss";
+
+@import "woocommerce/detalle-producto/_wpis-product-image-gallery.scss"; // Galeria de imagenes
+
+/* 
+======== WOOCOMMERCE CHECKOUT ======== 
+*/
+@import "sections/checkout/_section-checkout.scss";
+@import "woocommerce/checkout/_checkout.scss";
+
+/* 
+======== MI CUENTA ======== 
+*/
+@import "woocommerce/mi-cuenta/mi-cuenta.scss";
+
+/* 
+======== CONTACTO ======== 
+*/
+// @import "sections/contacto/contacto";

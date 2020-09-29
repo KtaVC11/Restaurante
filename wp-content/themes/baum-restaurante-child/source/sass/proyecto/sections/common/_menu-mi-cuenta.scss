@@ -1,0 +1,97 @@
+
+
+/*
+* COLOR a definir el fondo
+*/
+// $thiscolor: $white;
+
+/*
+.cuenta-wrapper {
+
+
+    a.toggle-account {
+        span {
+            margin-right: 5px;
+        }
+        i ~ i {
+            margin-left: 4px;
+        }
+
+        &.open {
+            i.fa-angle-down {
+                // @include transform-rotate(180deg, x);
+                &:before {
+                    @include font-awesome-icon("\f106");
+                }
+            }
+        }
+    }
+
+    // div
+    div.menu-edit-account {
+        background: $thiscolor;
+        display: none;
+        @include padding(0);
+        
+        @include media-breakpoint($mobile-bp + 1) {
+            display: block;
+            margin-top: 10px;
+            position: absolute;
+            right: 0;
+            width: 200px;
+            z-index: 21;
+            @include box-shadow(0 0 20px 0 rgba($black, .2));
+
+            &:before {
+                @include font-awesome('\f0d8');
+                @include transform-translate(-50%, 0);
+                @include em(20px);
+                color: $thiscolor;
+                right: 10px;
+                top: -13px;
+                position: absolute;
+                line-height: 1;
+            }
+        }
+
+        nav {
+            @include block;
+
+            ul {
+                @include padding(0);
+                @include margin(0);
+
+                li {
+                    border-top: 1px solid transparent;
+                    display: block;
+
+                    &:first-child {
+                        border: none;
+                    }
+
+                    a {
+                        @include media-breakpoint($mobile-bp + 1) {
+                            border-left: 5px solid #DF6A2E;
+                            font-weight: $font-light;
+                        }
+
+                        color: $color-main;
+                        line-height: 1.5;
+                        display: block;
+                        @include padding(6px 6px 6px 15px);
+
+                        &:after {
+                            content: none;
+                        } 
+
+                        &:hover, &:active, &:focus {
+                            background: $color-main;
+                            color: $white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+*/

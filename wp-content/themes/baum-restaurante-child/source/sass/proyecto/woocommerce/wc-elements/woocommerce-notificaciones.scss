@@ -1,0 +1,117 @@
+@at-root #page {
+    .woocommerce {
+        &-info,
+        &-message,
+        &-error {
+            @include reset-content;
+            @include clearfix;
+            @include border-radius(2px);
+            @include padding(15px 10px);
+            background: lighten($color-main, 80%);
+            margin: 10px 0;
+            border: solid 1px $color-main;
+            color: $color-text;
+            width: 100%;
+            text-align: left;
+            font-size: 13px;
+            border-radius: 10px;
+            li {
+                list-style: none;
+                @include reset-content(false);
+                &:before {
+                    display: none;
+                }
+            }
+            .button,
+            .wc-forward {
+                border: 0;
+                @include border-radius(25px);
+                color: $color-main;
+                background-color: transparent;
+                outline: none;
+                @extend %button-main-alt;
+                @include padding(0 10px);
+                font-weight: $font-bold;
+                max-width: none;
+                @media (max-width: $media-xs) {
+                    float: left;
+                    @include padding(0);
+                    margin-top: 10px;
+                }
+            }
+        }
+
+        // exito
+        %xt {
+            line-height: 1.2;
+            border: none;
+            background: none;
+            padding-bottom: 0;
+            padding-top: 0;
+        }
+        &-message,
+        &-error {
+            line-height: 1.8;
+            list-style: none;
+            .button {
+                @include media-breakpoint(0) {
+                    float: right;    
+                }
+                @extend %xt;
+                &:hover, &:active, &:focus {
+                    @extend %xt;
+                    color: $color-main;
+                }
+            }
+        }
+
+        // exito
+        &-message {
+            border-color: $color-main;
+            background-color: lighten($color-main, 80%);
+            color: $color-base;
+        }
+
+        // Required
+        &-error {
+            border-color: $color-danger;
+            color: $color-danger;
+            background-color: $white;
+            > li {
+                margin-bottom: 0;
+            }
+        }
+
+        &-info {
+            border-color: $color-main;
+            color: $black;
+            background-color: lighten($color-main, 80%);
+            z-index: auto;
+            a {
+                color: $color-base;
+                &:link {
+                    color: $color-base;
+                }
+            }
+        }
+    }
+    //BTN
+    .return-to-shop {
+        a.button.wc-backward {
+            outline: none;
+            @extend %button-main-alt;
+            @include padding(0 10px);
+            font-weight: $font-medium;
+            max-width: none;
+            line-height: 34px;
+            @include border-radius(25px);
+        }
+    }
+}
+
+// Error de stock
+.out-stock-item {
+    @include block;
+    @include em(14px);
+    padding-top: 10px;
+}

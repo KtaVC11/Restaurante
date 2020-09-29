@@ -1,0 +1,451 @@
+/*
+* === Input Style ===
+* @param1 = input padding in px. Default: 0 15px
+* @param2 = border style. Default: solid 1px #000, 
+* @param3 = input color. Default: #000
+* @param4 = input background color. Default: #fff
+* @param5 = font weight. Default: inherit
+* @param6 = border readius, default: null
+* @param7 = line height, default: null
+* @param8 = transition speed, default: 130ms
+*/
+@mixin input-style(
+  $padding: 0 15px,
+  $border: solid 1px #000,
+  $color: #000,
+  $bg: #fff,
+  $font-weight: inherit,
+  $radius: null,
+  $size: null,
+  $line-height: null,
+$transition: 130ms) 
+{
+  -webkit-transition: all $transition ease;
+  -moz-transition: all $transition ease;
+  -ms-transition: all $transition ease;
+  -o-transition: all $transition ease;
+  transition: all $transition ease;
+  // apply font-size?
+  @if $size != null {
+    font-size: ($size / $font-size) + 0em;
+  } @else {
+    font-size: inherit;
+  }
+  // apply line-height?
+  @if $line-height != null {
+    line-height: $line-height;
+  } @else {
+    line-height: $forms-line-height;
+  }
+  // aply border-radius?
+  @if $radius != null {
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+  }
+  // apply custom styles?
+  font-weight: $font-weight;
+  padding: $padding;
+    background-color: $bg;
+  border: $border;
+  color: $color;
+  height: auto;
+}
+
+@mixin forms($form-group: false) {
+  @if $form-group {
+    .form-group {
+      @include mar(0 0 15px);
+      @include pad(0);
+    }
+  }
+
+  // labels
+  label {
+    font-size: inherit;
+    max-width: none;
+    width: 100%;
+    margin: 0 0 8px;
+  }
+
+    // input & selects
+    input:not(.button), select {
+
+    }
+
+  // Radio buttons & checkboxes
+    input[type="checkbox"], input[type="radio"] {
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+    height: auto;
+  }
+
+    // Inputs
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0;}
+    input[type=number] {-moz-appearance:textfield;}
+
+
+  // select fix  // Chrome & Safari
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    select {
+      height: $forms-line-height;
+      line-height: $forms-line-height;
+      background: $white;
+    }
+  }
+  // Remove button padding in FF
+  select::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+    // Firefox only */
+    @-moz-document url-prefix() { 
+        select {
+            padding: 6px 8px !important;
+        }
+    }
+
+  // Errores
+  .help-block {
+    font-size: 13px;
+    font-family: inherit;
+    color: $color-danger;
+  }
+  p.form-row.woocommerce-invalid.validate-required {
+    label {
+      color: $color-danger;
+    }
+
+    input[class]:not(.button) {
+      border-color: $color-danger;
+    }
+    .subscribe-field {
+      label {
+        color: $color-text;
+      }
+    }
+  }
+}
+
+/*
+* === Estilo del placeholder ===
+* @param1 = font family, Default: inherit
+* @param2 = font size, Default: inherit
+* @param3 = color, Default: #cc
+* @param4 = text tramsform, Default: none
+* @param5 = text align, Default: left
+* @param6 = font weight, Default: normal
+* @param7 = font style, Default: normal
+*/
+@mixin placeholder-default(
+  $font-family: inherit,
+  $size: inherit,
+  $color: #ccc,
+  $transform: none,
+  $align: left,
+  $weight: normal,
+  $style: normal
+) {
+  input[type]::-webkit-input-placeholder {
+    font-family: $font-family;
+    font-size: $size;
+    color: $color;
+    text-transform: $transform;
+    text-align: $align;
+    font-weight: $weight;
+    font-style: $style;
+    opacity: 1;
+  }
+  input[type]:-moz-placeholder {
+    font-family: $font-family;
+    font-size: $size;
+    color: $color;
+    text-transform: $transform;
+    text-align: $align;
+    font-weight: $weight;
+    font-style: $style;
+        opacity: 1;}
+  input[type]::-moz-placeholder {
+    font-family: $font-family;
+    font-size: $size;
+    color: $color;
+    text-transform: $transform;
+    text-align: $align;
+    font-weight: $weight;
+    font-style: $style;
+        opacity: 1;}
+  input[type]:-ms-input-placeholder {
+    font-family: $font-family;
+    font-size: $size;
+    color: $color;
+    text-transform: $transform;
+    text-align: $align;
+    font-weight: $weight;
+    font-style: $style;
+    opacity: 1;
+  }
+  textarea::-webkit-input-placeholder {
+    font-family: $font-family;
+    font-size: $size;
+    color: $color;
+    text-transform: $transform;
+    text-align: $align;
+    font-weight: $weight;
+    font-style: $style;
+    opacity: 1;
+  }
+  textarea:-moz-placeholder {
+    font-family: $font-family;
+    font-size: $size;
+    color: $color;
+    text-transform: $transform;
+    text-align: $align;
+    font-weight: $weight;
+    font-style: $style;
+        opacity: 1;}
+  textarea::-moz-placeholder {
+    font-family: $font-family;
+    font-size: $size;
+    color: $color;
+    text-transform: $transform;
+    text-align: $align;
+    font-weight: $weight;
+    font-style: $style;
+        opacity: 1;}
+  textarea:-ms-input-placeholder {
+    font-family: $font-family;
+    font-size: $size;
+    color: $color;
+    text-transform: $transform;
+    text-align: $align;
+    font-weight: $weight;
+    font-style: $style;
+    opacity: 1;
+  }
+}
+@mixin placeholder {
+    input[type]::-webkit-input-placeholder {@content;}
+    input[type]:-moz-placeholder           {@content;}
+    input[type]::-moz-placeholder          {@content;}
+    input[type]:-ms-input-placeholder      {@content;}
+    textarea::-webkit-input-placeholder    {@content;}
+    textarea:-moz-placeholder              {@content;}
+    textarea::-moz-placeholder             {@content;}
+    textarea:-ms-input-placeholder         {@content;}
+}
+
+/*
+* === Estilo de attributos especificos para el placeholder ===
+* @param1 = selector
+* @param2 = SCSS MAP
+* @example: 
+* .selector { 
+*  @include placeholder-props("input:hover", $props:(color:white, background:black))
+* }
+*
+*/
+@mixin placeholder-props($selector: "input", $props: null) {
+  #{$selector}::-webkit-input-placeholder {
+    @each $name, $attr in $props {
+      #{$name}: #{$attr};
+    }
+  }
+  #{$selector}::-moz-placeholder {
+    @each $name, $attr in $props {
+      #{$name}: #{$attr};
+    }
+  }
+  #{$selector}:-ms-input-placeholder {
+    @each $name, $attr in $props {
+      #{$name}: #{$attr};
+    }
+  }
+  #{$selector}:-moz-placeholder {
+    @each $name, $attr in $props {
+      #{$name}: #{$attr};
+    }
+  }
+}
+/*
+Nuevos Checkboxes
+--------------------------
+Parametros:
+$color: color sin check
+$checked: color cuando está checked
+*/
+@mixin checkbox-input-1($color : $black, $checked: $red, $checked-border: $color, $top:0) {
+  position: relative;
+  /*** custom checkboxes ***/
+    input[type=checkbox] { 
+    visibility: hidden;
+    opacity: 0;
+    width: 0;
+    position: absolute;
+    left: 0;
+    top: $top;
+    margin: 0;
+  }
+    input[type=checkbox] + label:before {
+    @include transition;
+        @include fontawesome5
+    left: 0;
+    top: ($top + 2px);
+    width: 18px;
+    height: 18px;
+    line-height: 16px;
+    font-size: 12px;
+    text-align: center;
+    z-index: 1;
+    color: $checked;
+  }
+    input[type=checkbox] + label:after { 
+        content: '';
+    display: block;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    border: solid 1px $color;
+    position: absolute;
+    top: ($top + 2px);
+    left: 0;
+    z-index: 0;
+  }
+
+  // unchecked
+    input[type=checkbox] + label:before { 
+        @include fontawesome5-icon('');
+  }
+  // checked
+    input[type=checkbox]:checked + label:before { 
+    color: $checked;
+        @include fontawesome5-icon('\f00c');
+  }
+  // checked
+    input[type=checkbox]:checked + label:after { 
+    border-color: $checked-border;
+  }
+}
+
+/*
+Nuevos custom Checkboxes
+--------------------------
+Parametros:
+$color: color sin check
+$checked: color cuando está checked
+*/
+@mixin checkbox-input-2($color : $black, $checked: $red, $checked-border: $color, $top:0) {
+  label[class*="checkbox"] {
+    position: relative;
+    padding-left: 18px + 5px;
+    &:before {
+      @include transition;
+            @include fontawesome5('');
+      left: 0;
+      top: ($top + 2px);
+      width: 18px;
+      height: 18px;
+      line-height: 16px;
+      font-size: 12px;
+      text-align: center;
+      z-index: 1;
+      color: $checked;
+      position: absolute;
+    }
+    &:after {
+            content: '';
+      display: block;
+      width: 18px;
+      height: 18px;
+      line-height: 18px;
+      border: solid 1px $color;
+      position: absolute;
+      top: ($top + 2px);
+      left: 0;
+      z-index: 0;
+    }
+
+    &.checked {
+      &:before {
+                @include fontawesome5-icon('\f00c');
+        color: $checked;
+      }
+      &:after {
+        border-color: $checked-border;
+      }
+    }
+
+    // esconde el checkbox original
+    input[type="checkbox"] {
+      visibility: hidden;
+      opacity: 0;
+      width: 0;
+      position: absolute;
+      left: 0;
+      top: $top;
+      margin: 0;
+    }
+  }
+}
+
+
+
+/*
+Nuevos Checkboxes
+--------------------------
+Parametros:
+$color: color sin check
+$checked: color cuando está checked
+*/
+@mixin radio-input-1($color : $black, $checked: $red, $checked-border: $color, $top:0) {
+  position: relative;
+  /*** custom radioes ***/
+    input[type=radio] { 
+    visibility: hidden;
+    opacity: 0;
+    width: 0;
+    position: absolute;
+    left: 0;
+    top: $top;
+    margin: 0;
+  }
+    input[type=radio] + label:before {
+    @include transition;
+        @include fontawesome5;
+    left: 0;
+    top: ($top + 2px);
+    width: 18px;
+    height: 18px;
+    line-height: 16px;
+    font-size: 12px;
+    text-align: center;
+    z-index: 1;
+    color: $checked;
+  }
+  input[type="radio"] + label:after {
+    content: "";
+    display: block;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    border: solid 1px $color;
+    position: absolute;
+    top: ($top + 2px);
+    left: 0;
+    z-index: 0;
+  }
+
+  // unchecked
+    input[type=radio] + label:before { 
+        @include fontawesome5-icon('');
+  }
+  // checked
+    input[type=radio]:checked + label:before { 
+        @include fontawesome5-icon('\f00c');
+    color: $checked;
+  }
+  // checked
+    input[type=radio]:checked + label:after { 
+    border-color: $checked-border;
+  }
+}

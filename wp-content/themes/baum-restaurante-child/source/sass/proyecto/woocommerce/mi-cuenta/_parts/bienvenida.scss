@@ -1,0 +1,72 @@
+// PAGINA DE BIENVENIDA DESPUES DE LOGIN
+.logged-in.woocommerce-account {
+    .user-dashboard {
+        text-align: center;
+        max-width: none;
+        h3,p {
+            margin-bottom: 20px;
+        }
+        h3 {
+            @include font-family(1, $font-bold);
+            color: $color-default;
+            @include media-breakpoint(0) {
+                @include em(20px);
+            }
+        }
+
+        ul.account-buttons {
+            padding-left: 0;
+            @include margin(0 auto);
+            width: 100%;
+            @media (max-width: 880px) {
+                max-width: $media-xsmall;
+            }
+            li {
+                @include calc(width, 25%, 4px);
+                @include padding(0);
+                text-align: center;
+                @include reset-content;
+                display: inline-block;
+                @media (max-width: 880px) {
+                    @include calc(width, 100%, 4px);
+                    margin-bottom: 10px;
+                }
+                a {
+                    width: 100%;
+                    text-transform: uppercase;
+                    @include transition;
+                    @include padding(15px 10px);
+                    @include border-radius(40px);
+                    @include em(13px);
+                    position: relative;
+                    line-height: 1.2em;
+                    display: inline-block;
+                    letter-spacing: 0.3px;
+                    outline: none;
+                    i {
+                        font-size: 100%;
+                        display: inline-block;
+                        width: 15px;
+                        height: 14px;
+                        text-align: center;
+                        line-height: 13px;
+                    }
+                    &.button {
+                        @include set-new-button-style($purple, $white, $purple);
+                        @include set-new-button-hover(
+                        darken($purple, 10%),
+                        $white,
+                        darken($purple, 10%)
+                        );
+                    }
+                }
+            }
+            @media screen and (max-width: 570px) {
+                max-width: none;
+                li {
+                    @include block(0 0 10px);
+                }
+            }
+        }
+    }
+}

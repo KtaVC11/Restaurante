@@ -1,0 +1,50 @@
+.carousel-container {
+  ul.products {
+    margin: 0;
+  }
+  // padding al div de woocommerce para acomodar las ferlchas
+  .woocommerce {
+    @include padding(0);
+    @include margin(0);
+  }
+  .owl-controls .owl-nav {
+    @media (max-width: 767px) {
+      display: none !important;
+    }
+    .owl-prev,
+    .owl-next {
+      transition: opacity 0.6s linear;
+      padding: 0;
+      opacity: 0.7;
+      background-image: none;
+      background-color: $color-main;
+      width: 60px;
+      height: 60px;
+      text-align: center;
+      border-radius: 3px;
+
+      i {
+        font-size: 35px;
+        color: $white;
+        line-height: 70px;
+      }
+      &:hover,
+      &:active,
+      &:focus {
+        opacity: 1;
+        background-color: $color-main;
+      }
+    }
+
+    .owl-prev {
+      @media (min-width: 1200px) {
+        margin-left: -80px;
+      }
+    }
+    .owl-next {
+      @media (min-width: 1200px) {
+        margin-right: -80px;
+      }
+    }
+  }
+}

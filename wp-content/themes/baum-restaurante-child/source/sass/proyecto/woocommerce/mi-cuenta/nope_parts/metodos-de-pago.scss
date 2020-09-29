@@ -1,0 +1,55 @@
+//metodos de pago
+
+#{$woocommerce} {
+  //new payment
+  form#add_payment_method {
+    @extend %max-account;
+    // .payment_method_baum_greenpay {
+    //   label {
+    //     font-family: $font-primary;
+    //     font-weight: $font-bold;
+    //   }
+    // }
+    .woocommerce-PaymentBox {
+      border-top: solid 1px $light;
+      border-radius: 5px;
+      ul {
+        li.woocommerce-SavedPaymentMethods-new {
+          display: none;
+        }
+      }
+
+      fieldset {
+        .form-row-first,
+        .form-row-last {
+          width: 48%;
+        }
+      }
+      #collapse-cc-form {
+        padding: 0 20px 10px;
+        p.form-row {
+          margin: 0;
+          padding: 10px 0;
+        }
+        label[class*="checkbox"] {
+          margin: 5px 5px 15px;
+        }
+      }
+    }
+    #place_order {
+      background-color: transparent;
+      color: $color-main;
+      border: 0;
+      font-weight: 500;
+      &:before {
+        margin-right: 5px;
+        @include font-awesome("\f067");
+      }
+      &:hover,
+      &:active,
+      &:focus {
+        color: darken($color-main, 10%);
+      }
+    }
+  }
+}

@@ -1,0 +1,167 @@
+// text transform none
+%text-transform-none {
+    text-transform: none;
+}
+
+// loader
+%loader {
+    @include transition;
+    @include border-radius(1px);
+    @include transform-translate(-50%, -50%);
+    position: absolute;
+    overflow: hidden;
+    display: block;
+    content: "";
+    width: 100px;
+    height: 14px;
+    left: 50%;
+    top: 50%;
+
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: transparent;
+    background-size: auto;
+}
+
+// Check-boxes
+%checkboxes {
+    @include checkbox-input-1;
+}
+
+// table Shop comun
+%table-shop {
+    @include table-shop;
+}
+
+// Float left
+%float {
+    @include float;
+}
+
+// Precio default
+%precio-default {
+    @include precio-default;
+}
+
+// Precio variantes
+%precio-variantes {
+    @include precio-variantes;
+}
+
+// Estilo de un item
+%item {
+    @include item;
+}
+
+// Estilo de los forms
+%forms {
+    @include forms;
+}
+
+// Icono de contacto Menu
+%icono-contacto {
+    @include icono-menu-contacto;
+}
+
+// Estilos comunes del href de Mega menu
+%mm-shared {
+    @include em(18px);
+    @include padding(0 15px);
+}
+
+// Font size heredado
+%font-size {
+    font-size: inherit;
+}
+
+// Float: none
+%float-none {
+    float: none;
+}
+
+// overflow hidden
+%OVERFLOW {
+    overflow: hidden;
+}
+
+// Transicion
+%transition {
+    @include transition;
+}
+
+// clear
+%clear {
+    clear: both;
+}
+
+// Boton de favoritos
+%boton-de-favoritos {
+    @include boton-de-favoritos;
+}
+
+/* common button style */
+%button-main-style {
+    @include main-button-style;
+}
+
+/* button main */
+%button-main {
+    @include button-main;
+}
+/* button alt */
+%button-main-alt {
+    @include button-main-alt;
+}
+
+/* Input del proyecto */
+%input-proyecto {
+    @include input-proyecto;
+}
+
+/* Max width none */
+%max-width-none {
+    max-width: none;
+    width: 100%;
+}
+%visual-hide {
+    margin: -1px;
+    padding: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip: rect(0, 0, 0, 0);
+    position: absolute;
+}
+
+
+/* Checkboxes checkout */
+%checkbox-custom-realizar-pedido {
+    @include checkbox-input-2($color-text, $color-default, $color-default, 4px);
+    label[class] {
+        font-size: 12px;
+        color: $color-text;
+        display: inline-block;
+        line-height: 1;
+        margin: 0;
+        padding-left: 25px;
+        opacity: .5;
+        margin-bottom: 20px;
+        &:hover, &:active, &:focus {
+            cursor: pointer;
+        }
+
+        &:after, &:before {
+            top: 50%;
+            width: 18px;
+            height: 18px;
+            line-height: 18px;
+            margin-top: -9px;
+        }
+        // checked
+        &.checked {
+            opacity: 1;
+        }
+    }     
+}

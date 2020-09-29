@@ -1,0 +1,114 @@
+.xoo-cp-modal {
+    .xoo-cp-container {
+        @include padding(40px 20px);
+    }
+
+    .xoo-cp-close.xoo-cp-icon-cross{
+        @include transition;
+        @include font-awesome;
+        @include em(20px);
+        top: 5px;
+        right: 10px;
+        z-index: 1;
+
+        &:before {
+            @include font-awesome-icon("\f00d");
+            color: $color-text;
+        }
+        &:hover, &:active, &:focus {
+            color: $color-danger;
+            &:before {
+                color: $color-danger;
+            }
+        }
+    }
+
+    //body
+    .xoo-cp-content {
+        .xoo-cp-success {
+            background-color: $light;
+            color: $color-text;
+            text-align: center;
+            font-family: $font-primary;
+            @include em(16px);
+            margin-bottom: 20px;
+            .xoo-cp-icon-check{
+                color: $color-success;
+            }
+        }
+    }
+    .xoo-cp-btns {
+        .xoo-cp-close, .xoo-cp-btn-ch, .xoo-cp-btn-vc {
+            padding: 15px;
+            cursor: pointer;
+            i {
+                margin-right: 5px;
+            }
+            @include media-breakpoint($media-xs, max-width){
+                display: block;
+                max-width: 50%;
+                margin: 0 auto 15px;
+                &:last-child{
+                    margin: 0 auto;
+                }
+            }
+            @include media-breakpoint($media-small, max-width){
+                max-width: 75%;
+            }
+            @include media-breakpoint($media-xsmall, max-width){
+                max-width: 100%;
+            }
+        }
+        // seguir navegando
+        .btn-secondary {
+            @include set-new-button-style($color-primary, $white, $color-primary)
+            @include set-new-button-hover(darken($color-primary, 10%), $white, darken($color-primary, 10%))
+        }
+    }
+
+    hr {
+        background-color: $light;
+        margin: 10px 0;
+    }
+
+    //carrusel dentro del modal de notificación
+    // .widget-added-to-cart-notification {
+    //   .widget-title {
+    //     margin-top: 20px;
+    //     text-align: center;
+    //     @include em(20px);
+    //     font-weight: $font-medium;
+    //   }
+    //   .carousel-container {
+    //     width: 100%;
+    //     li.product {
+    //       .product-wrapper {
+    //         border: 1px solid $light;
+    //         padding: 10px;
+    //         display: flex;
+    //         vertical-align: top;
+    //         span.etiqueta {
+    //           display: none;
+    //         }
+    //         .product-image-container {
+    //           width: 30%;
+    //           .xoo-qv-button {
+    //             display: none;
+    //           }
+    //         }
+    //         .product-title-container {
+    //           width: 70%;
+    //           padding: 0 10px;
+    //           background: transparent;
+    //           .woocommerce-loop-product__title {
+    //             color: $black;
+    //           }
+    //           .tinv-wraper {
+    //             display: none;
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
+}

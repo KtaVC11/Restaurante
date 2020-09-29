@@ -1,0 +1,20 @@
+2020-09-22T16:34:48+00:00 CRITICAL Uncaught Error: Call to a member function get() on null in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wc\wc-checkout-options.php:298
+Stack trace:
+#0 C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wc\wc-checkout-options.php(142): baumchild_input_is_require()
+#1 C:\xampp\htdocs\restaurante\wp-includes\class-wp-hook.php(287): baumchild_woocommerce_default_address_fields(Array)
+#2 C:\xampp\htdocs\restaurante\wp-includes\plugin.php(206): WP_Hook->apply_filters(Array, Array)
+#3 C:\xampp\htdocs\restaurante\wp-content\plugins\woocommerce\includes\class-wc-countries.php(738): apply_filters('woocommerce_def...', Array)
+#4 C:\xampp\htdocs\restaurante\wp-content\plugins\woocommerce\includes\class-wc-countries.php(1377): WC_Countries->get_default_address_fields()
+#5 C:\xampp\htdocs\restaurante\wp-content\plugins\woocommerce\includes\admin\class-wc-admin-setup-wizard.php(250): WC_Countries->get_country_locale()
+#6 C:\xampp\htdocs\restaurante\wp-content\plu in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wc\wc-checkout-options.php on line 298
+
+2020-09-22T17:10:01+00:00 CRITICAL syntax error, unexpected '}', expecting end of file in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wc\wc-performance.php on line 57
+
+2020-09-22T17:10:31+00:00 CRITICAL syntax error, unexpected end of file in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wc\wc-performance.php on line 72
+
+2020-09-22T17:10:51+00:00 CRITICAL syntax error, unexpected end of file in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wc\wc-performance.php on line 72
+
+2020-09-22T17:11:10+00:00 CRITICAL syntax error, unexpected end of file in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wc\wc-performance.php on line 72
+
+2020-09-22T17:12:09+00:00 CRITICAL syntax error, unexpected end of file in C:\xampp\htdocs\restaurante\wp-content\themes\baum-restaurante-child\functions\wc\wc-performance.php on line 72
+

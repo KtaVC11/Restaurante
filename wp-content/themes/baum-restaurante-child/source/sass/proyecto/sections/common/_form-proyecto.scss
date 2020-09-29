@@ -1,0 +1,290 @@
+/*
+**
+**
+** FORMS
+**
+**
+*/
+/* ## DEFINE EL ESTILO DE LOS PLACEHOLDER */
+@include placeholder() {
+    color: darken($gray, 20%);
+}
+
+@mixin contactStyle {
+    @include input-style(15px 25px, solid 1px $gris, $color-text, $white, $font-regular, 500px, $font-size, 1.1); 
+}
+body {
+
+    form {
+        // @include forms;
+
+        // Inputs
+        input[type="tel"], 
+        input[type="email"], 
+        textarea, select, 
+        input[type="number"], 
+        input[type*="text"], 
+        input[type*="password"], 
+        input[class] {
+            @include contactStyle();
+            outline: none;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: $font-regular;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        // text-area
+        textarea {
+            @include border-radius(10px)
+            min-height: 80px;
+            resize: vertical;
+            @include border-radius(20px);
+        }
+
+        &.checkout {
+            .form-row {
+                &:not([class*="form-row-"]) {
+                    clear: both;
+                }
+
+                label {
+                    position: relative;
+                    width: auto;
+                    display: inline-block;
+
+                    + span,
+                    + strong {
+                        display: block;
+                    }
+
+                    abbr.required {
+                        /*
+                        position: absolute;
+                        right: -12px;
+                        top: 30%;
+                        */
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+body {
+    .wpcf7-form  {
+
+        br {
+            display: none;
+        }
+
+        @at-root #{$global} & {
+            @include placeholder {
+                opacity: 0;
+                @include media-breakpoint($media-xsmall) {
+                    opacity: 1;
+                }
+                font-weight: $font-regular;
+                opacity: 0;
+                font-size: $font-size;
+                color: lighten($color-text, 25%);
+            }
+        }
+
+        p {
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+
+        .form-group {
+            @include clearfix;
+            margin-bottom: 15px; 
+        }
+
+
+        label {
+            @include fs($font-size);
+            display: block;
+            font-weight: $font-regular;
+            max-width: none;
+            width: 100%;
+            clear: both;
+            margin-bottom: 8px;
+            color: $white;
+            text-align: left;
+        }
+
+        input {
+            // common
+            &[type] {
+                &:not([type="submit"]) {
+                    &:not([type="checkbox"]) {
+                        @include contactStyle;
+                        @include box-shadow(none);
+                        width: 100%;
+                        max-width: none;
+                        &:hover, &:active {
+                            &, &:focus {
+                                @include box-shadow(none);   
+                            }
+                        }
+                        &:focus {
+                            border-color: $white;
+                            @include box-shadow(0 0 15px 0 rgba(darken($color-primary, 10%), .4));
+                        }
+                    }
+                }
+            }
+        }
+
+        // button
+        .wpcf7-submit {
+            @include main-button-style;
+            max-width: none;
+            width: 100%;
+            padding: 14px 25px;
+            display: block;
+        }
+
+
+        .wpcf7-form-control-wrap {
+            position: relative;
+            margin-top: 5px;
+            display: block;
+            width: 100%;
+        }
+
+
+        span.wpcf7-not-valid-tip {
+            color: $white;
+            @include em(13px);
+            font-weight: $font-light;
+            padding-top: 8px;
+        }
+
+        .intl-tel-input {
+            input[type="text"] {
+                padding-left: 50px;
+            }
+        }
+
+        textarea.wpcf7-textarea {
+            @include contactStyle;
+            @include box-shadow(none);
+            @include border-radius(20px);
+            @include fs($font-size);
+            width: 100%;
+            height: 140px;
+
+            &:hover, &:active {
+                color: $color-text;
+                @include box-shadow(none);
+                border-color: $gray;
+            }
+            &:focus {
+                @include box-shadow(none);
+                background-color: $white;
+                color: $color-text;
+                border-color: darken($color-text, 15%);
+            }
+        }
+
+
+        .wpcf7-response-output {
+            @include border-radius(5px);
+            @include padding(8px);
+            @include margin(0 auto 2%);
+            @include fs(14px);
+            border: none;
+            background-color: rgba($black, .1);
+            font-weight: $font-regular;
+            text-align: center;
+            color: $white;
+            line-height: 1.2;
+        }
+    }    
+}
+
+
+body .wpcf7-form {
+
+    // button de enviar
+    .button-wrap {
+        position: relative;
+        margin-bottom: 15px;
+        max-width: 340px;
+        width: 100%;
+        margin: 0 auto 20px;
+        .button {
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 0;
+            position: relative;
+        }
+        .wpcf7-form-control.wpcf7-submit  {
+            @include z-index(button_wpcf7);
+            @include padding(14px 25px);
+            &:hover, &:active, &:focus {
+                @include padding(14px 25px);
+            }
+        }
+        .ajax-loader {
+            z-index: 6;
+            border: solid 1px $color-main;
+            @include z-index(ajax_loader);
+            @include transition;
+            @include border-radius(1000px);
+            background-color: $white;
+            background-image: none;
+            visibility: visible;
+            pointer-events: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            margin: 0;
+            display: block;
+
+            &:before {
+                @include fontawesome5('\f1ce');
+                font-weight: $font-bold;
+                display: block;
+                font-size: 22px;                    
+                line-height: 22px;
+                width: 22px;
+                height: 22px;
+                margin: {
+                    top: -(22/2)+px;
+                    left: -(22/2)+px;
+                }
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                text-align: center;
+                color: $color-main;
+                @include Rotate360(800ms);
+                @include applyRotate360;
+                opacity: 0;
+            }
+
+
+            &.is-active {
+                pointer-events: auto;
+                cursor: default;
+                opacity: 1;
+                &:before {
+                    opacity: 1;
+                }
+            }
+        }
+    }  
+}

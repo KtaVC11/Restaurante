@@ -1,0 +1,48 @@
+
+body #page {
+    .section-checkout {
+        .vc_column-inner {
+            width: 100%;
+            max-width: 820px;
+            margin: 0 auto;
+
+            form.checkout {
+                @include border-radius(10px);
+                @include padding(30px 12px);
+                @include borde($gray)
+                background-color: $light;
+                @include media-breakpoint($media-small) {
+                    @include padding(30px);
+                }
+
+                row {
+                    margin: 0;
+                }
+                .__infoUsuario {
+                }
+
+                .__infoPedido {
+                }
+
+            }
+
+
+            // acomodar los labels
+            form.checkout {
+                label {
+                    font-size: 14px;
+                    width: 100%;
+                    max-width: none;
+                    margin-bottom: 10px;
+                    &  + span {
+                        width: 100%;  
+                    }
+
+                    &.checkbox {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}

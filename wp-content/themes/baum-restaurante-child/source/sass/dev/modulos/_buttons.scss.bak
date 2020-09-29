@@ -1,0 +1,26 @@
+
+/*
+*  SCSS snippets
+*  _buttons.scss
+*  Autor: Francisco Chanto
+*  v1.0.0
+*  Mayo, 2018
+*/
+
+@mixin set-new-button-style($bgcolor: null, $fontcolor: null, $border-color: null) {
+    background: $bgcolor;
+    color: $fontcolor;
+    @if $border-color != null {
+        border: solid 1px $border-color;
+    }
+}
+
+@mixin set-new-button-hover($bgcolor: null, $fontcolor: null, $border-color: null) {
+    &:hover, &:active, &:focus {
+        background: $bgcolor;
+        color: $fontcolor;
+        @if $border-color != null {
+            border-color: $border-color;  
+        }
+    }
+}

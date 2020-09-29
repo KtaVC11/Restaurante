@@ -1,0 +1,129 @@
+
+#{$woocommerce} {
+
+    form {
+        // input & selects
+        input:not(.button), select {}
+
+        // ABBR
+        abbr[title], acronym[title], abbr {
+            @include em(14px);
+            border-bottom: none;
+            line-height: 1;
+            text-decoration: none;
+        }
+
+        // Input válido
+        .form-row {
+            &.woocommerce-validated {
+                input[class]:not(.button), {
+                    /* border-color: $color-primary; */
+                }    
+            } 
+            &.woocommerce-invalid {
+                input[class]:not(.button), {
+                    border-color: $color-main;
+                }  
+            }
+
+            .required {
+                color: $color-main;
+            }
+        }
+    }
+}
+
+
+/*
+#{$woocommerce} {
+    form {
+        label,
+        p {
+            color: $color-text;
+        }
+        span {
+            em {
+                font-size: 0.8em;
+                color: $color-text;
+            }
+        }
+        fieldset {
+            legend {
+                color: $black;
+                font-size: 1.4em;
+                font-weight: 500;
+            }
+        }
+
+        // input & selects
+        input:not(.button),
+            select {
+            @include input-proyecto;
+            line-height: $forms-line-height;
+        }
+
+        // ABBR
+        abbr[title],
+        acronym[title],
+        abbr {
+            @include em(14px);
+            border-bottom: none;
+            line-height: 1;
+            text-decoration: none;
+        }
+
+        // Input válido
+        .form-row.woocommerce-validated {
+            input[class]:not(.button) {
+                border-color: $light;
+            }
+        }
+        //checkbox
+        label[class*="checkbox"] {
+            &:before {
+                top: 3.5px !important;
+                color: $dark !important;
+            }
+            &:after {
+                border: solid 1px $light;
+                border-radius: 3px;
+            }
+        }
+        #billing_email_field label[class*="checkbox"] {
+            margin-top: 5px;
+        }
+        //select
+        .select2-container .select2-selection.select2-selection--single {
+            border-radius: 10px;
+        }
+        p button[type="submit"] {
+            text-transform: uppercase;
+            @include button-main;
+            @include border-radius(50px);
+            @include em(13px);
+            @include padding(0 10px);
+            margin: 10px auto 0;
+            border-width: 2px;
+            max-width: none;
+            line-height: 42px;
+            outline: none;
+            display: block;
+            width: 100%;
+            @include set-new-button-style($color-main, $white, $color-main);
+            @include set-new-button-hover(
+            darken($color-main, 10%),
+            $white,
+            darken($color-main, 10%)
+            );
+        }
+        &.woocommerce-EditAccountForm {
+            p button[type="submit"] {
+                max-width: 320px;
+                @media (max-width: $mobile-wc-table) {
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+}
+*/

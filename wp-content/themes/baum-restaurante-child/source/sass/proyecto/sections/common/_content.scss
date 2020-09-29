@@ -1,0 +1,35 @@
+/* Sharing options - Posts/Products */
+.post-sharing {
+    [class*="title"] {
+        margin-right: 20px;
+    }
+    
+    span, a {
+        color: $gray;
+    }
+
+    .post-share-options {
+    	margin-bottom: 0;
+
+        li:not(:last-child) {
+            margin-right: 10px;
+        }
+    }
+}
+
+body:not(.single-product) #content {
+    padding-top: 30px;
+}
+
+.contenido {
+    article {
+        .entry-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            h1 {
+                @include margin(0);
+            }
+        }
+    }
+}

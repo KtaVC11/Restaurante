@@ -1,0 +1,29 @@
+// detalle del producto layout
+#{$detalle} {
+    div.product {
+        .summary {
+            width: 100%;
+
+            /* Added to cart popup */
+            a.added_to_cart,
+            span.xoo-cp-icon-check.xoo-cp-added {
+                display: none;
+            }
+        }
+
+        @include media-breakpoint(720px) {
+            .wrapper-gallery,
+            .product-details-container {
+                max-width: 50%;
+            }
+
+            .wrapper-gallery {
+                float: left;
+                padding-right: 20px;
+            }
+        }
+    }
+}
+
+// Carruseles
+@import "detalle-carruseles";

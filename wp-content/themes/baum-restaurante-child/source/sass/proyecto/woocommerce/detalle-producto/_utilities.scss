@@ -1,0 +1,168 @@
+// SKu del producto
+@mixin sku($t: 13px, $transform: uppercase) {
+    .sku {
+        @include em($t);
+        color: $gray; 
+        text-transform: $transform;
+        line-height: 30px;
+    }
+}
+
+@mixin estilo_wrapper() {
+    @include em(13px);
+    color: $gray; 
+    text-transform: none;
+    line-height: 30px;
+}
+
+// Titulo del producto
+@mixin producto-titulo {
+    .product_title {
+        color: color-default;
+        font-weight: $font-bold-extra;
+        @include em(30px);
+        margin-bottom: 0;
+        text-transform: none;
+    }
+}
+
+// Subtitulo del producto
+@mixin producto-subtitulo {
+    .subtitle {
+        line-height: 1.1;
+        @include em(14px);
+        margin-bottom: 0;
+    }
+}
+
+// Precio del producto
+@mixin producto-precio {
+    .price {
+        @extend %precio-default;
+        @extend %precio-variantes;
+        text-align: left;
+        padding-bottom: 15px;
+        color: $color-default;
+
+        .amount {
+            color: color-default;
+            font-weight: $font-bold-extra;
+            @include em(30px);
+            margin-bottom: 0;
+            text-transform: none;     
+        }
+
+
+
+        del {
+            .amount{
+                font-weight: $font-regular;
+            }
+        }
+
+        ins {
+            color: $black;
+        }
+
+        + .stock {
+            display: none;
+        }
+    }
+}
+
+// Variaciones del producto
+@mixin producto-variaciones($border: true) {
+
+    .variations_form {
+        @include margin(30px 0 15px);
+        @if $border {
+            border-bottom: solid 1px $color-main;   
+        }@else {
+            border: none;
+        }
+
+    }
+    .woocommerce-variation-add-to-cart {
+        overflow: hidden;
+        display: block;
+    }
+
+    // Div con .single_variation_wrap
+    .single_variation_wrap, form.cart {
+        @include clearfix;
+        // cantidad
+        .quantity {
+            @include display-flex(center, null);
+            overflow: hidden;
+            label {
+                @include flexbox-inline;
+                padding: 0;
+                color: $color-text;
+                margin: 0;
+
+                /* antes */
+                float: left;
+                clear: none;
+                width: 100px;
+            }
+            .input-container {
+                @include cantidad;   
+                margin-left: 0;                
+            }
+        }
+    }
+
+
+    // cantidad
+    .input-container {
+        display: inline-block;
+        overflow: hidden;
+        width: 100%;
+
+        span {
+
+            @include float(left);
+            line-height: 32px;
+            width: 100px;
+        }
+    }
+}
+
+// Boton Agregar al carrito
+@mixin producto-add2cart {
+    [class*="add_to_cart_button"].alt {
+        //@include button-main;
+        @include border-radius(500px);
+        @include set-new-button-style($color-main, $white, $color-main);
+        @include set-new-button-hover(darken($color-main, 10%), $white, darken($color-main, 10%));        
+        @include em(16px);
+        @include padding(16px 15px);
+        display: block;
+        line-height: 1.1;
+        width: 100%;
+        clear: both;
+        margin-bottom: 15px;
+        position: relative;
+        overflow: hidden;
+        &:after {
+            @include fontawesome5('\f290');
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        &.disabled {
+            pointer-events: none;
+            opacity: .35;
+        }
+
+        @media screen and (max-width: 400px) {
+            @include em(22px);
+        }
+
+        + .added_to_cart,
+        .xoo-cp-added {
+            display: none;
+        }
+    }
+}
+

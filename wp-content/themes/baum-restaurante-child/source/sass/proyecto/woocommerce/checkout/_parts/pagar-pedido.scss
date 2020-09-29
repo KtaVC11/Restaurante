@@ -1,0 +1,7 @@
+
+#{$woocommerce-pay-order} {
+    .woocommerce {        
+        // Pago con tarjeta
+        @include payment;
+    }
+}

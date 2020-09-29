@@ -1,0 +1,27 @@
+/*
+* === Woocommerce ===
+*/
+
+$woocommerce: ".woocommerce";
+$columna-sidebar: ".widget-principal";
+$columna-container: ".archive .main-container .archive-container";
+$producto: "div.product";
+$detalle: ".single-product .shop-wrapper";
+$favoritos: ".archive .main-container .tinv-wraper.tinv-wishlist";
+$favoritosext: "#content .main-container .carousel-products .tinv-wraper.tinv-wishlist";
+$favoritosDetalle: $detalle $producto;
+$favoritosListado: null;
+$mi-carrito: ".woocommerce-cart";
+$woocommerce-page: ".woocommerce-page";
+$woocommerce-default: 'body[class*="woocommerce"]';
+$woocommerce-cart: ".woocommerce-cart";
+$woocommerce-checkout: ".woocommerce-checkout";
+$woocommerce-pay-order: "body.woocommerce-order-pay";
+
+$breakpoint_detalle: $media-xs;    // ** cambia a mobile en < 768 **
+
+// estilo comun para la tabla -shop-table
+.woocommerce table.shop_table {
+  @include border-radius(0);
+  border-color: color-gris(10);
+}
